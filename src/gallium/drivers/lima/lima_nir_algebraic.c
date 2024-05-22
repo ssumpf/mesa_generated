@@ -12,125 +12,137 @@
  */
 
 
-   static const nir_search_variable search0_0 = {
-   { nir_search_value_variable, -1 },
-   0, /* a */
-   false,
-   nir_type_invalid,
-   NULL,
-   {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
-};
-static const nir_search_expression search0 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 0,
-   nir_op_fsin,
-   { &search0_0.value },
-   NULL,
+static const nir_search_value_union lima_nir_scale_trig_values[] = {
+   /* ('fsin', 'a') => ('fsin', ('fmul', 'a', 0.15915494309189535)) */
+   { .variable = {
+      { nir_search_value_variable, -1 },
+      0, /* a */
+      false,
+      nir_type_invalid,
+      -1,
+      {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fsin,
+      -1, 0,
+      { 0 },
+      -1,
+   } },
+
+   /* replace0_0_0 -> 0 in the cache */
+   { .constant = {
+      { nir_search_value_constant, -1 },
+      nir_type_float, { 0x3fc45f306dc9c883 /* 0.15915494309189535 */ },
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fmul,
+      0, 1,
+      { 0, 2 },
+      -1,
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fsin,
+      -1, 1,
+      { 3 },
+      -1,
+   } },
+
+   /* ('fcos', 'a') => ('fcos', ('fmul', 'a', 0.15915494309189535)) */
+   /* search1_0 -> 0 in the cache */
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fcos,
+      -1, 0,
+      { 0 },
+      -1,
+   } },
+
+   /* replace1_0_0 -> 0 in the cache */
+   /* replace1_0_1 -> 2 in the cache */
+   /* replace1_0 -> 3 in the cache */
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fcos,
+      -1, 1,
+      { 3 },
+      -1,
+   } },
+
 };
 
-   /* replace0_0_0 -> search0_0 in the cache */
-
-static const nir_search_constant replace0_0_1 = {
-   { nir_search_value_constant, -1 },
-   nir_type_float, { 0x3fc45f306dc9c883 /* 0.15915494309189535 */ },
-};
-static const nir_search_expression replace0_0 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   0, 1,
-   nir_op_fmul,
-   { &search0_0.value, &replace0_0_1.value },
-   NULL,
-};
-static const nir_search_expression replace0 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 1,
-   nir_op_fsin,
-   { &replace0_0.value },
-   NULL,
-};
-
-   /* search1_0 -> search0_0 in the cache */
-static const nir_search_expression search1 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 0,
-   nir_op_fcos,
-   { &search0_0.value },
-   NULL,
-};
-
-   /* replace1_0_0 -> search0_0 in the cache */
-
-/* replace1_0_1 -> replace0_0_1 in the cache */
-/* replace1_0 -> replace0_0 in the cache */
-static const nir_search_expression replace1 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 1,
-   nir_op_fcos,
-   { &replace0_0.value },
-   NULL,
-};
 
 
-static const struct transform lima_nir_scale_trig_state2_xforms[] = {
-  { &search0, &replace0.value, 0 },
-};
-static const struct transform lima_nir_scale_trig_state3_xforms[] = {
-  { &search1, &replace1.value, 0 },
+static const struct transform lima_nir_scale_trig_transforms[] = {
+   { ~0, ~0, ~0 }, /* Sentinel */
+
+   { 1, 4, 0 },
+   { ~0, ~0, ~0 }, /* Sentinel */
+
+   { 5, 6, 0 },
+   { ~0, ~0, ~0 }, /* Sentinel */
+
 };
 
-static const struct per_op_table lima_nir_scale_trig_table[nir_num_search_ops] = {
+static const struct per_op_table lima_nir_scale_trig_pass_op_table[nir_num_search_ops] = {
    [nir_op_fsin] = {
-      .filter = (uint16_t []) {
-         0,
-         0,
-         0,
-         0,
-      },
+      .filter = NULL,
       
       .num_filtered_states = 1,
-      .table = (uint16_t []) {
+      .table = (const uint16_t []) {
       
          2,
       },
    },
    [nir_op_fcos] = {
-      .filter = (uint16_t []) {
-         0,
-         0,
-         0,
-         0,
-      },
+      .filter = NULL,
       
       .num_filtered_states = 1,
-      .table = (uint16_t []) {
+      .table = (const uint16_t []) {
       
          3,
       },
    },
 };
 
-const struct transform *lima_nir_scale_trig_transforms[] = {
-   NULL,
-   NULL,
-   lima_nir_scale_trig_state2_xforms,
-   lima_nir_scale_trig_state3_xforms,
+/* Mapping from state index to offset in transforms (0 being no transforms) */
+static const uint16_t lima_nir_scale_trig_transform_offsets[] = {
+   0,
+   0,
+   1,
+   3,
 };
 
-const uint16_t lima_nir_scale_trig_transform_counts[] = {
-   0,
-   0,
-   (uint16_t)ARRAY_SIZE(lima_nir_scale_trig_state2_xforms),
-   (uint16_t)ARRAY_SIZE(lima_nir_scale_trig_state3_xforms),
+static const nir_algebraic_table lima_nir_scale_trig_table = {
+   .transforms = lima_nir_scale_trig_transforms,
+   .transform_offsets = lima_nir_scale_trig_transform_offsets,
+   .pass_op_table = lima_nir_scale_trig_pass_op_table,
+   .values = lima_nir_scale_trig_values,
+   .expression_cond = NULL,
+   .variable_cond = NULL,
 };
 
 bool
-lima_nir_scale_trig(nir_shader *shader)
-{
+lima_nir_scale_trig(
+   nir_shader *shader
+) {
    bool progress = false;
    bool condition_flags[1];
    const nir_shader_compiler_options *options = shader->options;
@@ -138,15 +150,11 @@ lima_nir_scale_trig(nir_shader *shader)
    (void) options;
    (void) info;
 
+   STATIC_ASSERT(7 == ARRAY_SIZE(lima_nir_scale_trig_values));
    condition_flags[0] = true;
 
-   nir_foreach_function(function, shader) {
-      if (function->impl) {
-         progress |= nir_algebraic_impl(function->impl, condition_flags,
-                                        lima_nir_scale_trig_transforms,
-                                        lima_nir_scale_trig_transform_counts,
-                                        lima_nir_scale_trig_table);
-      }
+   nir_foreach_function_impl(impl, shader) {
+     progress |= nir_algebraic_impl(impl, condition_flags, &lima_nir_scale_trig_table);
    }
 
    return progress;
@@ -164,105 +172,125 @@ lima_nir_scale_trig(nir_shader *shader)
  */
 
 
-   static const nir_search_variable search2_0 = {
-   { nir_search_value_variable, -1 },
-   0, /* a */
-   false,
-   nir_type_invalid,
-   NULL,
-   {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
-};
-static const nir_search_expression search2 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 0,
-   nir_op_ftrunc,
-   { &search2_0.value },
-   NULL,
+static const nir_search_value_union lima_nir_lower_ftrunc_values[] = {
+   /* ('ftrunc', 'a') => ('fmul', ('fsign', 'a'), ('ffloor', ('fmax', 'a', ('fneg', 'a')))) */
+   { .variable = {
+      { nir_search_value_variable, -1 },
+      0, /* a */
+      false,
+      nir_type_invalid,
+      -1,
+      {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_ftrunc,
+      -1, 0,
+      { 0 },
+      -1,
+   } },
+
+   /* replace2_0_0 -> 0 in the cache */
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fsign,
+      -1, 0,
+      { 0 },
+      -1,
+   } },
+   /* replace2_1_0_0 -> 0 in the cache */
+   /* replace2_1_0_1_0 -> 0 in the cache */
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fneg,
+      -1, 0,
+      { 0 },
+      -1,
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fmax,
+      1, 1,
+      { 0, 3 },
+      -1,
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_ffloor,
+      -1, 1,
+      { 4 },
+      -1,
+   } },
+   { .expression = {
+      { nir_search_value_expression, -1 },
+      false,
+      false,
+      false,
+      nir_op_fmul,
+      0, 2,
+      { 2, 5 },
+      -1,
+   } },
+
 };
 
-   /* replace2_0_0 -> search2_0 in the cache */
-static const nir_search_expression replace2_0 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 0,
-   nir_op_fsign,
-   { &search2_0.value },
-   NULL,
-};
-
-/* replace2_1_0_0 -> search2_0 in the cache */
-
-/* replace2_1_0_1_0 -> search2_0 in the cache */
-static const nir_search_expression replace2_1_0_1 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 0,
-   nir_op_fneg,
-   { &search2_0.value },
-   NULL,
-};
-static const nir_search_expression replace2_1_0 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   1, 1,
-   nir_op_fmax,
-   { &search2_0.value, &replace2_1_0_1.value },
-   NULL,
-};
-static const nir_search_expression replace2_1 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   -1, 1,
-   nir_op_ffloor,
-   { &replace2_1_0.value },
-   NULL,
-};
-static const nir_search_expression replace2 = {
-   { nir_search_value_expression, -1 },
-   false, false,
-   0, 2,
-   nir_op_fmul,
-   { &replace2_0.value, &replace2_1.value },
-   NULL,
-};
 
 
-static const struct transform lima_nir_lower_ftrunc_state2_xforms[] = {
-  { &search2, &replace2.value, 0 },
+static const struct transform lima_nir_lower_ftrunc_transforms[] = {
+   { ~0, ~0, ~0 }, /* Sentinel */
+
+   { 1, 6, 0 },
+   { ~0, ~0, ~0 }, /* Sentinel */
+
 };
 
-static const struct per_op_table lima_nir_lower_ftrunc_table[nir_num_search_ops] = {
+static const struct per_op_table lima_nir_lower_ftrunc_pass_op_table[nir_num_search_ops] = {
    [nir_op_ftrunc] = {
-      .filter = (uint16_t []) {
-         0,
-         0,
-         0,
-      },
+      .filter = NULL,
       
       .num_filtered_states = 1,
-      .table = (uint16_t []) {
+      .table = (const uint16_t []) {
       
          2,
       },
    },
 };
 
-const struct transform *lima_nir_lower_ftrunc_transforms[] = {
-   NULL,
-   NULL,
-   lima_nir_lower_ftrunc_state2_xforms,
+/* Mapping from state index to offset in transforms (0 being no transforms) */
+static const uint16_t lima_nir_lower_ftrunc_transform_offsets[] = {
+   0,
+   0,
+   1,
 };
 
-const uint16_t lima_nir_lower_ftrunc_transform_counts[] = {
-   0,
-   0,
-   (uint16_t)ARRAY_SIZE(lima_nir_lower_ftrunc_state2_xforms),
+static const nir_algebraic_table lima_nir_lower_ftrunc_table = {
+   .transforms = lima_nir_lower_ftrunc_transforms,
+   .transform_offsets = lima_nir_lower_ftrunc_transform_offsets,
+   .pass_op_table = lima_nir_lower_ftrunc_pass_op_table,
+   .values = lima_nir_lower_ftrunc_values,
+   .expression_cond = NULL,
+   .variable_cond = NULL,
 };
 
 bool
-lima_nir_lower_ftrunc(nir_shader *shader)
-{
+lima_nir_lower_ftrunc(
+   nir_shader *shader
+) {
    bool progress = false;
    bool condition_flags[1];
    const nir_shader_compiler_options *options = shader->options;
@@ -270,15 +298,11 @@ lima_nir_lower_ftrunc(nir_shader *shader)
    (void) options;
    (void) info;
 
+   STATIC_ASSERT(7 == ARRAY_SIZE(lima_nir_lower_ftrunc_values));
    condition_flags[0] = true;
 
-   nir_foreach_function(function, shader) {
-      if (function->impl) {
-         progress |= nir_algebraic_impl(function->impl, condition_flags,
-                                        lima_nir_lower_ftrunc_transforms,
-                                        lima_nir_lower_ftrunc_transform_counts,
-                                        lima_nir_lower_ftrunc_table);
-      }
+   nir_foreach_function_impl(impl, shader) {
+     progress |= nir_algebraic_impl(impl, condition_flags, &lima_nir_lower_ftrunc_table);
    }
 
    return progress;

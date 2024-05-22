@@ -22,6 +22,11 @@ nir_type_conversion_op(nir_alu_type src, nir_alu_type dst, nir_rounding_mode rnd
       return nir_op_mov;
    }
 
+   /* f2b, i2b, and u2b do not exist.  Use ine or fne (via nir_type_conversion)
+    * instead.
+    */
+   assert(src_base == dst_base || dst_base != nir_type_bool);
+
    switch (src_base) {
       case nir_type_int:
          switch (dst_base) {
@@ -62,22 +67,6 @@ nir_type_conversion_op(nir_alu_type src, nir_alu_type dst, nir_rounding_mode rnd
                      unreachable("Invalid nir alu bit size");
                }
             case nir_type_bool:
-               switch (dst_bit_size) {
-                  case 1:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b1;
-                  case 8:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b8;
-                  case 16:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b16;
-                  case 32:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b32;
-                  default:
-                     unreachable("Invalid nir alu bit size");
-               }
             default:
                unreachable("Invalid nir alu base type");
          }
@@ -120,23 +109,6 @@ nir_type_conversion_op(nir_alu_type src, nir_alu_type dst, nir_rounding_mode rnd
                      unreachable("Invalid nir alu bit size");
                }
             case nir_type_bool:
-
-               switch (dst_bit_size) {
-                  case 1:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b1;
-                  case 8:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b8;
-                  case 16:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b16;
-                  case 32:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_i2b32;
-                  default:
-                     unreachable("Invalid nir alu bit size");
-               }
             default:
                unreachable("Invalid nir alu base type");
          }
@@ -205,22 +177,6 @@ nir_type_conversion_op(nir_alu_type src, nir_alu_type dst, nir_rounding_mode rnd
                      unreachable("Invalid nir alu bit size");
                }
             case nir_type_bool:
-               switch (dst_bit_size) {
-                  case 1:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_f2b1;
-                  case 8:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_f2b8;
-                  case 16:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_f2b16;
-                  case 32:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_f2b32;
-                  default:
-                     unreachable("Invalid nir alu bit size");
-               }
             default:
                unreachable("Invalid nir alu base type");
          }
@@ -263,23 +219,19 @@ nir_type_conversion_op(nir_alu_type src, nir_alu_type dst, nir_rounding_mode rnd
                      unreachable("Invalid nir alu bit size");
                }
             case nir_type_bool:
-
                switch (dst_bit_size) {
                   case 1:
                      assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_b2i1;
+                     return nir_op_b2b1;
                   case 8:
                      assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_b2i8;
+                     return nir_op_b2b8;
                   case 16:
                      assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_b2i16;
+                     return nir_op_b2b16;
                   case 32:
                      assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_b2i32;
-                  case 64:
-                     assert(rnd == nir_rounding_mode_undef);
-                     return nir_op_b2i64;
+                     return nir_op_b2b32;
                   default:
                      unreachable("Invalid nir alu bit size");
                }
@@ -680,7 +632,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_SELECTION
 },
 {
    .name = "b2b1",
@@ -1235,7 +1187,22 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_SELECTION
+},
+{
+   .name = "b32fcsel_mdg",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_uint,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_bool32, nir_type_float, nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_SELECTION
 },
 {
    .name = "b8all_fequal16",
@@ -1610,7 +1577,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_SELECTION
 },
 {
    .name = "ball_fequal16",
@@ -1985,7 +1952,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_SELECTION
 },
 {
    .name = "bfi",
@@ -2078,9 +2045,129 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "cube_face_coord",
+   .name = "bitnz",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool1,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitnz16",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool16,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitnz32",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitnz8",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool8,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitz",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool1,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitz16",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool16,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitz32",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "bitz8",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_bool8,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "cube_amd",
    .num_inputs = 1,
-   .output_size = 2,
+   .output_size = 4,
    .output_type = nir_type_float32,
    .input_sizes = {
       3
@@ -2093,15 +2180,15 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "cube_face_index",
-   .num_inputs = 1,
-   .output_size = 1,
-   .output_type = nir_type_float32,
+   .name = "extr_agx",
+   .num_inputs = 4,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
    .input_sizes = {
-      3
+      0, 0, 0, 0
    },
    .input_types = {
-      nir_type_float32
+      nir_type_uint32, nir_type_uint32, nir_type_uint32, nir_type_uint32
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -2164,66 +2251,6 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       nir_type_uint, nir_type_uint
    },
    .is_conversion = false,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "f2b1",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool1,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_float
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "f2b16",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool16,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_float
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "f2b32",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool32,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_float
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "f2b8",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool8,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_float
-   },
-   .is_conversion = true,
    .algebraic_properties =
       0
 },
@@ -2408,6 +2435,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "f2snorm_16_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "f2u1",
    .num_inputs = 1,
    .output_size = 0,
@@ -2494,6 +2536,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       nir_type_float32
    },
    .is_conversion = true,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "f2unorm_16_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
    .algebraic_properties =
       0
 },
@@ -2723,7 +2780,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "fclamp_pos",
+   .name = "fclamp_pos_mali",
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_float,
@@ -2753,6 +2810,36 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "fcos_amd",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "fcos_mdg",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "fcsel",
    .num_inputs = 3,
    .output_size = 0,
@@ -2765,7 +2852,37 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_SELECTION
+},
+{
+   .name = "fcsel_ge",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_float32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_float32, nir_type_float32, nir_type_float32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_SELECTION
+},
+{
+   .name = "fcsel_gt",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_float32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_float32, nir_type_float32, nir_type_float32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_SELECTION
 },
 {
    .name = "fddx",
@@ -2780,7 +2897,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fddx_coarse",
@@ -2795,7 +2912,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fddx_fine",
@@ -2810,7 +2927,22 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
+      NIR_OP_IS_DERIVATIVE
+},
+{
+   .name = "fddx_must_abs_mali",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
       0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fddy",
@@ -2825,7 +2957,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fddy_coarse",
@@ -2840,7 +2972,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
-      0
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fddy_fine",
@@ -2855,7 +2987,22 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .is_conversion = false,
    .algebraic_properties =
+      NIR_OP_IS_DERIVATIVE
+},
+{
+   .name = "fddy_must_abs_mali",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
       0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_DERIVATIVE
 },
 {
    .name = "fdiv",
@@ -2890,7 +3037,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot16_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       16, 16
@@ -2920,7 +3067,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot2_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       2, 2
@@ -2950,7 +3097,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot3_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       3, 3
@@ -2980,7 +3127,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot4_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       4, 4
@@ -3010,7 +3157,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot5_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       5, 5
@@ -3040,7 +3187,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdot8_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       8, 8
@@ -3070,7 +3217,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 {
    .name = "fdph_replicated",
    .num_inputs = 2,
-   .output_size = 4,
+   .output_size = 0,
    .output_type = nir_type_float,
    .input_sizes = {
       3, 4
@@ -3188,6 +3335,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       NIR_OP_IS_2SRC_COMMUTATIVE
 },
 {
+   .name = "ffmaz",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_float32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_float32, nir_type_float32, nir_type_float32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
    .name = "ffract",
    .num_inputs = 1,
    .output_size = 0,
@@ -3282,6 +3444,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_bool1,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "fisfinite32",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_bool32,
    .input_sizes = {
       0
    },
@@ -3452,6 +3629,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_float, nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
+},
+{
+   .name = "fmulz",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_float32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_float32, nir_type_float32
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -3668,7 +3860,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "fsat_signed",
+   .name = "fsat_signed_mali",
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_float,
@@ -3699,6 +3891,51 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 },
 {
    .name = "fsin",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "fsin_agx",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "fsin_amd",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_float,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_float
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "fsin_mdg",
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_float,
@@ -3799,66 +4036,6 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       nir_type_float
    },
    .is_conversion = false,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "i2b1",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool1,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_int
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "i2b16",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool16,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_int
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "i2b32",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool32,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_int
-   },
-   .is_conversion = true,
-   .algebraic_properties =
-      0
-},
-{
-   .name = "i2b8",
-   .num_inputs = 1,
-   .output_size = 0,
-   .output_type = nir_type_bool8,
-   .input_sizes = {
-      0
-   },
-   .input_types = {
-      nir_type_int
-   },
-   .is_conversion = true,
    .algebraic_properties =
       0
 },
@@ -4013,6 +4190,36 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "i32csel_ge",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_int32, nir_type_int32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_SELECTION
+},
+{
+   .name = "i32csel_gt",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_int32, nir_type_int32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_SELECTION
+},
+{
    .name = "iabs",
    .num_inputs = 1,
    .output_size = 0,
@@ -4037,6 +4244,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_int, nir_type_int
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
+},
+{
+   .name = "iadd3",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_int, nir_type_int, nir_type_int
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4179,6 +4401,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 },
 {
    .name = "ifind_msb",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "ifind_msb_rev",
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -4358,6 +4595,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "imadshl_agx",
+   .num_inputs = 4,
+   .output_size = 0,
+   .output_type = nir_type_int,
+   .input_sizes = {
+      0, 0, 0, 0
+   },
+   .input_types = {
+      nir_type_int, nir_type_int, nir_type_int, nir_type_int
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "imax",
    .num_inputs = 2,
    .output_size = 0,
@@ -4403,6 +4655,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "imsubshl_agx",
+   .num_inputs = 4,
+   .output_size = 0,
+   .output_type = nir_type_int,
+   .input_sizes = {
+      0, 0, 0, 0
+   },
+   .input_types = {
+      nir_type_int, nir_type_int, nir_type_int, nir_type_int
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "imul",
    .num_inputs = 2,
    .output_size = 0,
@@ -4419,6 +4686,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
 },
 {
    .name = "imul24",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_int32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
+},
+{
+   .name = "imul24_relaxed",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -4562,6 +4844,51 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_int
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "insert_u16",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "insert_u8",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint, nir_type_uint
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "interleave_agx",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint16, nir_type_uint16
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4733,6 +5060,96 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "msad_4x8",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_2x16_to_snorm_2x8_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_2x16_to_unorm_10_2_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_2x16_to_unorm_2x10_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_2x16_to_unorm_2x8_v3d",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_2x32_to_2x16_v3d",
+   .num_inputs = 2,
+   .output_size = 1,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      1, 1
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "pack_32_2x16",
    .num_inputs = 1,
    .output_size = 1,
@@ -4772,6 +5189,51 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_uint8
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_32_4x8_split",
+   .num_inputs = 4,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint8, nir_type_uint8, nir_type_uint8, nir_type_uint8
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_32_to_r11g11b10_v3d",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_4x16_to_4x8_v3d",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4823,6 +5285,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "pack_double_2x32_dxil",
+   .num_inputs = 1,
+   .output_size = 1,
+   .output_type = nir_type_uint64,
+   .input_sizes = {
+      2
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "pack_half_2x16",
    .num_inputs = 1,
    .output_size = 1,
@@ -4832,6 +5309,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_float32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_half_2x16_rtz_split",
+   .num_inputs = 2,
+   .output_size = 1,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      1, 1
+   },
+   .input_types = {
+      nir_type_float32, nir_type_float32
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4853,6 +5345,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "pack_sint_2x16",
+   .num_inputs = 1,
+   .output_size = 1,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      2
+   },
+   .input_types = {
+      nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "pack_snorm_2x16",
    .num_inputs = 1,
    .output_size = 1,
@@ -4861,7 +5368,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       2
    },
    .input_types = {
-      nir_type_float32
+      nir_type_float
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4883,6 +5390,36 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "pack_uint_2x16",
+   .num_inputs = 1,
+   .output_size = 1,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      2
+   },
+   .input_types = {
+      nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "pack_uint_32_to_r10g10b10a2_v3d",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
    .name = "pack_unorm_2x16",
    .num_inputs = 1,
    .output_size = 1,
@@ -4891,7 +5428,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       2
    },
    .input_types = {
-      nir_type_float32
+      nir_type_float
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4943,15 +5480,75 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "sdot_2x16_iadd",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "sdot_2x16_iadd_sat",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "sdot_4x8_iadd",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "sdot_4x8_iadd_sat",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
    .name = "seq",
    .num_inputs = 2,
    .output_size = 0,
-   .output_type = nir_type_float32,
+   .output_type = nir_type_float,
    .input_sizes = {
       0, 0
    },
    .input_types = {
-      nir_type_float32, nir_type_float32
+      nir_type_float, nir_type_float
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4976,12 +5573,12 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    .name = "slt",
    .num_inputs = 2,
    .output_size = 0,
-   .output_type = nir_type_float32,
+   .output_type = nir_type_float,
    .input_sizes = {
       0, 0
    },
    .input_types = {
-      nir_type_float32, nir_type_float32
+      nir_type_float, nir_type_float
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -4991,16 +5588,46 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    .name = "sne",
    .num_inputs = 2,
    .output_size = 0,
-   .output_type = nir_type_float32,
+   .output_type = nir_type_float,
    .input_sizes = {
       0, 0
    },
    .input_types = {
-      nir_type_float32, nir_type_float32
+      nir_type_float, nir_type_float
    },
    .is_conversion = false,
    .algebraic_properties =
       NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "sudot_4x8_iadd",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "sudot_4x8_iadd_sat",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
 },
 {
    .name = "u2f16",
@@ -5258,7 +5885,82 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
+   .name = "udot_2x16_uadd",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "udot_2x16_uadd_sat",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "udot_4x8_uadd",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
+   .name = "udot_4x8_uadd_sat",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
    .name = "ufind_msb",
+   .num_inputs = 1,
+   .output_size = 0,
+   .output_type = nir_type_int32,
+   .input_sizes = {
+      0
+   },
+   .input_types = {
+      nir_type_uint
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "ufind_msb_rev",
    .num_inputs = 1,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -5423,6 +6125,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       NIR_OP_IS_2SRC_COMMUTATIVE
 },
 {
+   .name = "umad24_relaxed",
+   .num_inputs = 3,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32, nir_type_uint32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE
+},
+{
    .name = "umax",
    .num_inputs = 2,
    .output_size = 0,
@@ -5438,7 +6155,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
 },
 {
-   .name = "umax_4x8",
+   .name = "umax_4x8_vc4",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -5468,7 +6185,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
 },
 {
-   .name = "umin_4x8",
+   .name = "umin_4x8_vc4",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -5507,6 +6224,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    },
    .input_types = {
       nir_type_int32, nir_type_int32
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      NIR_OP_IS_2SRC_COMMUTATIVE | NIR_OP_IS_ASSOCIATIVE
+},
+{
+   .name = "umul24_relaxed",
+   .num_inputs = 2,
+   .output_size = 0,
+   .output_type = nir_type_uint32,
+   .input_sizes = {
+      0, 0
+   },
+   .input_types = {
+      nir_type_uint32, nir_type_uint32
    },
    .is_conversion = false,
    .algebraic_properties =
@@ -5573,7 +6305,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       NIR_OP_IS_2SRC_COMMUTATIVE
 },
 {
-   .name = "umul_unorm_4x8",
+   .name = "umul_unorm_4x8_vc4",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -5697,6 +6429,21 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
    .num_inputs = 1,
    .output_size = 4,
    .output_type = nir_type_uint16,
+   .input_sizes = {
+      1
+   },
+   .input_types = {
+      nir_type_uint64
+   },
+   .is_conversion = false,
+   .algebraic_properties =
+      0
+},
+{
+   .name = "unpack_double_2x32_dxil",
+   .num_inputs = 1,
+   .output_size = 2,
+   .output_type = nir_type_uint32,
    .input_sizes = {
       1
    },
@@ -5903,7 +6650,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "usadd_4x8",
+   .name = "usadd_4x8_vc4",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,
@@ -5933,7 +6680,7 @@ const nir_op_info nir_op_infos[nir_num_opcodes] = {
       0
 },
 {
-   .name = "ussub_4x8",
+   .name = "ussub_4x8_vc4",
    .num_inputs = 2,
    .output_size = 0,
    .output_type = nir_type_int32,

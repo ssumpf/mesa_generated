@@ -251,6 +251,22 @@
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
 /* begin standard C headers. */
+/* Feature test macros. Flex uses functions that require a minimum set of
+ * macros defined. As defining some macros may hide function declarations that
+ * user code might use, be conservative and respect user's definitions as much
+ * as possible. In glibc, feature test macros may not be all set up until one
+ * of the libc header (that includes <features.h>) is included. This creates
+ * a circular dependency when we check the macros. <assert.h> is the safest
+ * header we can include and does not declare too many functions we don't need.
+ */
+#if !defined(__GNU_LIBRARY__) && defined(__STDC__)
+#include <assert.h>
+#endif
+#if !(defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || \
+    defined(_POSIX_SOURCE))
+# define _POSIX_C_SOURCE 1 /* Required for fileno() */
+# define _POSIX_SOURCE 1
+#endif
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -267,8 +283,8 @@
 
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
-/* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
- * if you want the limit (max/min) macros for int types. 
+/* C++ systems might need __STDC_LIMIT_MACROS defined before including
+ * <stdint.h>, if you want the limit (max/min) macros for int types.
  */
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS 1
@@ -1126,7 +1142,7 @@ static const flex_int16_t yy_chk[1016] =
 #include <unistd.h>
 #endif
 
-#include "main/glheader.h"
+#include "util/glheader.h"
 
 #include "program/prog_instruction.h"
 #include "program/prog_statevars.h"
@@ -1258,8 +1274,8 @@ static keyword. Declare them here to avoid a compiler warning. */
 int yyget_column  (yyscan_t yyscanner);
 void yyset_column (int  column_no , yyscan_t yyscanner);
 
-#line 1261 "generated/src/mesa/program/lex.yy.c"
-#line 1262 "generated/src/mesa/program/lex.yy.c"
+#line 1277 "generated/src/mesa/program/lex.yy.c"
+#line 1278 "generated/src/mesa/program/lex.yy.c"
 
 #define INITIAL 0
 
@@ -1546,7 +1562,7 @@ YY_DECL
 #line 172 "src/lib/mesa/src/mesa/program/program_lexer.l"
 
 
-#line 1549 "generated/src/mesa/program/lex.yy.c"
+#line 1565 "generated/src/mesa/program/lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2481,7 +2497,7 @@ YY_RULE_SETUP
 #line 475 "src/lib/mesa/src/mesa/program/program_lexer.l"
 ECHO;
 	YY_BREAK
-#line 2484 "generated/src/mesa/program/lex.yy.c"
+#line 2500 "generated/src/mesa/program/lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 3.7.5.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison interface for Yacc-like parsers in C
 
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -263,6 +263,8 @@ struct YYLTYPE
 
 
 
+
 int _mesa_glsl_parse (struct _mesa_glsl_parse_state *state);
+
 
 #endif /* !YY__MESA_GLSL_GENERATED_SRC_COMPILER_GLSL_GLSL_PARSER_H_INCLUDED  */

@@ -251,6 +251,7 @@
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
 /* begin standard C headers. */
+
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -267,8 +268,8 @@
 
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
-/* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
- * if you want the limit (max/min) macros for int types. 
+/* C++ systems might need __STDC_LIMIT_MACROS defined before including
+ * <stdint.h>, if you want the limit (max/min) macros for int types.
  */
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS 1
@@ -952,7 +953,7 @@ void glcpp_set_column (int  column_no , yyscan_t yyscanner);
 			 * an implicit call on strlen() for the length  \
 			 * of the string, as this is already found by   \
 			 * flex and stored in yyleng */                 \
-			void *mem_ctx = yyextra->linalloc;		\
+			linear_ctx *mem_ctx = yyextra->linalloc;	\
 			yylval->str = linear_alloc_child(mem_ctx,	\
 							 yyleng + 1);	\
 			memcpy(yylval->str, yytext, yyleng + 1);        \
@@ -1012,7 +1013,7 @@ glcpp_lex_update_state_per_token (glcpp_parser_t *parser, int token)
 }
 
 
-#line 1015 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
+#line 1016 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
 #line 178 "src/lib/mesa/src/compiler/glsl/glcpp/glcpp-lex.l"
 	/* Note: When adding any start conditions to this list, you must also
 	 * update the "Internal compiler error" catch-all rule near the end of
@@ -1024,7 +1025,7 @@ match longer strings take priority over those matching shorter
 strings, we have to be careful to avoid OTHER matching and hiding
 something that CPP does care about. So we simply exclude all
 characters that appear in any other expressions. */
-#line 1027 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
+#line 1028 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
 
 #define INITIAL 0
 #define COMMENT 1
@@ -1379,7 +1380,7 @@ YY_DECL
 	}
 
 	/* Single-line comments */
-#line 1382 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
+#line 1383 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1976,7 +1977,7 @@ YY_RULE_SETUP
 #line 616 "src/lib/mesa/src/compiler/glsl/glcpp/glcpp-lex.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1979 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
+#line 1980 "generated/src/compiler/glsl/glcpp/glcpp-lex.c"
 case YY_STATE_EOF(DONE):
 case YY_STATE_EOF(NEWLINE_CATCHUP):
 case YY_STATE_EOF(UNREACHABLE):

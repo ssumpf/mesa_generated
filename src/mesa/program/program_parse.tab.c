@@ -1,4 +1,4 @@
-/* A Bison parser, made by GNU Bison 3.7.5.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
 /* Bison implementation for Yacc-like parsers in C
 
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -46,10 +46,10 @@
    USER NAME SPACE" below.  */
 
 /* Identify Bison output, and Bison version.  */
-#define YYBISON 30705
+#define YYBISON 30802
 
 /* Bison version string.  */
-#define YYBISON_VERSION "3.7.5"
+#define YYBISON_VERSION "3.8.2"
 
 /* Skeleton name.  */
 #define YYSKELETON_NAME "yacc.c"
@@ -179,22 +179,22 @@ static struct asm_instruction *asm_instruction_copy_ctor(
 #define TRUE (!FALSE)
 #endif
 
-#define YYLLOC_DEFAULT(Current, Rhs, N)					\
-   do {									\
-      if (N) {							\
-	 (Current).first_line = YYRHSLOC(Rhs, 1).first_line;		\
-	 (Current).first_column = YYRHSLOC(Rhs, 1).first_column;	\
-	 (Current).position = YYRHSLOC(Rhs, 1).position;		\
-	 (Current).last_line = YYRHSLOC(Rhs, N).last_line;		\
-	 (Current).last_column = YYRHSLOC(Rhs, N).last_column;		\
-      } else {								\
-	 (Current).first_line = YYRHSLOC(Rhs, 0).last_line;		\
-	 (Current).last_line = (Current).first_line;			\
-	 (Current).first_column = YYRHSLOC(Rhs, 0).last_column;		\
-	 (Current).last_column = (Current).first_column;		\
-	 (Current).position = YYRHSLOC(Rhs, 0).position			\
-	    + (Current).first_column;					\
-      }									\
+#define YYLLOC_DEFAULT(Current, Rhs, N)                          \
+   do {                                                          \
+      if (N) {                                                   \
+         (Current).first_line = YYRHSLOC(Rhs, 1).first_line;     \
+         (Current).first_column = YYRHSLOC(Rhs, 1).first_column; \
+         (Current).position = YYRHSLOC(Rhs, 1).position;         \
+         (Current).last_line = YYRHSLOC(Rhs, N).last_line;       \
+         (Current).last_column = YYRHSLOC(Rhs, N).last_column;   \
+      } else {                                                   \
+         (Current).first_line = YYRHSLOC(Rhs, 0).last_line;      \
+         (Current).last_line = (Current).first_line;             \
+         (Current).first_column = YYRHSLOC(Rhs, 0).last_column;  \
+         (Current).last_column = (Current).first_column;         \
+         (Current).position = YYRHSLOC(Rhs, 0).position          \
+         + (Current).first_column;                               \
+      }                                                          \
    } while(0)
 
 #line 201 "generated/src/mesa/program/program_parse.tab.c"
@@ -416,73 +416,74 @@ enum yysymbol_kind_t
   YYSYMBOL_stateLProdProperty = 188,       /* stateLProdProperty  */
   YYSYMBOL_stateTexEnvItem = 189,          /* stateTexEnvItem  */
   YYSYMBOL_stateTexEnvProperty = 190,      /* stateTexEnvProperty  */
-  YYSYMBOL_ambDiffSpecProperty = 191,      /* ambDiffSpecProperty  */
-  YYSYMBOL_stateLightNumber = 192,         /* stateLightNumber  */
-  YYSYMBOL_stateTexGenItem = 193,          /* stateTexGenItem  */
-  YYSYMBOL_stateTexGenType = 194,          /* stateTexGenType  */
-  YYSYMBOL_stateTexGenCoord = 195,         /* stateTexGenCoord  */
-  YYSYMBOL_stateFogItem = 196,             /* stateFogItem  */
-  YYSYMBOL_stateFogProperty = 197,         /* stateFogProperty  */
-  YYSYMBOL_stateClipPlaneItem = 198,       /* stateClipPlaneItem  */
-  YYSYMBOL_stateClipPlaneNum = 199,        /* stateClipPlaneNum  */
-  YYSYMBOL_statePointItem = 200,           /* statePointItem  */
-  YYSYMBOL_statePointProperty = 201,       /* statePointProperty  */
-  YYSYMBOL_stateMatrixRow = 202,           /* stateMatrixRow  */
-  YYSYMBOL_stateMatrixRows = 203,          /* stateMatrixRows  */
-  YYSYMBOL_optMatrixRows = 204,            /* optMatrixRows  */
-  YYSYMBOL_stateMatrixItem = 205,          /* stateMatrixItem  */
-  YYSYMBOL_stateOptMatModifier = 206,      /* stateOptMatModifier  */
-  YYSYMBOL_stateMatModifier = 207,         /* stateMatModifier  */
-  YYSYMBOL_stateMatrixRowNum = 208,        /* stateMatrixRowNum  */
-  YYSYMBOL_stateMatrixName = 209,          /* stateMatrixName  */
-  YYSYMBOL_stateOptModMatNum = 210,        /* stateOptModMatNum  */
-  YYSYMBOL_stateModMatNum = 211,           /* stateModMatNum  */
-  YYSYMBOL_statePaletteMatNum = 212,       /* statePaletteMatNum  */
-  YYSYMBOL_stateProgramMatNum = 213,       /* stateProgramMatNum  */
-  YYSYMBOL_stateDepthItem = 214,           /* stateDepthItem  */
-  YYSYMBOL_programSingleItem = 215,        /* programSingleItem  */
-  YYSYMBOL_programMultipleItem = 216,      /* programMultipleItem  */
-  YYSYMBOL_progEnvParams = 217,            /* progEnvParams  */
-  YYSYMBOL_progEnvParamNums = 218,         /* progEnvParamNums  */
-  YYSYMBOL_progEnvParam = 219,             /* progEnvParam  */
-  YYSYMBOL_progLocalParams = 220,          /* progLocalParams  */
-  YYSYMBOL_progLocalParamNums = 221,       /* progLocalParamNums  */
-  YYSYMBOL_progLocalParam = 222,           /* progLocalParam  */
-  YYSYMBOL_progEnvParamNum = 223,          /* progEnvParamNum  */
-  YYSYMBOL_progLocalParamNum = 224,        /* progLocalParamNum  */
-  YYSYMBOL_paramConstDecl = 225,           /* paramConstDecl  */
-  YYSYMBOL_paramConstUse = 226,            /* paramConstUse  */
-  YYSYMBOL_paramConstScalarDecl = 227,     /* paramConstScalarDecl  */
-  YYSYMBOL_paramConstScalarUse = 228,      /* paramConstScalarUse  */
-  YYSYMBOL_paramConstVector = 229,         /* paramConstVector  */
-  YYSYMBOL_signedFloatConstant = 230,      /* signedFloatConstant  */
-  YYSYMBOL_optionalSign = 231,             /* optionalSign  */
-  YYSYMBOL_TEMP_statement = 232,           /* TEMP_statement  */
-  YYSYMBOL_233_1 = 233,                    /* @1  */
-  YYSYMBOL_ADDRESS_statement = 234,        /* ADDRESS_statement  */
-  YYSYMBOL_235_2 = 235,                    /* @2  */
-  YYSYMBOL_varNameList = 236,              /* varNameList  */
-  YYSYMBOL_OUTPUT_statement = 237,         /* OUTPUT_statement  */
-  YYSYMBOL_resultBinding = 238,            /* resultBinding  */
-  YYSYMBOL_resultColBinding = 239,         /* resultColBinding  */
-  YYSYMBOL_optResultFaceType = 240,        /* optResultFaceType  */
-  YYSYMBOL_optResultColorType = 241,       /* optResultColorType  */
-  YYSYMBOL_optFaceType = 242,              /* optFaceType  */
-  YYSYMBOL_optColorType = 243,             /* optColorType  */
-  YYSYMBOL_optTexCoordUnitNum = 244,       /* optTexCoordUnitNum  */
-  YYSYMBOL_optTexImageUnitNum = 245,       /* optTexImageUnitNum  */
-  YYSYMBOL_optLegacyTexUnitNum = 246,      /* optLegacyTexUnitNum  */
-  YYSYMBOL_texCoordUnitNum = 247,          /* texCoordUnitNum  */
-  YYSYMBOL_texImageUnitNum = 248,          /* texImageUnitNum  */
-  YYSYMBOL_legacyTexUnitNum = 249,         /* legacyTexUnitNum  */
-  YYSYMBOL_ALIAS_statement = 250,          /* ALIAS_statement  */
-  YYSYMBOL_string = 251                    /* string  */
+  YYSYMBOL_ambDiffSpecPropertyMaterial = 191, /* ambDiffSpecPropertyMaterial  */
+  YYSYMBOL_ambDiffSpecPropertyLight = 192, /* ambDiffSpecPropertyLight  */
+  YYSYMBOL_stateLightNumber = 193,         /* stateLightNumber  */
+  YYSYMBOL_stateTexGenItem = 194,          /* stateTexGenItem  */
+  YYSYMBOL_stateTexGenType = 195,          /* stateTexGenType  */
+  YYSYMBOL_stateTexGenCoord = 196,         /* stateTexGenCoord  */
+  YYSYMBOL_stateFogItem = 197,             /* stateFogItem  */
+  YYSYMBOL_stateFogProperty = 198,         /* stateFogProperty  */
+  YYSYMBOL_stateClipPlaneItem = 199,       /* stateClipPlaneItem  */
+  YYSYMBOL_stateClipPlaneNum = 200,        /* stateClipPlaneNum  */
+  YYSYMBOL_statePointItem = 201,           /* statePointItem  */
+  YYSYMBOL_statePointProperty = 202,       /* statePointProperty  */
+  YYSYMBOL_stateMatrixRow = 203,           /* stateMatrixRow  */
+  YYSYMBOL_stateMatrixRows = 204,          /* stateMatrixRows  */
+  YYSYMBOL_optMatrixRows = 205,            /* optMatrixRows  */
+  YYSYMBOL_stateMatrixItem = 206,          /* stateMatrixItem  */
+  YYSYMBOL_stateOptMatModifier = 207,      /* stateOptMatModifier  */
+  YYSYMBOL_stateMatModifier = 208,         /* stateMatModifier  */
+  YYSYMBOL_stateMatrixRowNum = 209,        /* stateMatrixRowNum  */
+  YYSYMBOL_stateMatrixName = 210,          /* stateMatrixName  */
+  YYSYMBOL_stateOptModMatNum = 211,        /* stateOptModMatNum  */
+  YYSYMBOL_stateModMatNum = 212,           /* stateModMatNum  */
+  YYSYMBOL_statePaletteMatNum = 213,       /* statePaletteMatNum  */
+  YYSYMBOL_stateProgramMatNum = 214,       /* stateProgramMatNum  */
+  YYSYMBOL_stateDepthItem = 215,           /* stateDepthItem  */
+  YYSYMBOL_programSingleItem = 216,        /* programSingleItem  */
+  YYSYMBOL_programMultipleItem = 217,      /* programMultipleItem  */
+  YYSYMBOL_progEnvParams = 218,            /* progEnvParams  */
+  YYSYMBOL_progEnvParamNums = 219,         /* progEnvParamNums  */
+  YYSYMBOL_progEnvParam = 220,             /* progEnvParam  */
+  YYSYMBOL_progLocalParams = 221,          /* progLocalParams  */
+  YYSYMBOL_progLocalParamNums = 222,       /* progLocalParamNums  */
+  YYSYMBOL_progLocalParam = 223,           /* progLocalParam  */
+  YYSYMBOL_progEnvParamNum = 224,          /* progEnvParamNum  */
+  YYSYMBOL_progLocalParamNum = 225,        /* progLocalParamNum  */
+  YYSYMBOL_paramConstDecl = 226,           /* paramConstDecl  */
+  YYSYMBOL_paramConstUse = 227,            /* paramConstUse  */
+  YYSYMBOL_paramConstScalarDecl = 228,     /* paramConstScalarDecl  */
+  YYSYMBOL_paramConstScalarUse = 229,      /* paramConstScalarUse  */
+  YYSYMBOL_paramConstVector = 230,         /* paramConstVector  */
+  YYSYMBOL_signedFloatConstant = 231,      /* signedFloatConstant  */
+  YYSYMBOL_optionalSign = 232,             /* optionalSign  */
+  YYSYMBOL_TEMP_statement = 233,           /* TEMP_statement  */
+  YYSYMBOL_234_1 = 234,                    /* @1  */
+  YYSYMBOL_ADDRESS_statement = 235,        /* ADDRESS_statement  */
+  YYSYMBOL_236_2 = 236,                    /* @2  */
+  YYSYMBOL_varNameList = 237,              /* varNameList  */
+  YYSYMBOL_OUTPUT_statement = 238,         /* OUTPUT_statement  */
+  YYSYMBOL_resultBinding = 239,            /* resultBinding  */
+  YYSYMBOL_resultColBinding = 240,         /* resultColBinding  */
+  YYSYMBOL_optResultFaceType = 241,        /* optResultFaceType  */
+  YYSYMBOL_optResultColorType = 242,       /* optResultColorType  */
+  YYSYMBOL_optFaceType = 243,              /* optFaceType  */
+  YYSYMBOL_optColorType = 244,             /* optColorType  */
+  YYSYMBOL_optTexCoordUnitNum = 245,       /* optTexCoordUnitNum  */
+  YYSYMBOL_optTexImageUnitNum = 246,       /* optTexImageUnitNum  */
+  YYSYMBOL_optLegacyTexUnitNum = 247,      /* optLegacyTexUnitNum  */
+  YYSYMBOL_texCoordUnitNum = 248,          /* texCoordUnitNum  */
+  YYSYMBOL_texImageUnitNum = 249,          /* texImageUnitNum  */
+  YYSYMBOL_legacyTexUnitNum = 250,         /* legacyTexUnitNum  */
+  YYSYMBOL_ALIAS_statement = 251,          /* ALIAS_statement  */
+  YYSYMBOL_string = 252                    /* string  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
 
 /* Second part of user prologue.  */
-#line 279 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 280 "src/lib/mesa/src/mesa/program/program_parse.y"
 
 extern int
 _mesa_program_lexer_lex(YYSTYPE *yylval_param, YYLTYPE *yylloc_param,
@@ -495,7 +496,7 @@ yylex(YYSTYPE *yylval_param, YYLTYPE *yylloc_param,
    return _mesa_program_lexer_lex(yylval_param, yylloc_param, state->scanner);
 }
 
-#line 499 "generated/src/mesa/program/program_parse.tab.c"
+#line 500 "generated/src/mesa/program/program_parse.tab.c"
 
 
 #ifdef short
@@ -649,12 +650,18 @@ typedef int yy_state_fast_t;
 # define YY_USE(E) /* empty */
 #endif
 
-#if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
 /* Suppress an incorrect diagnostic about yylval being uninitialized.  */
-# define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN                            \
+#if defined __GNUC__ && ! defined __ICC && 406 <= __GNUC__ * 100 + __GNUC_MINOR__
+# if __GNUC__ * 100 + __GNUC_MINOR__ < 407
+#  define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN                           \
+    _Pragma ("GCC diagnostic push")                                     \
+    _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")
+# else
+#  define YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN                           \
     _Pragma ("GCC diagnostic push")                                     \
     _Pragma ("GCC diagnostic ignored \"-Wuninitialized\"")              \
     _Pragma ("GCC diagnostic ignored \"-Wmaybe-uninitialized\"")
+# endif
 # define YY_IGNORE_MAYBE_UNINITIALIZED_END      \
     _Pragma ("GCC diagnostic pop")
 #else
@@ -816,16 +823,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   353
+#define YYLAST   352
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  116
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  136
+#define YYNNTS  137
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  267
+#define YYNRULES  270
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  450
+#define YYNSTATES  453
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   361
@@ -882,36 +889,37 @@ static const yytype_int8 yytranslate[] =
 };
 
 #if YYDEBUG
-  /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
+/* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,   294,   294,   297,   305,   317,   318,   321,   345,   346,
-     349,   364,   367,   372,   379,   380,   381,   382,   383,   384,
-     385,   388,   389,   390,   393,   399,   405,   411,   418,   424,
-     431,   475,   482,   526,   532,   533,   534,   535,   536,   537,
-     538,   539,   540,   541,   542,   543,   546,   558,   568,   577,
-     590,   612,   619,   652,   659,   675,   734,   777,   786,   808,
-     818,   822,   851,   870,   870,   872,   879,   891,   892,   893,
-     896,   910,   924,   944,   955,   967,   969,   970,   971,   972,
-     975,   975,   975,   975,   976,   979,   980,   981,   982,   983,
-     984,   987,  1006,  1010,  1016,  1020,  1024,  1028,  1032,  1036,
-    1041,  1047,  1058,  1060,  1064,  1068,  1072,  1078,  1078,  1080,
-    1098,  1124,  1127,  1142,  1148,  1154,  1155,  1162,  1168,  1174,
-    1182,  1188,  1194,  1202,  1208,  1214,  1222,  1223,  1226,  1227,
-    1228,  1229,  1230,  1231,  1232,  1233,  1234,  1235,  1236,  1239,
-    1248,  1252,  1256,  1262,  1271,  1275,  1279,  1288,  1292,  1298,
-    1304,  1311,  1316,  1324,  1334,  1336,  1344,  1350,  1354,  1358,
-    1364,  1375,  1384,  1388,  1393,  1397,  1401,  1405,  1411,  1418,
-    1422,  1428,  1436,  1447,  1454,  1458,  1464,  1473,  1483,  1487,
-    1505,  1514,  1517,  1523,  1527,  1531,  1537,  1548,  1553,  1558,
-    1563,  1568,  1573,  1581,  1584,  1589,  1602,  1610,  1621,  1629,
-    1629,  1631,  1631,  1633,  1643,  1648,  1655,  1665,  1674,  1679,
-    1686,  1696,  1706,  1718,  1718,  1719,  1719,  1721,  1731,  1739,
-    1749,  1757,  1765,  1774,  1785,  1789,  1795,  1796,  1797,  1800,
-    1800,  1803,  1803,  1806,  1813,  1822,  1836,  1845,  1854,  1858,
-    1867,  1876,  1887,  1894,  1904,  1932,  1941,  1953,  1956,  1965,
-    1976,  1977,  1978,  1981,  1982,  1983,  1986,  1987,  1990,  1991,
-    1994,  1995,  1998,  2009,  2020,  2031,  2057,  2058
+       0,   300,   300,   303,   311,   323,   324,   327,   351,   352,
+     355,   370,   373,   378,   385,   386,   387,   388,   389,   390,
+     391,   394,   395,   396,   399,   405,   411,   417,   424,   430,
+     437,   482,   489,   534,   540,   541,   542,   543,   544,   545,
+     546,   547,   548,   549,   550,   551,   554,   566,   576,   585,
+     598,   620,   627,   660,   667,   683,   743,   786,   795,   817,
+     827,   831,   860,   879,   879,   881,   888,   900,   901,   902,
+     905,   919,   933,   953,   964,   976,   978,   979,   980,   981,
+     984,   984,   984,   984,   985,   988,   989,   990,   991,   992,
+     993,   996,  1015,  1019,  1025,  1029,  1033,  1037,  1041,  1045,
+    1050,  1056,  1067,  1069,  1073,  1077,  1081,  1087,  1087,  1089,
+    1107,  1133,  1136,  1151,  1157,  1163,  1164,  1171,  1177,  1183,
+    1191,  1197,  1203,  1211,  1217,  1223,  1231,  1232,  1235,  1236,
+    1237,  1238,  1239,  1240,  1241,  1242,  1243,  1244,  1245,  1248,
+    1257,  1261,  1265,  1271,  1280,  1284,  1288,  1292,  1296,  1302,
+    1308,  1315,  1320,  1328,  1338,  1340,  1348,  1354,  1358,  1362,
+    1368,  1372,  1376,  1382,  1393,  1402,  1406,  1411,  1415,  1419,
+    1423,  1429,  1436,  1440,  1446,  1454,  1465,  1472,  1476,  1482,
+    1491,  1501,  1505,  1523,  1532,  1535,  1541,  1545,  1549,  1555,
+    1566,  1571,  1576,  1581,  1586,  1591,  1599,  1602,  1607,  1620,
+    1628,  1639,  1647,  1647,  1649,  1649,  1651,  1661,  1666,  1673,
+    1683,  1692,  1697,  1704,  1714,  1724,  1736,  1736,  1737,  1737,
+    1739,  1749,  1757,  1767,  1775,  1783,  1792,  1803,  1807,  1813,
+    1814,  1815,  1818,  1818,  1821,  1821,  1824,  1831,  1840,  1854,
+    1863,  1872,  1876,  1885,  1894,  1905,  1912,  1922,  1950,  1959,
+    1971,  1974,  1983,  1994,  1995,  1996,  1999,  2000,  2001,  2004,
+    2005,  2008,  2009,  2012,  2013,  2016,  2027,  2038,  2049,  2077,
+    2078
 };
 #endif
 
@@ -966,8 +974,9 @@ static const char *const yytname[] =
   "stateMatProperty", "stateLightItem", "stateLightProperty",
   "stateSpotProperty", "stateLightModelItem", "stateLModProperty",
   "stateLightProdItem", "stateLProdProperty", "stateTexEnvItem",
-  "stateTexEnvProperty", "ambDiffSpecProperty", "stateLightNumber",
-  "stateTexGenItem", "stateTexGenType", "stateTexGenCoord", "stateFogItem",
+  "stateTexEnvProperty", "ambDiffSpecPropertyMaterial",
+  "ambDiffSpecPropertyLight", "stateLightNumber", "stateTexGenItem",
+  "stateTexGenType", "stateTexGenCoord", "stateFogItem",
   "stateFogProperty", "stateClipPlaneItem", "stateClipPlaneNum",
   "statePointItem", "statePointProperty", "stateMatrixRow",
   "stateMatrixRows", "optMatrixRows", "stateMatrixItem",
@@ -995,27 +1004,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#ifdef YYPRINT
-/* YYTOKNUM[NUM] -- (External) token number corresponding to the
-   (internal) symbol number NUM (which must be that of a token).  */
-static const yytype_int16 yytoknum[] =
-{
-       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-     285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
-     295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
-     305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
-     315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
-     325,   326,   327,   328,   329,   330,   331,   332,   333,   334,
-     335,   336,   337,   338,   339,   340,   341,   342,   343,   344,
-     345,   346,   347,   348,   349,   350,   351,   352,   353,   354,
-     355,   356,   357,   358,   359,   360,   361,    59,    44,    91,
-      93,    43,    45,    61,   123,   125
-};
-#endif
-
-#define YYPACT_NINF (-383)
+#define YYPACT_NINF (-403)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -1025,282 +1014,285 @@ static const yytype_int16 yytoknum[] =
 #define yytable_value_is_error(Yyn) \
   0
 
-  /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
-     STATE-NUM.  */
+/* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
+   STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     117,  -383,  -383,    30,  -383,  -383,    25,    78,  -383,   177,
-    -383,  -383,   -36,  -383,   -21,   -19,    -1,     1,  -383,  -383,
-     -33,   -33,   -33,   -33,   -33,   -33,   -17,   106,   -33,   -33,
-    -383,    52,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,    54,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,    14,    51,    58,    65,    44,    14,
-      86,  -383,    72,    67,  -383,    77,   119,   120,   123,   124,
-    -383,   125,   131,  -383,  -383,  -383,   -16,   127,   128,  -383,
-    -383,  -383,   134,   145,   -15,   178,   115,   -26,  -383,   134,
-     -14,  -383,  -383,  -383,  -383,   136,  -383,   106,  -383,  -383,
-    -383,  -383,  -383,   106,   106,   106,   106,   106,   106,  -383,
-    -383,  -383,  -383,    31,    80,    64,   -10,   137,   106,    32,
-     138,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,
-     -16,   106,   150,  -383,  -383,  -383,  -383,   139,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,   202,  -383,  -383,   227,    49,
-     228,  -383,   146,   147,   -16,   148,  -383,   149,  -383,  -383,
-      73,  -383,  -383,   136,  -383,   143,   151,   152,   189,     5,
-     153,    28,   154,    92,   100,     2,   155,   136,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,   192,  -383,
-      73,  -383,   157,  -383,  -383,   136,   158,  -383,    35,  -383,
-    -383,  -383,  -383,    -3,   160,   163,  -383,   159,  -383,  -383,
-     164,  -383,  -383,  -383,  -383,   165,   106,   106,  -383,   156,
-     190,   106,  -383,  -383,  -383,  -383,   253,   254,   255,  -383,
-    -383,  -383,  -383,   256,  -383,  -383,  -383,  -383,   213,   256,
-       4,   172,   173,  -383,   174,  -383,   136,     7,  -383,  -383,
-    -383,   261,   257,    16,   176,  -383,   264,  -383,   265,   106,
-    -383,  -383,   179,  -383,  -383,   187,   106,   106,   180,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,   182,   184,   185,  -383,
-     186,  -383,   188,  -383,   194,  -383,   195,  -383,   196,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,   272,   274,  -383,   276,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,   197,  -383,  -383,
-    -383,  -383,   144,   277,  -383,   198,  -383,   199,    39,  -383,
-    -383,   118,  -383,   193,     3,   203,    -8,   279,  -383,   116,
-     106,  -383,  -383,   258,   102,    92,  -383,   200,  -383,   204,
-    -383,   206,  -383,  -383,  -383,  -383,  -383,  -383,  -383,   207,
-    -383,  -383,   106,  -383,   289,   290,  -383,   106,  -383,  -383,
-    -383,   106,    91,    64,    41,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,   208,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,   287,  -383,  -383,    13,  -383,  -383,  -383,  -383,
-      50,  -383,  -383,  -383,  -383,   212,   214,   218,   219,  -383,
-     263,    -8,  -383,  -383,  -383,  -383,  -383,  -383,   106,  -383,
-     106,   190,   253,   254,   221,  -383,  -383,   217,   215,   226,
-     211,   230,   229,   231,   277,  -383,   106,   116,  -383,   253,
-    -383,   254,   -47,  -383,  -383,  -383,  -383,   277,   232,  -383
+     117,  -403,  -403,    35,  -403,  -403,    18,    -9,  -403,   177,
+    -403,  -403,   -52,  -403,   -29,   -27,    14,    34,  -403,  -403,
+     -32,   -32,   -32,   -32,   -32,   -32,    11,    47,   -32,   -32,
+    -403,    31,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,    43,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,    37,    58,    65,    72,    44,    37,
+      86,  -403,   118,    67,  -403,   119,   120,   121,   122,   123,
+    -403,   124,    77,  -403,  -403,  -403,   -16,   125,   126,  -403,
+    -403,  -403,   127,   137,   -21,   160,   219,   -35,  -403,   127,
+     -14,  -403,  -403,  -403,  -403,   134,  -403,    47,  -403,  -403,
+    -403,  -403,  -403,    47,    47,    47,    47,    47,    47,  -403,
+    -403,  -403,  -403,    -1,    80,    64,     0,   135,    47,    61,
+     136,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+     -16,    47,   148,  -403,  -403,  -403,  -403,   138,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,   153,  -403,  -403,   224,     4,
+     226,  -403,   142,   143,   -16,   145,  -403,   146,  -403,  -403,
+      38,  -403,  -403,   134,  -403,   147,   149,   150,   188,    12,
+     151,    78,   152,    92,   100,     8,   154,   134,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,   189,  -403,
+      38,  -403,   155,  -403,  -403,   134,   157,  -403,    26,  -403,
+    -403,  -403,  -403,    -3,   159,   163,  -403,   161,  -403,  -403,
+     158,  -403,  -403,  -403,  -403,   162,    47,    47,  -403,   170,
+     174,    47,  -403,  -403,  -403,  -403,   239,   252,   253,  -403,
+    -403,  -403,  -403,   254,  -403,  -403,  -403,  -403,   211,   254,
+      33,   171,   172,  -403,   173,  -403,   134,     6,  -403,  -403,
+    -403,   256,   255,     9,   176,  -403,   260,  -403,   263,    47,
+    -403,  -403,   178,  -403,  -403,   184,    47,    47,   175,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,   181,   183,   185,  -403,
+     182,  -403,   186,  -403,   187,  -403,   190,  -403,   192,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,   271,   272,  -403,   275,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,   193,  -403,  -403,
+    -403,  -403,   144,   276,  -403,   194,  -403,   195,    28,  -403,
+    -403,   106,  -403,   199,   -12,   200,   -30,   278,  -403,   116,
+      47,  -403,  -403,   257,   102,    92,  -403,   201,  -403,   202,
+    -403,   203,  -403,  -403,  -403,  -403,  -403,  -403,  -403,   205,
+    -403,  -403,    47,  -403,   286,   287,  -403,    47,  -403,  -403,
+    -403,    47,    91,    64,    39,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,   206,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,   285,  -403,  -403,    20,  -403,
+    -403,  -403,  -403,    41,  -403,  -403,  -403,  -403,   210,   212,
+     213,   214,  -403,   258,   -30,  -403,  -403,  -403,  -403,  -403,
+    -403,    47,  -403,    47,   174,   239,   252,   216,  -403,  -403,
+     204,   218,   222,   221,   227,   223,   230,   276,  -403,    47,
+     116,  -403,   239,  -403,   252,   -49,  -403,  -403,  -403,  -403,
+     276,   228,  -403
 };
 
-  /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
-     Performed when YYTABLE does not specify something else to do.  Zero
-     means the default is an error.  */
+/* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
+   Performed when YYTABLE does not specify something else to do.  Zero
+   means the default is an error.  */
 static const yytype_int16 yydefact[] =
 {
        0,     3,     4,     0,     6,     1,     9,     0,     5,     0,
-     266,   267,     0,   231,     0,     0,     0,     0,   229,     2,
-       0,     0,     0,     0,     0,     0,     0,   228,     0,     0,
+     269,   270,     0,   234,     0,     0,     0,     0,   232,     2,
+       0,     0,     0,     0,     0,     0,     0,   231,     0,     0,
        8,     0,    12,    13,    14,    15,    16,    17,    18,    19,
       21,    22,    23,    20,     0,    85,    86,   107,   108,    87,
       88,    89,    90,     7,     0,     0,     0,     0,     0,     0,
        0,    61,     0,    84,    60,     0,     0,     0,     0,     0,
-      72,     0,     0,   226,   227,    31,     0,     0,     0,    10,
-      11,   234,   232,     0,     0,     0,   111,   228,   109,   230,
-     243,   241,   237,   239,   236,   256,   238,   228,    80,    81,
-      82,    83,    50,   228,   228,   228,   228,   228,   228,    74,
-      51,   219,   218,     0,     0,     0,     0,    56,   228,    79,
-       0,    57,    59,   120,   121,   199,   200,   122,   215,   216,
-       0,   228,     0,   265,    91,   235,   112,     0,   113,   117,
-     118,   119,   213,   214,   217,     0,   246,   245,     0,   247,
-       0,   240,     0,     0,     0,     0,    26,     0,    25,    24,
-     253,   105,   103,   256,    93,     0,     0,     0,     0,     0,
-       0,   250,     0,   250,     0,     0,   260,   256,   128,   129,
+      72,     0,     0,   229,   230,    31,     0,     0,     0,    10,
+      11,   237,   235,     0,     0,     0,   111,   231,   109,   233,
+     246,   244,   240,   242,   239,   259,   241,   231,    80,    81,
+      82,    83,    50,   231,   231,   231,   231,   231,   231,    74,
+      51,   222,   221,     0,     0,     0,     0,    56,   231,    79,
+       0,    57,    59,   120,   121,   202,   203,   122,   218,   219,
+       0,   231,     0,   268,    91,   238,   112,     0,   113,   117,
+     118,   119,   216,   217,   220,     0,   249,   248,     0,   250,
+       0,   243,     0,     0,     0,     0,    26,     0,    25,    24,
+     256,   105,   103,   259,    93,     0,     0,     0,     0,     0,
+       0,   253,     0,   253,     0,     0,   263,   259,   128,   129,
      130,   131,   133,   132,   134,   135,   136,   137,     0,   138,
-     253,    97,     0,    95,    94,   256,     0,    92,     0,    77,
-      76,    78,    49,     0,     0,     0,   233,     0,   225,   224,
-       0,   248,   249,   242,   262,     0,   228,   228,    47,     0,
-       0,   228,   254,   255,   104,   106,     0,     0,     0,   198,
-     169,   170,   168,     0,   151,   252,   251,   150,     0,     0,
-       0,     0,   193,   189,     0,   188,   256,   181,   175,   174,
-     173,     0,     0,     0,     0,    96,     0,    98,     0,   228,
-     220,    65,     0,    63,    64,     0,   228,   228,     0,   110,
-     244,   257,    28,    27,    75,    48,   258,     0,     0,   211,
-       0,   212,     0,   172,     0,   160,     0,   152,     0,   157,
-     158,   141,   142,   159,   139,   140,     0,     0,   187,     0,
-     190,   183,   185,   184,   180,   182,   264,     0,   156,   155,
-     162,   163,     0,     0,   102,     0,   101,     0,     0,    58,
-      73,    67,    46,     0,     0,     0,   228,     0,    33,     0,
-     228,   206,   210,     0,     0,   250,   197,     0,   195,     0,
-     196,     0,   261,   167,   166,   164,   165,   161,   186,     0,
-      99,   100,   228,   221,     0,     0,    66,   228,    54,    53,
-      55,   228,     0,     0,     0,   115,   123,   126,   124,   201,
-     202,   125,   263,     0,    34,    35,    36,    37,    38,    39,
-      40,    41,    42,    43,    44,    45,    30,    29,   171,   146,
-     148,   145,     0,   143,   144,     0,   192,   194,   191,   176,
-       0,    70,    68,    71,    69,     0,     0,     0,     0,   127,
-     178,   228,   114,   259,   149,   147,   153,   154,   228,   222,
-     228,     0,     0,     0,     0,   177,   116,     0,     0,     0,
-       0,   204,     0,   208,     0,   223,   228,     0,   203,     0,
-     207,     0,     0,    52,    32,   205,   209,     0,     0,   179
+     256,    97,     0,    95,    94,   259,     0,    92,     0,    77,
+      76,    78,    49,     0,     0,     0,   236,     0,   228,   227,
+       0,   251,   252,   245,   265,     0,   231,   231,    47,     0,
+       0,   231,   257,   258,   104,   106,     0,     0,     0,   201,
+     172,   173,   171,     0,   151,   255,   254,   150,     0,     0,
+       0,     0,   196,   192,     0,   191,   259,   184,   178,   177,
+     176,     0,     0,     0,     0,    96,     0,    98,     0,   231,
+     223,    65,     0,    63,    64,     0,   231,   231,     0,   110,
+     247,   260,    28,    27,    75,    48,   261,     0,     0,   214,
+       0,   215,     0,   175,     0,   163,     0,   152,     0,   157,
+     158,   141,   142,   159,   139,   140,     0,     0,   190,     0,
+     193,   186,   188,   187,   183,   185,   267,     0,   156,   155,
+     165,   166,     0,     0,   102,     0,   101,     0,     0,    58,
+      73,    67,    46,     0,     0,     0,   231,     0,    33,     0,
+     231,   209,   213,     0,     0,   253,   200,     0,   198,     0,
+     199,     0,   264,   170,   169,   167,   168,   164,   189,     0,
+      99,   100,   231,   224,     0,     0,    66,   231,    54,    53,
+      55,   231,     0,     0,     0,   115,   123,   126,   124,   204,
+     205,   125,   266,     0,    34,    35,    36,    37,    38,    39,
+      40,    41,    42,    43,    44,    45,    30,    29,   174,   160,
+     146,   161,   148,   145,   162,     0,   143,   144,     0,   195,
+     197,   194,   179,     0,    70,    68,    71,    69,     0,     0,
+       0,     0,   127,   181,   231,   114,   262,   149,   147,   153,
+     154,   231,   225,   231,     0,     0,     0,     0,   180,   116,
+       0,     0,     0,     0,   207,     0,   211,     0,   226,   231,
+       0,   206,     0,   210,     0,     0,    52,    32,   208,   212,
+       0,     0,   182
 };
 
-  /* YYPGOTO[NTERM-NUM].  */
+/* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,   -84,
-     -97,  -383,   -99,  -383,   -92,   191,  -383,  -383,  -346,  -383,
-     -78,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,   135,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,   259,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,   -70,  -383,   -86,  -383,  -383,  -383,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -317,   105,  -383,  -383,  -383,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,  -383,   -18,
-    -383,  -383,  -378,  -383,  -383,  -383,  -383,  -383,  -383,   260,
-    -383,  -383,  -383,  -383,  -383,  -383,  -383,  -377,  -382,   266,
-    -383,  -383,  -383,   -85,  -115,   -87,  -383,  -383,  -383,  -383,
-     291,  -383,   267,  -383,  -383,  -383,  -169,   161,  -153,  -383,
-    -383,  -383,  -383,  -383,  -383,    22
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -103,
+    -101,  -403,   -99,  -403,   -92,   191,  -403,  -403,  -338,  -403,
+    -100,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,   139,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,   259,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,   -77,  -403,   -86,  -403,  -403,  -403,  -403,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,   -58,  -403,   105,  -403,  -403,
+    -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -403,
+     -22,  -403,  -403,  -388,  -403,  -403,  -403,  -403,  -403,  -403,
+     261,  -403,  -403,  -403,  -403,  -403,  -403,  -403,  -402,  -374,
+     262,  -403,  -403,  -403,   -85,  -115,   -87,  -403,  -403,  -403,
+    -403,   288,  -403,   265,  -403,  -403,  -403,  -169,   156,  -153,
+    -403,  -403,  -403,  -403,  -403,  -403,    21
 };
 
-  /* YYDEFGOTO[NTERM-NUM].  */
+/* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int16 yydefgoto[] =
 {
        0,     3,     4,     6,     8,     9,    30,    31,    32,    33,
       34,    35,    36,    37,    38,    39,    40,    41,    42,   277,
      386,    43,   153,   218,    75,    62,    71,   322,   323,   359,
-     119,    63,   120,   262,   263,   264,   356,   402,   404,    72,
+     119,    63,   120,   262,   263,   264,   356,   405,   407,    72,
      321,   110,   275,   202,   102,    44,    45,   121,   197,   317,
      315,   164,    46,    47,    48,   137,    88,   269,   364,   138,
-     122,   365,   366,   123,   178,   294,   179,   393,   415,   180,
-     237,   181,   416,   182,   309,   295,   286,   183,   312,   347,
-     184,   232,   185,   284,   186,   250,   187,   409,   425,   188,
-     304,   305,   349,   247,   298,   339,   341,   337,   189,   124,
-     368,   369,   430,   125,   370,   432,   126,   280,   282,   371,
-     127,   142,   128,   129,   144,    76,    49,    59,    50,    54,
-      82,    51,    64,    96,   149,   213,   238,   224,   151,   328,
-     252,   215,   373,   307,    52,    12
+     122,   365,   366,   123,   178,   294,   179,   396,   418,   180,
+     237,   181,   419,   182,   309,   295,   397,   286,   183,   312,
+     347,   184,   232,   185,   284,   186,   250,   187,   412,   428,
+     188,   304,   305,   349,   247,   298,   339,   341,   337,   189,
+     124,   368,   369,   433,   125,   370,   435,   126,   280,   282,
+     371,   127,   142,   128,   129,   144,    76,    49,    59,    50,
+      54,    82,    51,    64,    96,   149,   213,   238,   224,   151,
+     328,   252,   215,   373,   307,    52,    12
 };
 
-  /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
-     positive, shift that token.  If negative, reduce the rule whose
-     number is the opposite.  If YYTABLE_NINF, syntax error.  */
+/* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
+   positive, shift that token.  If negative, reduce the rule whose
+   number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
      145,   139,   143,   198,   240,   152,   156,   111,   112,   159,
-     225,   405,   155,   146,   157,   158,   154,   394,   154,   190,
-     261,   154,   113,   113,   253,   147,   358,   191,   248,   289,
-       5,   145,    60,     7,   230,   290,   114,   291,   289,   205,
-     192,   433,   257,   193,   290,   431,   114,   115,   301,   302,
-     194,   310,   204,   234,   362,   235,   442,   115,   447,   446,
-     160,   231,   445,   399,   195,   363,    61,   236,   161,   448,
-     311,    53,   249,   292,   428,   293,   219,    55,   417,    56,
-     116,   116,    70,   117,   293,    73,    74,   196,   118,   303,
-     443,   162,   167,   300,   168,   148,    70,    57,   118,    58,
-     169,    10,    11,    73,    74,   163,   118,   170,   171,   172,
-     211,   173,    81,   174,   165,    90,    91,   212,   273,   235,
-       1,     2,   175,    92,   272,   407,   166,   289,   389,   278,
-     154,   236,   199,   290,   222,   200,   201,   408,   136,   176,
-     177,   223,   390,   259,   318,    93,    94,   352,   241,   411,
-     260,   242,   243,    86,   353,   244,   412,    87,   418,    79,
-      95,    80,   391,   245,    83,   419,   395,    98,    99,   100,
-     101,    84,   145,   293,   392,   325,    10,    11,    85,   324,
-      97,   246,    13,    14,    15,   103,    16,    17,    18,    19,
+     225,   358,   155,   146,   157,   158,   154,   113,   154,   408,
+     261,   154,   113,   434,   253,   147,     7,   114,   160,   190,
+     204,   145,   362,    60,   248,     5,   161,   191,   115,   205,
+     448,   230,   257,   363,   310,   289,   114,   301,   302,   445,
+     192,   290,   436,   193,   219,    53,   450,   115,   289,   162,
+     194,   402,   451,   311,   290,   211,   291,    61,   231,    55,
+     449,    56,   212,   163,   195,   116,    73,    74,   249,   118,
+     116,    73,    74,   117,   118,   431,    10,    11,   303,    10,
+      11,   293,   167,   300,   168,   148,    70,   196,   118,   222,
+     169,   446,   292,   234,   293,   235,   223,   170,   171,   172,
+      70,   173,    57,   174,   165,    90,    91,   236,   273,   235,
+       1,     2,   175,    92,   272,   410,   166,   389,   390,   278,
+     154,   236,    58,   391,   259,    81,   352,   411,    79,   176,
+     177,   260,   392,   353,   318,    93,    94,   414,   241,   421,
+      80,   242,   243,    86,   415,   244,   422,    87,    73,    74,
+      95,   199,   393,   245,   200,   201,   398,    98,    99,   100,
+     101,    83,   145,   394,   395,   325,   208,   209,    84,   324,
+     109,   246,    13,    14,    15,    85,    16,    17,    18,    19,
       20,    21,    22,    23,    24,    25,    26,    27,    28,    29,
      374,   375,   376,   377,   378,   379,   380,   381,   382,   383,
-     384,   385,    65,    66,    67,    68,    69,    73,    74,    77,
-      78,   343,   344,   345,   346,   208,   209,   104,   105,   354,
-     355,   106,   107,   108,   109,   130,   131,   400,   387,   145,
-     367,   143,   132,    60,   133,   150,   -62,   203,   206,   207,
-     210,   214,   226,   229,   216,   217,   220,   221,   254,   274,
-     227,   228,   233,   239,   251,   145,   256,   258,   266,   406,
-     324,   267,   268,   276,   270,   271,   279,   281,   283,   285,
-     287,   296,   297,   299,   306,   313,   308,   314,   316,   319,
-     320,   327,   329,   330,   326,   336,   331,   338,   332,   340,
-     348,   357,   372,   427,   333,   334,   335,   342,   350,   351,
-     396,   361,   401,   403,   397,   388,   398,   399,   413,   414,
-     420,   438,   421,   436,   145,   367,   143,   422,   423,   424,
-     434,   145,   435,   324,   437,   439,   441,   429,   265,   440,
-     444,   426,   449,   134,   288,   410,   360,   140,     0,   324,
-      89,   255,   135,   141
+     384,   385,    65,    66,    67,    68,    69,   354,   355,    77,
+      78,   343,   344,   345,   346,    60,    97,   103,   104,   105,
+     106,   107,   108,   130,   131,   132,   133,   403,   387,   145,
+     367,   143,   136,   150,   -62,   203,   206,   210,   207,   214,
+     216,   217,   229,   220,   221,   254,   226,   276,   227,   228,
+     233,   239,   279,   251,   256,   145,   258,   266,   270,   409,
+     324,   267,   271,   274,   268,   281,   283,   285,   287,   306,
+     296,   297,   299,   314,   308,   313,   316,   320,   319,   326,
+     327,   329,   331,   330,   336,   338,   332,   333,   340,   348,
+     334,   372,   335,   342,   350,   351,   430,   357,   361,   404,
+     406,   399,   400,   401,   388,   402,   416,   417,   423,   438,
+     424,   432,   425,   426,   427,   437,   439,   145,   367,   143,
+     440,   441,   442,   443,   145,   444,   324,   429,   452,   447,
+     420,   413,   265,   134,   288,   360,   255,    89,   140,   141,
+     135,     0,   324
 };
 
 static const yytype_int16 yycheck[] =
 {
       87,    87,    87,   118,   173,    97,   105,    23,    24,   108,
-     163,   357,   104,    27,   106,   107,   103,   334,   105,    29,
-      23,   108,    38,    38,   177,    39,    23,    37,    26,    25,
-       0,   118,    65,     8,    29,    31,    62,    33,    25,   131,
-      50,   423,   195,    53,    31,   422,    62,    73,    41,    42,
-      60,    35,   130,    25,    62,    27,   434,    73,   105,   441,
-      29,    56,   439,   110,    74,    73,    99,    39,    37,   447,
-      54,   107,    70,    69,   420,    71,   154,    98,   395,    98,
-      96,    96,    99,    99,    71,   111,   112,    97,   114,    82,
-     436,    60,    28,   246,    30,   109,    99,    98,   114,    98,
-      36,    98,    99,   111,   112,    74,   114,    43,    44,    45,
-      61,    47,    98,    49,    34,    29,    30,    68,   217,    27,
+     163,    23,   104,    27,   106,   107,   103,    38,   105,   357,
+      23,   108,    38,   425,   177,    39,     8,    62,    29,    29,
+     130,   118,    62,    65,    26,     0,    37,    37,    73,   131,
+     442,    29,   195,    73,    35,    25,    62,    41,    42,   437,
+      50,    31,   426,    53,   154,   107,   105,    73,    25,    60,
+      60,   110,   450,    54,    31,    61,    33,    99,    56,    98,
+     444,    98,    68,    74,    74,    96,   111,   112,    70,   114,
+      96,   111,   112,    99,   114,   423,    98,    99,    82,    98,
+      99,    71,    28,   246,    30,   109,    99,    97,   114,    61,
+      36,   439,    69,    25,    71,    27,    68,    43,    44,    45,
+      99,    47,    98,    49,    34,    29,    30,    39,   217,    27,
        3,     4,    58,    37,   216,    34,    46,    25,    26,   221,
-     217,    39,   100,    31,    61,   103,   104,    46,    23,    75,
-      76,    68,    40,   108,   259,    59,    60,   108,    48,   108,
-     115,    51,    52,   109,   115,    55,   115,   113,   108,   107,
-      74,   107,    60,    63,   113,   115,   335,   100,   101,   102,
-     103,   113,   259,    71,    72,   267,    98,    99,   113,   266,
-     108,    81,     5,     6,     7,   108,     9,    10,    11,    12,
+     217,    39,    98,    31,   108,    98,   108,    46,   107,    75,
+      76,   115,    40,   115,   259,    59,    60,   108,    48,   108,
+     107,    51,    52,   109,   115,    55,   115,   113,   111,   112,
+      74,   100,    60,    63,   103,   104,   335,   100,   101,   102,
+     103,   113,   259,    71,    72,   267,    23,    24,   113,   266,
+     103,    81,     5,     6,     7,   113,     9,    10,    11,    12,
       13,    14,    15,    16,    17,    18,    19,    20,    21,    22,
       84,    85,    86,    87,    88,    89,    90,    91,    92,    93,
       94,    95,    21,    22,    23,    24,    25,   111,   112,    28,
-      29,    77,    78,    79,    80,    23,    24,   108,   108,   111,
-     112,   108,   108,   108,   103,   108,   108,   352,   330,   326,
-     326,   326,   108,    65,    99,   109,   109,   109,    98,   110,
-      23,    23,   109,    64,   108,   108,   108,   108,    66,   103,
-     109,   109,   109,   109,   109,   352,   109,   109,   108,   361,
-     357,   108,   113,    83,   110,   110,    23,    23,    23,    23,
-      67,   109,   109,   109,    23,   109,    29,    23,    23,   110,
-     103,   109,   108,   108,   114,    23,   110,    23,   110,    23,
-      23,   108,    23,   418,   110,   110,   110,   110,   110,   110,
-     110,   108,    23,    23,   110,    57,   110,   110,   110,    32,
-     108,   110,   108,   108,   411,   411,   411,   109,   109,    66,
-     109,   418,   115,   420,   108,   105,   105,   421,   203,   110,
-     437,   411,   110,    84,   239,   363,   324,    87,    -1,   436,
-      59,   190,    85,    87
+      29,    77,    78,    79,    80,    65,   108,   108,   108,   108,
+     108,   108,   108,   108,   108,   108,    99,   352,   330,   326,
+     326,   326,    23,   109,   109,   109,    98,    23,   110,    23,
+     108,   108,    64,   108,   108,    66,   109,    83,   109,   109,
+     109,   109,    23,   109,   109,   352,   109,   108,   110,   361,
+     357,   108,   110,   103,   113,    23,    23,    23,    67,    23,
+     109,   109,   109,    23,    29,   109,    23,   103,   110,   114,
+     109,   108,   110,   108,    23,    23,   110,   110,    23,    23,
+     110,    23,   110,   110,   110,   110,   421,   108,   108,    23,
+      23,   110,   110,   110,    57,   110,   110,    32,   108,   115,
+     108,   424,   109,   109,    66,   109,   108,   414,   414,   414,
+     108,   110,   105,   110,   421,   105,   423,   414,   110,   440,
+     398,   363,   203,    84,   239,   324,   190,    59,    87,    87,
+      85,    -1,   439
 };
 
-  /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
-     symbol of state STATE-NUM.  */
+/* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
+   state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
        0,     3,     4,   117,   118,     0,   119,     8,   120,   121,
-      98,    99,   251,     5,     6,     7,     9,    10,    11,    12,
+      98,    99,   252,     5,     6,     7,     9,    10,    11,    12,
       13,    14,    15,    16,    17,    18,    19,    20,    21,    22,
      122,   123,   124,   125,   126,   127,   128,   129,   130,   131,
-     132,   133,   134,   137,   161,   162,   168,   169,   170,   232,
-     234,   237,   250,   107,   235,    98,    98,    98,    98,   233,
-      65,    99,   141,   147,   238,   141,   141,   141,   141,   141,
-      99,   142,   155,   111,   112,   140,   231,   141,   141,   107,
-     107,    98,   236,   113,   113,   113,   109,   113,   172,   236,
-      29,    30,    37,    59,    60,    74,   239,   108,   100,   101,
+     132,   133,   134,   137,   161,   162,   168,   169,   170,   233,
+     235,   238,   251,   107,   236,    98,    98,    98,    98,   234,
+      65,    99,   141,   147,   239,   141,   141,   141,   141,   141,
+      99,   142,   155,   111,   112,   140,   232,   141,   141,   107,
+     107,    98,   237,   113,   113,   113,   109,   113,   172,   237,
+      29,    30,    37,    59,    60,    74,   240,   108,   100,   101,
      102,   103,   160,   108,   108,   108,   108,   108,   108,   103,
      157,    23,    24,    38,    62,    73,    96,    99,   114,   146,
-     148,   163,   176,   179,   215,   219,   222,   226,   228,   229,
-     108,   108,   108,    99,   163,   238,    23,   171,   175,   179,
-     215,   225,   227,   229,   230,   231,    27,    39,   109,   240,
-     109,   244,   140,   138,   231,   140,   138,   140,   140,   138,
+     148,   163,   176,   179,   216,   220,   223,   227,   229,   230,
+     108,   108,   108,    99,   163,   239,    23,   171,   175,   179,
+     216,   226,   228,   230,   231,   232,    27,    39,   109,   241,
+     109,   245,   140,   138,   232,   140,   138,   140,   140,   138,
       29,    37,    60,    74,   167,    34,    46,    28,    30,    36,
       43,    44,    45,    47,    49,    58,    75,    76,   180,   182,
-     185,   187,   189,   193,   196,   198,   200,   202,   205,   214,
-      29,    37,    50,    53,    60,    74,    97,   164,   230,   100,
+     185,   187,   189,   194,   197,   199,   201,   203,   206,   215,
+      29,    37,    50,    53,    60,    74,    97,   164,   231,   100,
      103,   104,   159,   109,   146,   140,    98,   110,    23,    24,
-      23,    61,    68,   241,    23,   247,   108,   108,   139,   146,
-     108,   108,    61,    68,   243,   244,   109,   109,   109,    64,
-      29,    56,   197,   109,    25,    27,    39,   186,   242,   109,
-     242,    48,    51,    52,    55,    63,    81,   209,    26,    70,
-     201,   109,   246,   244,    66,   243,   109,   244,   109,   108,
+      23,    61,    68,   242,    23,   248,   108,   108,   139,   146,
+     108,   108,    61,    68,   244,   245,   109,   109,   109,    64,
+      29,    56,   198,   109,    25,    27,    39,   186,   243,   109,
+     243,    48,    51,    52,    55,    63,    81,   210,    26,    70,
+     202,   109,   247,   245,    66,   244,   109,   245,   109,   108,
      115,    23,   149,   150,   151,   155,   108,   108,   113,   173,
      110,   110,   140,   138,   103,   158,    83,   135,   140,    23,
-     223,    23,   224,    23,   199,    23,   192,    67,   192,    25,
-      31,    33,    69,    71,   181,   191,   109,   109,   210,   109,
-     244,    41,    42,    82,   206,   207,    23,   249,    29,   190,
-      35,    54,   194,   109,    23,   166,    23,   165,   230,   110,
-     103,   156,   143,   144,   231,   140,   114,   109,   245,   108,
-     108,   110,   110,   110,   110,   110,    23,   213,    23,   211,
-      23,   212,   110,    77,    78,    79,    80,   195,    23,   208,
+     224,    23,   225,    23,   200,    23,   193,    67,   193,    25,
+      31,    33,    69,    71,   181,   191,   109,   109,   211,   109,
+     245,    41,    42,    82,   207,   208,    23,   250,    29,   190,
+      35,    54,   195,   109,    23,   166,    23,   165,   231,   110,
+     103,   156,   143,   144,   232,   140,   114,   109,   246,   108,
+     108,   110,   110,   110,   110,   110,    23,   214,    23,   212,
+      23,   213,   110,    77,    78,    79,    80,   196,    23,   209,
      110,   110,   108,   115,   111,   112,   152,   108,    23,   145,
-     251,   108,    62,    73,   174,   177,   178,   179,   216,   217,
-     220,   225,    23,   248,    84,    85,    86,    87,    88,    89,
-      90,    91,    92,    93,    94,    95,   136,   140,    57,    26,
-      40,    60,    72,   183,   191,   242,   110,   110,   110,   110,
-     230,    23,   153,    23,   154,   144,   140,    34,    46,   203,
-     205,   108,   115,   110,    32,   184,   188,   191,   108,   115,
-     108,   108,   109,   109,    66,   204,   177,   230,   144,   135,
-     218,   223,   221,   224,   109,   115,   108,   108,   110,   105,
-     110,   105,   208,   144,   136,   223,   224,   105,   208,   110
+     252,   108,    62,    73,   174,   177,   178,   179,   217,   218,
+     221,   226,    23,   249,    84,    85,    86,    87,    88,    89,
+      90,    91,    92,    93,    94,    95,   136,   140,    57,    25,
+      26,    31,    40,    60,    71,    72,   183,   192,   243,   110,
+     110,   110,   110,   231,    23,   153,    23,   154,   144,   140,
+      34,    46,   204,   206,   108,   115,   110,    32,   184,   188,
+     191,   108,   115,   108,   108,   109,   109,    66,   205,   177,
+     231,   144,   135,   219,   224,   222,   225,   109,   115,   108,
+     108,   110,   105,   110,   105,   209,   144,   136,   224,   225,
+     105,   209,   110
 };
 
-  /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
+/* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_uint8 yyr1[] =
 {
        0,   116,   117,   118,   118,   119,   119,   120,   121,   121,
@@ -1319,20 +1311,21 @@ static const yytype_uint8 yyr1[] =
      179,   179,   179,   179,   179,   179,   179,   179,   179,   180,
      181,   181,   181,   182,   183,   183,   183,   183,   183,   184,
      185,   186,   186,   187,   188,   189,   190,   191,   191,   191,
-     192,   193,   194,   194,   195,   195,   195,   195,   196,   197,
-     197,   198,   199,   200,   201,   201,   202,   203,   204,   204,
-     205,   206,   206,   207,   207,   207,   208,   209,   209,   209,
-     209,   209,   209,   210,   210,   211,   212,   213,   214,   215,
-     215,   216,   216,   217,   218,   218,   219,   220,   221,   221,
-     222,   223,   224,   225,   225,   226,   226,   227,   228,   228,
-     229,   229,   229,   229,   230,   230,   231,   231,   231,   233,
-     232,   235,   234,   236,   236,   237,   238,   238,   238,   238,
-     238,   238,   239,   240,   240,   240,   240,   241,   241,   241,
-     242,   242,   242,   243,   243,   243,   244,   244,   245,   245,
-     246,   246,   247,   248,   249,   250,   251,   251
+     192,   192,   192,   193,   194,   195,   195,   196,   196,   196,
+     196,   197,   198,   198,   199,   200,   201,   202,   202,   203,
+     204,   205,   205,   206,   207,   207,   208,   208,   208,   209,
+     210,   210,   210,   210,   210,   210,   211,   211,   212,   213,
+     214,   215,   216,   216,   217,   217,   218,   219,   219,   220,
+     221,   222,   222,   223,   224,   225,   226,   226,   227,   227,
+     228,   229,   229,   230,   230,   230,   230,   231,   231,   232,
+     232,   232,   234,   233,   236,   235,   237,   237,   238,   239,
+     239,   239,   239,   239,   239,   240,   241,   241,   241,   241,
+     242,   242,   242,   243,   243,   243,   244,   244,   244,   245,
+     245,   246,   246,   247,   247,   248,   249,   250,   251,   252,
+     252
 };
 
-  /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
+/* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     4,     1,     1,     2,     0,     3,     2,     0,
@@ -1351,17 +1344,18 @@ static const yytype_int8 yyr2[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     3,
        1,     1,     1,     5,     1,     1,     1,     2,     1,     1,
        2,     1,     2,     6,     1,     3,     1,     1,     1,     1,
-       1,     4,     1,     1,     1,     1,     1,     1,     2,     1,
-       1,     5,     1,     2,     1,     1,     5,     2,     0,     6,
-       3,     0,     1,     1,     1,     1,     1,     2,     1,     1,
-       2,     4,     4,     0,     3,     1,     1,     1,     2,     1,
-       1,     1,     1,     5,     1,     3,     5,     5,     1,     3,
-       5,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       3,     5,     7,     9,     2,     2,     1,     1,     0,     0,
-       3,     0,     3,     3,     1,     4,     2,     2,     2,     2,
-       3,     2,     3,     0,     3,     1,     1,     0,     1,     1,
-       0,     1,     1,     0,     1,     1,     0,     3,     0,     3,
-       0,     3,     1,     1,     1,     4,     1,     1
+       1,     1,     1,     1,     4,     1,     1,     1,     1,     1,
+       1,     2,     1,     1,     5,     1,     2,     1,     1,     5,
+       2,     0,     6,     3,     0,     1,     1,     1,     1,     1,
+       2,     1,     1,     2,     4,     4,     0,     3,     1,     1,
+       1,     2,     1,     1,     1,     1,     5,     1,     3,     5,
+       5,     1,     3,     5,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     3,     5,     7,     9,     2,     2,     1,
+       1,     0,     0,     3,     0,     3,     3,     1,     4,     2,
+       2,     2,     2,     3,     2,     3,     0,     3,     1,     1,
+       0,     1,     1,     0,     1,     1,     0,     1,     1,     0,
+       3,     0,     3,     0,     3,     1,     1,     1,     4,     1,
+       1
 };
 
 
@@ -1373,6 +1367,7 @@ enum { YYENOMEM = -2 };
 #define YYACCEPT        goto yyacceptlab
 #define YYABORT         goto yyabortlab
 #define YYERROR         goto yyerrorlab
+#define YYNOMEM         goto yyexhaustedlab
 
 
 #define YYRECOVERING()  (!!yyerrstatus)
@@ -1440,12 +1435,19 @@ do {                                            \
 } while (0)
 
 
-/* YY_LOCATION_PRINT -- Print the location on the stream.
+/* YYLOCATION_PRINT -- Print the location on the stream.
    This macro was not mandated originally: define only if we know
    we won't break user code: when these are the locations we know.  */
 
-# ifndef YY_LOCATION_PRINT
-#  if defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
+# ifndef YYLOCATION_PRINT
+
+#  if defined YY_LOCATION_PRINT
+
+   /* Temporary convenience wrapper in case some people defined the
+      undocumented and private YY_LOCATION_PRINT macros.  */
+#   define YYLOCATION_PRINT(File, Loc)  YY_LOCATION_PRINT(File, *(Loc))
+
+#  elif defined YYLTYPE_IS_TRIVIAL && YYLTYPE_IS_TRIVIAL
 
 /* Print *YYLOCP on YYO.  Private, do not rely on its existence. */
 
@@ -1473,15 +1475,23 @@ yy_location_print_ (FILE *yyo, YYLTYPE const * const yylocp)
         res += YYFPRINTF (yyo, "-%d", end_col);
     }
   return res;
- }
+}
 
-#   define YY_LOCATION_PRINT(File, Loc)          \
-  yy_location_print_ (File, &(Loc))
+#   define YYLOCATION_PRINT  yy_location_print_
+
+    /* Temporary convenience wrapper in case some people defined the
+       undocumented and private YY_LOCATION_PRINT macros.  */
+#   define YY_LOCATION_PRINT(File, Loc)  YYLOCATION_PRINT(File, &(Loc))
 
 #  else
-#   define YY_LOCATION_PRINT(File, Loc) ((void) 0)
+
+#   define YYLOCATION_PRINT(File, Loc) ((void) 0)
+    /* Temporary convenience wrapper in case some people defined the
+       undocumented and private YY_LOCATION_PRINT macros.  */
+#   define YY_LOCATION_PRINT  YYLOCATION_PRINT
+
 #  endif
-# endif /* !defined YY_LOCATION_PRINT */
+# endif /* !defined YYLOCATION_PRINT */
 
 
 # define YY_SYMBOL_PRINT(Title, Kind, Value, Location)                    \
@@ -1510,10 +1520,6 @@ yy_symbol_value_print (FILE *yyo,
   YY_USE (state);
   if (!yyvaluep)
     return;
-# ifdef YYPRINT
-  if (yykind < YYNTOKENS)
-    YYPRINT (yyo, yytoknum[yykind], *yyvaluep);
-# endif
   YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
   YY_USE (yykind);
   YY_IGNORE_MAYBE_UNINITIALIZED_END
@@ -1531,7 +1537,7 @@ yy_symbol_print (FILE *yyo,
   YYFPRINTF (yyo, "%s %s (",
              yykind < YYNTOKENS ? "token" : "nterm", yysymbol_name (yykind));
 
-  YY_LOCATION_PRINT (yyo, *yylocationp);
+  YYLOCATION_PRINT (yyo, yylocationp);
   YYFPRINTF (yyo, ": ");
   yy_symbol_value_print (yyo, yykind, yyvaluep, yylocationp, state);
   YYFPRINTF (yyo, ")");
@@ -1908,7 +1914,23 @@ yydestruct (const char *yymsg,
   YY_SYMBOL_PRINT (yymsg, yykind, yyvaluep, yylocationp);
 
   YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
-  YY_USE (yykind);
+  switch (yykind)
+    {
+    case YYSYMBOL_IDENTIFIER: /* IDENTIFIER  */
+#line 296 "src/lib/mesa/src/mesa/program/program_parse.y"
+            { free(((*yyvaluep).string)); }
+#line 1923 "generated/src/mesa/program/program_parse.tab.c"
+        break;
+
+    case YYSYMBOL_USED_IDENTIFIER: /* USED_IDENTIFIER  */
+#line 296 "src/lib/mesa/src/mesa/program/program_parse.y"
+            { free(((*yyvaluep).string)); }
+#line 1929 "generated/src/mesa/program/program_parse.tab.c"
+        break;
+
+      default:
+        break;
+    }
   YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
@@ -1997,6 +2019,7 @@ YYLTYPE yylloc = yyloc_default;
   YYDPRINTF ((stderr, "Starting parse\n"));
 
   yychar = YYEMPTY; /* Cause a token to be read.  */
+
   yylsp[0] = yylloc;
   goto yysetstate;
 
@@ -2023,7 +2046,7 @@ yysetstate:
 
   if (yyss + yystacksize - 1 <= yyssp)
 #if !defined yyoverflow && !defined YYSTACK_RELOCATE
-    goto yyexhaustedlab;
+    YYNOMEM;
 #else
     {
       /* Get the current used size of the three stacks, in elements.  */
@@ -2054,7 +2077,7 @@ yysetstate:
 # else /* defined YYSTACK_RELOCATE */
       /* Extend the stack our own way.  */
       if (YYMAXDEPTH <= yystacksize)
-        goto yyexhaustedlab;
+        YYNOMEM;
       yystacksize *= 2;
       if (YYMAXDEPTH < yystacksize)
         yystacksize = YYMAXDEPTH;
@@ -2065,7 +2088,7 @@ yysetstate:
           YY_CAST (union yyalloc *,
                    YYSTACK_ALLOC (YY_CAST (YYSIZE_T, YYSTACK_BYTES (yystacksize))));
         if (! yyptr)
-          goto yyexhaustedlab;
+          YYNOMEM;
         YYSTACK_RELOCATE (yyss_alloc, yyss);
         YYSTACK_RELOCATE (yyvs_alloc, yyvs);
         YYSTACK_RELOCATE (yyls_alloc, yyls);
@@ -2088,6 +2111,7 @@ yysetstate:
         YYABORT;
     }
 #endif /* !defined yyoverflow && !defined YYSTACK_RELOCATE */
+
 
   if (yystate == YYFINAL)
     YYACCEPT;
@@ -2205,2393 +2229,2417 @@ yyreduce:
   switch (yyn)
     {
   case 3: /* language: ARBvp_10  */
-#line 298 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->prog->Target != GL_VERTEX_PROGRAM_ARB) {
-	      yyerror(& (yylsp[0]), state, "invalid fragment program header");
+#line 304 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->prog->Target != GL_VERTEX_PROGRAM_ARB) {
+         yyerror(& (yylsp[0]), state, "invalid fragment program header");
 
-	   }
-	   state->mode = ARB_vertex;
-	}
-#line 2217 "generated/src/mesa/program/program_parse.tab.c"
+      }
+      state->mode = ARB_vertex;
+   }
+#line 2241 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 4: /* language: ARBfp_10  */
-#line 306 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->prog->Target != GL_FRAGMENT_PROGRAM_ARB) {
-	      yyerror(& (yylsp[0]), state, "invalid vertex program header");
-	   }
-	   state->mode = ARB_fragment;
+#line 312 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->prog->Target != GL_FRAGMENT_PROGRAM_ARB) {
+         yyerror(& (yylsp[0]), state, "invalid vertex program header");
+      }
+      state->mode = ARB_fragment;
 
-	   state->option.TexRect =
-	      (state->ctx->Extensions.NV_texture_rectangle != GL_FALSE);
-	}
-#line 2231 "generated/src/mesa/program/program_parse.tab.c"
+      state->option.TexRect =
+         (state->ctx->Extensions.NV_texture_rectangle != GL_FALSE);
+   }
+#line 2255 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 7: /* option: OPTION string ';'  */
-#line 322 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   int valid = 0;
+#line 328 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      int valid = 0;
 
-	   if (state->mode == ARB_vertex) {
-	      valid = _mesa_ARBvp_parse_option(state, (yyvsp[-1].string));
-	   } else if (state->mode == ARB_fragment) {
-	      valid = _mesa_ARBfp_parse_option(state, (yyvsp[-1].string));
-	   }
+      if (state->mode == ARB_vertex) {
+         valid = _mesa_ARBvp_parse_option(state, (yyvsp[-1].string));
+      } else if (state->mode == ARB_fragment) {
+         valid = _mesa_ARBfp_parse_option(state, (yyvsp[-1].string));
+      }
 
 
-	   free((yyvsp[-1].string));
+      free((yyvsp[-1].string));
 
-	   if (!valid) {
-	      const char *const err_str = (state->mode == ARB_vertex)
-		 ? "invalid ARB vertex program option"
-		 : "invalid ARB fragment program option";
+      if (!valid) {
+         const char *const err_str = (state->mode == ARB_vertex)
+            ? "invalid ARB vertex program option"
+            : "invalid ARB fragment program option";
 
-	      yyerror(& (yylsp[-1]), state, err_str);
-	      YYERROR;
-	   }
-	}
-#line 2257 "generated/src/mesa/program/program_parse.tab.c"
+         yyerror(& (yylsp[-1]), state, err_str);
+         YYERROR;
+      }
+   }
+#line 2281 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 10: /* statement: instruction ';'  */
-#line 350 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((yyvsp[-1].inst) != NULL) {
-	      if (state->inst_tail == NULL) {
-		 state->inst_head = (yyvsp[-1].inst);
-	      } else {
-		 state->inst_tail->next = (yyvsp[-1].inst);
-	      }
+#line 356 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((yyvsp[-1].inst) != NULL) {
+         if (state->inst_tail == NULL) {
+       state->inst_head = (yyvsp[-1].inst);
+         } else {
+       state->inst_tail->next = (yyvsp[-1].inst);
+         }
 
-	      state->inst_tail = (yyvsp[-1].inst);
-	      (yyvsp[-1].inst)->next = NULL;
+         state->inst_tail = (yyvsp[-1].inst);
+         (yyvsp[-1].inst)->next = NULL;
 
               state->prog->arb.NumInstructions++;
-	   }
-	}
-#line 2276 "generated/src/mesa/program/program_parse.tab.c"
+      }
+   }
+#line 2300 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 12: /* instruction: ALU_instruction  */
-#line 368 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = (yyvsp[0].inst);
+#line 374 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = (yyvsp[0].inst);
            state->prog->arb.NumAluInstructions++;
-	}
-#line 2285 "generated/src/mesa/program/program_parse.tab.c"
+   }
+#line 2309 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 13: /* instruction: TexInstruction  */
-#line 373 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = (yyvsp[0].inst);
+#line 379 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = (yyvsp[0].inst);
            state->prog->arb.NumTexInstructions++;
-	}
-#line 2294 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 24: /* ARL_instruction: ARL maskedAddrReg ',' scalarSrcReg  */
-#line 394 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_ctor(OPCODE_ARL, & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
-	}
-#line 2302 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 25: /* VECTORop_instruction: VECTOR_OP maskedDstReg ',' swizzleSrcReg  */
-#line 400 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-3].temp_inst), & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
-	}
-#line 2310 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 26: /* SCALARop_instruction: SCALAR_OP maskedDstReg ',' scalarSrcReg  */
-#line 406 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-3].temp_inst), & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
-	}
+   }
 #line 2318 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 27: /* BINSCop_instruction: BINSC_OP maskedDstReg ',' scalarSrcReg ',' scalarSrcReg  */
-#line 412 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg), NULL);
-	}
+  case 24: /* ARL_instruction: ARL maskedAddrReg ',' scalarSrcReg  */
+#line 400 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_ctor(OPCODE_ARL, & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
+   }
 #line 2326 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 28: /* BINop_instruction: BIN_OP maskedDstReg ',' swizzleSrcReg ',' swizzleSrcReg  */
-#line 419 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg), NULL);
-	}
+  case 25: /* VECTORop_instruction: VECTOR_OP maskedDstReg ',' swizzleSrcReg  */
+#line 406 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-3].temp_inst), & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
+   }
 #line 2334 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 29: /* TRIop_instruction: TRI_OP maskedDstReg ',' swizzleSrcReg ',' swizzleSrcReg ',' swizzleSrcReg  */
-#line 426 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-7].temp_inst), & (yyvsp[-6].dst_reg), & (yyvsp[-4].src_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg));
-	}
+  case 26: /* SCALARop_instruction: SCALAR_OP maskedDstReg ',' scalarSrcReg  */
+#line 412 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-3].temp_inst), & (yyvsp[-2].dst_reg), & (yyvsp[0].src_reg), NULL, NULL);
+   }
 #line 2342 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 30: /* SAMPLE_instruction: SAMPLE_OP maskedDstReg ',' swizzleSrcReg ',' texImageUnit ',' texTarget  */
+  case 27: /* BINSCop_instruction: BINSC_OP maskedDstReg ',' scalarSrcReg ',' scalarSrcReg  */
+#line 418 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg), NULL);
+   }
+#line 2350 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 28: /* BINop_instruction: BIN_OP maskedDstReg ',' swizzleSrcReg ',' swizzleSrcReg  */
+#line 425 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg), NULL);
+   }
+#line 2358 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 29: /* TRIop_instruction: TRI_OP maskedDstReg ',' swizzleSrcReg ',' swizzleSrcReg ',' swizzleSrcReg  */
 #line 432 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-7].temp_inst), & (yyvsp[-6].dst_reg), & (yyvsp[-4].src_reg), NULL, NULL);
-	   if ((yyval.inst) != NULL) {
-	      const GLbitfield tex_mask = (1U << (yyvsp[-2].integer));
-	      GLbitfield shadow_tex = 0;
-	      GLbitfield target_mask = 0;
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-7].temp_inst), & (yyvsp[-6].dst_reg), & (yyvsp[-4].src_reg), & (yyvsp[-2].src_reg), & (yyvsp[0].src_reg));
+   }
+#line 2366 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 30: /* SAMPLE_instruction: SAMPLE_OP maskedDstReg ',' swizzleSrcReg ',' texImageUnit ',' texTarget  */
+#line 438 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-7].temp_inst), & (yyvsp[-6].dst_reg), & (yyvsp[-4].src_reg), NULL, NULL);
+      if ((yyval.inst) != NULL) {
+         const GLbitfield tex_mask = (1U << (yyvsp[-2].integer));
+         GLbitfield shadow_tex = 0;
+         GLbitfield target_mask = 0;
 
 
-	      (yyval.inst)->Base.TexSrcUnit = (yyvsp[-2].integer);
+         (yyval.inst)->Base.TexSrcUnit = (yyvsp[-2].integer);
 
-	      if ((yyvsp[0].integer) < 0) {
-		 shadow_tex = tex_mask;
+         if ((yyvsp[0].integer) < 0) {
+            shadow_tex = tex_mask;
 
-		 (yyval.inst)->Base.TexSrcTarget = -(yyvsp[0].integer);
-		 (yyval.inst)->Base.TexShadow = 1;
-	      } else {
-		 (yyval.inst)->Base.TexSrcTarget = (yyvsp[0].integer);
-	      }
+            (yyval.inst)->Base.TexSrcTarget = -(yyvsp[0].integer);
+            (yyval.inst)->Base.TexShadow = 1;
+         } else {
+            (yyval.inst)->Base.TexSrcTarget = (yyvsp[0].integer);
+         }
 
-	      target_mask = (1U << (yyval.inst)->Base.TexSrcTarget);
+         target_mask = (1U << (yyval.inst)->Base.TexSrcTarget);
 
-	      /* If this texture unit was previously accessed and that access
-	       * had a different texture target, generate an error.
-	       *
-	       * If this texture unit was previously accessed and that access
-	       * had a different shadow mode, generate an error.
-	       */
-	      if ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != 0)
-		  && ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != target_mask)
-		      || ((state->prog->ShadowSamplers & tex_mask)
-			  != shadow_tex))) {
-		 yyerror(& (yylsp[0]), state,
-			 "multiple targets used on one texture image unit");
-		 YYERROR;
-	      }
+         /* If this texture unit was previously accessed and that access
+          * had a different texture target, generate an error.
+          *
+          * If this texture unit was previously accessed and that access
+          * had a different shadow mode, generate an error.
+          */
+         if ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != 0)
+             && ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != target_mask)
+                 || ((state->prog->ShadowSamplers & tex_mask)
+                     != shadow_tex))) {
+            yyerror(& (yylsp[0]), state,
+                    "multiple targets used on one texture image unit");
+            free((yyval.inst));
+            YYERROR;
+         }
 
 
-	      state->prog->TexturesUsed[(yyvsp[-2].integer)] |= target_mask;
-	      state->prog->ShadowSamplers |= shadow_tex;
-	   }
-	}
-#line 2388 "generated/src/mesa/program/program_parse.tab.c"
+         state->prog->TexturesUsed[(yyvsp[-2].integer)] |= target_mask;
+         state->prog->ShadowSamplers |= shadow_tex;
+      }
+   }
+#line 2413 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 31: /* KIL_instruction: KIL swizzleSrcReg  */
-#line 476 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_ctor(OPCODE_KIL, NULL, & (yyvsp[0].src_reg), NULL, NULL);
-	   state->fragment.UsesKill = 1;
-	}
-#line 2397 "generated/src/mesa/program/program_parse.tab.c"
+#line 483 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_ctor(OPCODE_KIL, NULL, & (yyvsp[0].src_reg), NULL, NULL);
+      state->fragment.UsesKill = 1;
+   }
+#line 2422 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 32: /* TXD_instruction: TXD_OP maskedDstReg ',' swizzleSrcReg ',' swizzleSrcReg ',' swizzleSrcReg ',' texImageUnit ',' texTarget  */
-#line 483 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-11].temp_inst), & (yyvsp[-10].dst_reg), & (yyvsp[-8].src_reg), & (yyvsp[-6].src_reg), & (yyvsp[-4].src_reg));
-	   if ((yyval.inst) != NULL) {
-	      const GLbitfield tex_mask = (1U << (yyvsp[-2].integer));
-	      GLbitfield shadow_tex = 0;
-	      GLbitfield target_mask = 0;
+#line 490 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-11].temp_inst), & (yyvsp[-10].dst_reg), & (yyvsp[-8].src_reg), & (yyvsp[-6].src_reg), & (yyvsp[-4].src_reg));
+      if ((yyval.inst) != NULL) {
+         const GLbitfield tex_mask = (1U << (yyvsp[-2].integer));
+         GLbitfield shadow_tex = 0;
+         GLbitfield target_mask = 0;
 
 
-	      (yyval.inst)->Base.TexSrcUnit = (yyvsp[-2].integer);
+         (yyval.inst)->Base.TexSrcUnit = (yyvsp[-2].integer);
 
-	      if ((yyvsp[0].integer) < 0) {
-		 shadow_tex = tex_mask;
+         if ((yyvsp[0].integer) < 0) {
+            shadow_tex = tex_mask;
 
-		 (yyval.inst)->Base.TexSrcTarget = -(yyvsp[0].integer);
-		 (yyval.inst)->Base.TexShadow = 1;
-	      } else {
-		 (yyval.inst)->Base.TexSrcTarget = (yyvsp[0].integer);
-	      }
+            (yyval.inst)->Base.TexSrcTarget = -(yyvsp[0].integer);
+            (yyval.inst)->Base.TexShadow = 1;
+         } else {
+            (yyval.inst)->Base.TexSrcTarget = (yyvsp[0].integer);
+         }
 
-	      target_mask = (1U << (yyval.inst)->Base.TexSrcTarget);
+         target_mask = (1U << (yyval.inst)->Base.TexSrcTarget);
 
-	      /* If this texture unit was previously accessed and that access
-	       * had a different texture target, generate an error.
-	       *
-	       * If this texture unit was previously accessed and that access
-	       * had a different shadow mode, generate an error.
-	       */
-	      if ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != 0)
-		  && ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != target_mask)
-		      || ((state->prog->ShadowSamplers & tex_mask)
-			  != shadow_tex))) {
-		 yyerror(& (yylsp[0]), state,
-			 "multiple targets used on one texture image unit");
-		 YYERROR;
-	      }
+         /* If this texture unit was previously accessed and that access
+          * had a different texture target, generate an error.
+          *
+          * If this texture unit was previously accessed and that access
+          * had a different shadow mode, generate an error.
+          */
+         if ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != 0)
+             && ((state->prog->TexturesUsed[(yyvsp[-2].integer)] != target_mask)
+                 || ((state->prog->ShadowSamplers & tex_mask)
+                     != shadow_tex))) {
+            yyerror(& (yylsp[0]), state,
+               "multiple targets used on one texture image unit");
+            free((yyval.inst));
+            YYERROR;
+         }
 
 
-	      state->prog->TexturesUsed[(yyvsp[-2].integer)] |= target_mask;
-	      state->prog->ShadowSamplers |= shadow_tex;
-	   }
-	}
-#line 2443 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 33: /* texImageUnit: TEXTURE_UNIT optTexImageUnitNum  */
-#line 527 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 2451 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 34: /* texTarget: TEX_1D  */
-#line 532 "src/lib/mesa/src/mesa/program/program_parse.y"
-                   { (yyval.integer) = TEXTURE_1D_INDEX; }
-#line 2457 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 35: /* texTarget: TEX_2D  */
-#line 533 "src/lib/mesa/src/mesa/program/program_parse.y"
-                   { (yyval.integer) = TEXTURE_2D_INDEX; }
-#line 2463 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 36: /* texTarget: TEX_3D  */
-#line 534 "src/lib/mesa/src/mesa/program/program_parse.y"
-                   { (yyval.integer) = TEXTURE_3D_INDEX; }
+         state->prog->TexturesUsed[(yyvsp[-2].integer)] |= target_mask;
+         state->prog->ShadowSamplers |= shadow_tex;
+      }
+   }
 #line 2469 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 37: /* texTarget: TEX_CUBE  */
+  case 33: /* texImageUnit: TEXTURE_UNIT optTexImageUnitNum  */
 #line 535 "src/lib/mesa/src/mesa/program/program_parse.y"
-                   { (yyval.integer) = TEXTURE_CUBE_INDEX; }
-#line 2475 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 2477 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 34: /* texTarget: TEX_1D  */
+#line 540 "src/lib/mesa/src/mesa/program/program_parse.y"
+                   { (yyval.integer) = TEXTURE_1D_INDEX; }
+#line 2483 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 35: /* texTarget: TEX_2D  */
+#line 541 "src/lib/mesa/src/mesa/program/program_parse.y"
+              { (yyval.integer) = TEXTURE_2D_INDEX; }
+#line 2489 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 36: /* texTarget: TEX_3D  */
+#line 542 "src/lib/mesa/src/mesa/program/program_parse.y"
+              { (yyval.integer) = TEXTURE_3D_INDEX; }
+#line 2495 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 37: /* texTarget: TEX_CUBE  */
+#line 543 "src/lib/mesa/src/mesa/program/program_parse.y"
+              { (yyval.integer) = TEXTURE_CUBE_INDEX; }
+#line 2501 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 38: /* texTarget: TEX_RECT  */
-#line 536 "src/lib/mesa/src/mesa/program/program_parse.y"
-                   { (yyval.integer) = TEXTURE_RECT_INDEX; }
-#line 2481 "generated/src/mesa/program/program_parse.tab.c"
+#line 544 "src/lib/mesa/src/mesa/program/program_parse.y"
+              { (yyval.integer) = TEXTURE_RECT_INDEX; }
+#line 2507 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 39: /* texTarget: TEX_SHADOW1D  */
-#line 537 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.integer) = -TEXTURE_1D_INDEX; }
-#line 2487 "generated/src/mesa/program/program_parse.tab.c"
+#line 545 "src/lib/mesa/src/mesa/program/program_parse.y"
+                    { (yyval.integer) = -TEXTURE_1D_INDEX; }
+#line 2513 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 40: /* texTarget: TEX_SHADOW2D  */
-#line 538 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.integer) = -TEXTURE_2D_INDEX; }
-#line 2493 "generated/src/mesa/program/program_parse.tab.c"
+#line 546 "src/lib/mesa/src/mesa/program/program_parse.y"
+                    { (yyval.integer) = -TEXTURE_2D_INDEX; }
+#line 2519 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 41: /* texTarget: TEX_SHADOWRECT  */
-#line 539 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.integer) = -TEXTURE_RECT_INDEX; }
-#line 2499 "generated/src/mesa/program/program_parse.tab.c"
+#line 547 "src/lib/mesa/src/mesa/program/program_parse.y"
+                    { (yyval.integer) = -TEXTURE_RECT_INDEX; }
+#line 2525 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 42: /* texTarget: TEX_ARRAY1D  */
-#line 540 "src/lib/mesa/src/mesa/program/program_parse.y"
-                              { (yyval.integer) = TEXTURE_1D_ARRAY_INDEX; }
-#line 2505 "generated/src/mesa/program/program_parse.tab.c"
+#line 548 "src/lib/mesa/src/mesa/program/program_parse.y"
+                         { (yyval.integer) = TEXTURE_1D_ARRAY_INDEX; }
+#line 2531 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 43: /* texTarget: TEX_ARRAY2D  */
-#line 541 "src/lib/mesa/src/mesa/program/program_parse.y"
-                              { (yyval.integer) = TEXTURE_2D_ARRAY_INDEX; }
-#line 2511 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 44: /* texTarget: TEX_ARRAYSHADOW1D  */
-#line 542 "src/lib/mesa/src/mesa/program/program_parse.y"
-                              { (yyval.integer) = -TEXTURE_1D_ARRAY_INDEX; }
-#line 2517 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 45: /* texTarget: TEX_ARRAYSHADOW2D  */
-#line 543 "src/lib/mesa/src/mesa/program/program_parse.y"
-                              { (yyval.integer) = -TEXTURE_2D_ARRAY_INDEX; }
-#line 2523 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 46: /* SWZ_instruction: SWZ maskedDstReg ',' srcReg ',' extendedSwizzle  */
-#line 547 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   /* FIXME: Is this correct?  Should the extenedSwizzle be applied
-	    * FIXME: to the existing swizzle?
-	    */
-	   (yyvsp[-2].src_reg).Base.Swizzle = (yyvsp[0].swiz_mask).swizzle;
-	   (yyvsp[-2].src_reg).Base.Negate = (yyvsp[0].swiz_mask).mask;
-
-	   (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), NULL, NULL);
-	}
+#line 549 "src/lib/mesa/src/mesa/program/program_parse.y"
+                         { (yyval.integer) = TEXTURE_2D_ARRAY_INDEX; }
 #line 2537 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 47: /* scalarSrcReg: optionalSign scalarUse  */
-#line 559 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.src_reg) = (yyvsp[0].src_reg);
+  case 44: /* texTarget: TEX_ARRAYSHADOW1D  */
+#line 550 "src/lib/mesa/src/mesa/program/program_parse.y"
+                         { (yyval.integer) = -TEXTURE_1D_ARRAY_INDEX; }
+#line 2543 "generated/src/mesa/program/program_parse.tab.c"
+    break;
 
-	   if ((yyvsp[-1].negate)) {
-	      (yyval.src_reg).Base.Negate = ~(yyval.src_reg).Base.Negate;
-	   }
-	}
+  case 45: /* texTarget: TEX_ARRAYSHADOW2D  */
+#line 551 "src/lib/mesa/src/mesa/program/program_parse.y"
+                         { (yyval.integer) = -TEXTURE_2D_ARRAY_INDEX; }
 #line 2549 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 48: /* scalarUse: srcReg scalarSuffix  */
-#line 569 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.src_reg) = (yyvsp[-1].src_reg);
+  case 46: /* SWZ_instruction: SWZ maskedDstReg ',' srcReg ',' extendedSwizzle  */
+#line 555 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      /* FIXME: Is this correct?  Should the extenedSwizzle be applied
+       * FIXME: to the existing swizzle?
+       */
+      (yyvsp[-2].src_reg).Base.Swizzle = (yyvsp[0].swiz_mask).swizzle;
+      (yyvsp[-2].src_reg).Base.Negate = (yyvsp[0].swiz_mask).mask;
 
-	   (yyval.src_reg).Base.Swizzle = _mesa_combine_swizzles((yyval.src_reg).Base.Swizzle,
-						    (yyvsp[0].swiz_mask).swizzle);
-	}
-#line 2560 "generated/src/mesa/program/program_parse.tab.c"
+      (yyval.inst) = asm_instruction_copy_ctor(& (yyvsp[-5].temp_inst), & (yyvsp[-4].dst_reg), & (yyvsp[-2].src_reg), NULL, NULL);
+   }
+#line 2563 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 49: /* swizzleSrcReg: optionalSign srcReg swizzleSuffix  */
-#line 578 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.src_reg) = (yyvsp[-1].src_reg);
+  case 47: /* scalarSrcReg: optionalSign scalarUse  */
+#line 567 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.src_reg) = (yyvsp[0].src_reg);
 
-	   if ((yyvsp[-2].negate)) {
-	      (yyval.src_reg).Base.Negate = ~(yyval.src_reg).Base.Negate;
-	   }
-
-	   (yyval.src_reg).Base.Swizzle = _mesa_combine_swizzles((yyval.src_reg).Base.Swizzle,
-						    (yyvsp[0].swiz_mask).swizzle);
-	}
+      if ((yyvsp[-1].negate)) {
+         (yyval.src_reg).Base.Negate = ~(yyval.src_reg).Base.Negate;
+      }
+   }
 #line 2575 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 48: /* scalarUse: srcReg scalarSuffix  */
+#line 577 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.src_reg) = (yyvsp[-1].src_reg);
+
+      (yyval.src_reg).Base.Swizzle = _mesa_combine_swizzles((yyval.src_reg).Base.Swizzle,
+                                               (yyvsp[0].swiz_mask).swizzle);
+   }
+#line 2586 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 49: /* swizzleSrcReg: optionalSign srcReg swizzleSuffix  */
+#line 586 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.src_reg) = (yyvsp[-1].src_reg);
+
+      if ((yyvsp[-2].negate)) {
+         (yyval.src_reg).Base.Negate = ~(yyval.src_reg).Base.Negate;
+      }
+
+      (yyval.src_reg).Base.Swizzle = _mesa_combine_swizzles((yyval.src_reg).Base.Swizzle,
+                                               (yyvsp[0].swiz_mask).swizzle);
+   }
+#line 2601 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 50: /* maskedDstReg: dstReg optionalMask  */
-#line 591 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.dst_reg) = (yyvsp[-1].dst_reg);
-	   (yyval.dst_reg).WriteMask = (yyvsp[0].swiz_mask).mask;
+#line 599 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.dst_reg) = (yyvsp[-1].dst_reg);
+      (yyval.dst_reg).WriteMask = (yyvsp[0].swiz_mask).mask;
 
-	   if ((yyval.dst_reg).File == PROGRAM_OUTPUT) {
-	      /* Technically speaking, this should check that it is in
-	       * vertex program mode.  However, PositionInvariant can never be
-	       * set in fragment program mode, so it is somewhat irrelevant.
-	       */
-	      if (state->option.PositionInvariant
-	       && ((yyval.dst_reg).Index == VARYING_SLOT_POS)) {
-		 yyerror(& (yylsp[-1]), state, "position-invariant programs cannot "
-			 "write position");
-		 YYERROR;
-	      }
+      if ((yyval.dst_reg).File == PROGRAM_OUTPUT) {
+         /* Technically speaking, this should check that it is in
+          * vertex program mode.  However, PositionInvariant can never be
+          * set in fragment program mode, so it is somewhat irrelevant.
+          */
+         if (state->option.PositionInvariant
+             && ((yyval.dst_reg).Index == VARYING_SLOT_POS)) {
+            yyerror(& (yylsp[-1]), state, "position-invariant programs cannot "
+                    "write position");
+            YYERROR;
+         }
 
-              state->prog->info.outputs_written |= BITFIELD64_BIT((yyval.dst_reg).Index);
-	   }
-	}
-#line 2599 "generated/src/mesa/program/program_parse.tab.c"
+         state->prog->info.outputs_written |= BITFIELD64_BIT((yyval.dst_reg).Index);
+      }
+   }
+#line 2625 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 51: /* maskedAddrReg: addrReg addrWriteMask  */
-#line 613 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   set_dst_reg(& (yyval.dst_reg), PROGRAM_ADDRESS, 0);
-	   (yyval.dst_reg).WriteMask = (yyvsp[0].swiz_mask).mask;
-	}
-#line 2608 "generated/src/mesa/program/program_parse.tab.c"
+#line 621 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      set_dst_reg(& (yyval.dst_reg), PROGRAM_ADDRESS, 0);
+      (yyval.dst_reg).WriteMask = (yyvsp[0].swiz_mask).mask;
+   }
+#line 2634 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 52: /* extendedSwizzle: extSwizComp ',' extSwizComp ',' extSwizComp ',' extSwizComp  */
-#line 620 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   const unsigned xyzw_valid =
-	      ((yyvsp[-6].ext_swizzle).xyzw_valid << 0)
-	      | ((yyvsp[-4].ext_swizzle).xyzw_valid << 1)
-	      | ((yyvsp[-2].ext_swizzle).xyzw_valid << 2)
-	      | ((yyvsp[0].ext_swizzle).xyzw_valid << 3);
-	   const unsigned rgba_valid =
-	      ((yyvsp[-6].ext_swizzle).rgba_valid << 0)
-	      | ((yyvsp[-4].ext_swizzle).rgba_valid << 1)
-	      | ((yyvsp[-2].ext_swizzle).rgba_valid << 2)
-	      | ((yyvsp[0].ext_swizzle).rgba_valid << 3);
+#line 628 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      const unsigned xyzw_valid =
+         ((yyvsp[-6].ext_swizzle).xyzw_valid << 0)
+         | ((yyvsp[-4].ext_swizzle).xyzw_valid << 1)
+         | ((yyvsp[-2].ext_swizzle).xyzw_valid << 2)
+         | ((yyvsp[0].ext_swizzle).xyzw_valid << 3);
+      const unsigned rgba_valid =
+         ((yyvsp[-6].ext_swizzle).rgba_valid << 0)
+         | ((yyvsp[-4].ext_swizzle).rgba_valid << 1)
+         | ((yyvsp[-2].ext_swizzle).rgba_valid << 2)
+         | ((yyvsp[0].ext_swizzle).rgba_valid << 3);
 
-	   /* All of the swizzle components have to be valid in either RGBA
-	    * or XYZW.  Note that 0 and 1 are valid in both, so both masks
-	    * can have some bits set.
-	    *
-	    * We somewhat deviate from the spec here.  It would be really hard
-	    * to figure out which component is the error, and there probably
-	    * isn't a lot of benefit.
-	    */
-	   if ((rgba_valid != 0x0f) && (xyzw_valid != 0x0f)) {
-	      yyerror(& (yylsp[-6]), state, "cannot combine RGBA and XYZW swizzle "
-		      "components");
-	      YYERROR;
-	   }
+      /* All of the swizzle components have to be valid in either RGBA
+       * or XYZW.  Note that 0 and 1 are valid in both, so both masks
+       * can have some bits set.
+       *
+       * We somewhat deviate from the spec here.  It would be really hard
+       * to figure out which component is the error, and there probably
+       * isn't a lot of benefit.
+       */
+      if ((rgba_valid != 0x0f) && (xyzw_valid != 0x0f)) {
+         yyerror(& (yylsp[-6]), state, "cannot combine RGBA and XYZW swizzle "
+            "components");
+         YYERROR;
+      }
 
-	   (yyval.swiz_mask).swizzle = MAKE_SWIZZLE4((yyvsp[-6].ext_swizzle).swz, (yyvsp[-4].ext_swizzle).swz, (yyvsp[-2].ext_swizzle).swz, (yyvsp[0].ext_swizzle).swz);
-	   (yyval.swiz_mask).mask = ((yyvsp[-6].ext_swizzle).negate) | ((yyvsp[-4].ext_swizzle).negate << 1) | ((yyvsp[-2].ext_swizzle).negate << 2)
-	      | ((yyvsp[0].ext_swizzle).negate << 3);
-	}
-#line 2643 "generated/src/mesa/program/program_parse.tab.c"
+      (yyval.swiz_mask).swizzle = MAKE_SWIZZLE4((yyvsp[-6].ext_swizzle).swz, (yyvsp[-4].ext_swizzle).swz, (yyvsp[-2].ext_swizzle).swz, (yyvsp[0].ext_swizzle).swz);
+      (yyval.swiz_mask).mask = ((yyvsp[-6].ext_swizzle).negate) | ((yyvsp[-4].ext_swizzle).negate << 1) | ((yyvsp[-2].ext_swizzle).negate << 2)
+         | ((yyvsp[0].ext_swizzle).negate << 3);
+   }
+#line 2669 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 53: /* extSwizComp: optionalSign extSwizSel  */
-#line 653 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.ext_swizzle) = (yyvsp[0].ext_swizzle);
-	   (yyval.ext_swizzle).negate = ((yyvsp[-1].negate)) ? 1 : 0;
-	}
-#line 2652 "generated/src/mesa/program/program_parse.tab.c"
+#line 661 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.ext_swizzle) = (yyvsp[0].ext_swizzle);
+      (yyval.ext_swizzle).negate = ((yyvsp[-1].negate)) ? 1 : 0;
+   }
+#line 2678 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 54: /* extSwizSel: INTEGER  */
-#line 660 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (((yyvsp[0].integer) != 0) && ((yyvsp[0].integer) != 1)) {
-	      yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
-	      YYERROR;
-	   }
+#line 668 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (((yyvsp[0].integer) != 0) && ((yyvsp[0].integer) != 1)) {
+         yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
+         YYERROR;
+      }
 
-	   (yyval.ext_swizzle).swz = ((yyvsp[0].integer) == 0) ? SWIZZLE_ZERO : SWIZZLE_ONE;
+      (yyval.ext_swizzle).swz = ((yyvsp[0].integer) == 0) ? SWIZZLE_ZERO : SWIZZLE_ONE;
            (yyval.ext_swizzle).negate = 0;
 
-	   /* 0 and 1 are valid for both RGBA swizzle names and XYZW
-	    * swizzle names.
-	    */
-	   (yyval.ext_swizzle).xyzw_valid = 1;
-	   (yyval.ext_swizzle).rgba_valid = 1;
-	}
-#line 2672 "generated/src/mesa/program/program_parse.tab.c"
+      /* 0 and 1 are valid for both RGBA swizzle names and XYZW
+       * swizzle names.
+       */
+      (yyval.ext_swizzle).xyzw_valid = 1;
+      (yyval.ext_swizzle).rgba_valid = 1;
+   }
+#line 2698 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 55: /* extSwizSel: string  */
-#line 676 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   char s;
+#line 684 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      char s;
 
-	   if (strlen((yyvsp[0].string)) > 1) {
-	      yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
-	      YYERROR;
-	   }
+      if (strlen((yyvsp[0].string)) > 1) {
+         yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
+         free((yyvsp[0].string));
+         YYERROR;
+      }
 
-	   s = (yyvsp[0].string)[0];
-	   free((yyvsp[0].string));
+      s = (yyvsp[0].string)[0];
+      free((yyvsp[0].string));
 
            (yyval.ext_swizzle).rgba_valid = 0;
            (yyval.ext_swizzle).xyzw_valid = 0;
            (yyval.ext_swizzle).negate = 0;
 
-	   switch (s) {
-	   case 'x':
-	      (yyval.ext_swizzle).swz = SWIZZLE_X;
-	      (yyval.ext_swizzle).xyzw_valid = 1;
-	      break;
-	   case 'y':
-	      (yyval.ext_swizzle).swz = SWIZZLE_Y;
-	      (yyval.ext_swizzle).xyzw_valid = 1;
-	      break;
-	   case 'z':
-	      (yyval.ext_swizzle).swz = SWIZZLE_Z;
-	      (yyval.ext_swizzle).xyzw_valid = 1;
-	      break;
-	   case 'w':
-	      (yyval.ext_swizzle).swz = SWIZZLE_W;
-	      (yyval.ext_swizzle).xyzw_valid = 1;
-	      break;
+      switch (s) {
+      case 'x':
+         (yyval.ext_swizzle).swz = SWIZZLE_X;
+         (yyval.ext_swizzle).xyzw_valid = 1;
+         break;
+      case 'y':
+         (yyval.ext_swizzle).swz = SWIZZLE_Y;
+         (yyval.ext_swizzle).xyzw_valid = 1;
+         break;
+      case 'z':
+         (yyval.ext_swizzle).swz = SWIZZLE_Z;
+         (yyval.ext_swizzle).xyzw_valid = 1;
+         break;
+      case 'w':
+         (yyval.ext_swizzle).swz = SWIZZLE_W;
+         (yyval.ext_swizzle).xyzw_valid = 1;
+         break;
 
-	   case 'r':
-	      (yyval.ext_swizzle).swz = SWIZZLE_X;
-	      (yyval.ext_swizzle).rgba_valid = 1;
-	      break;
-	   case 'g':
-	      (yyval.ext_swizzle).swz = SWIZZLE_Y;
-	      (yyval.ext_swizzle).rgba_valid = 1;
-	      break;
-	   case 'b':
-	      (yyval.ext_swizzle).swz = SWIZZLE_Z;
-	      (yyval.ext_swizzle).rgba_valid = 1;
-	      break;
-	   case 'a':
-	      (yyval.ext_swizzle).swz = SWIZZLE_W;
-	      (yyval.ext_swizzle).rgba_valid = 1;
-	      break;
+      case 'r':
+         (yyval.ext_swizzle).swz = SWIZZLE_X;
+         (yyval.ext_swizzle).rgba_valid = 1;
+         break;
+      case 'g':
+         (yyval.ext_swizzle).swz = SWIZZLE_Y;
+         (yyval.ext_swizzle).rgba_valid = 1;
+         break;
+      case 'b':
+         (yyval.ext_swizzle).swz = SWIZZLE_Z;
+         (yyval.ext_swizzle).rgba_valid = 1;
+         break;
+      case 'a':
+         (yyval.ext_swizzle).swz = SWIZZLE_W;
+         (yyval.ext_swizzle).rgba_valid = 1;
+         break;
 
-	   default:
-	      yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
-	      YYERROR;
-	      break;
-	   }
-	}
-#line 2733 "generated/src/mesa/program/program_parse.tab.c"
+      default:
+         yyerror(& (yylsp[0]), state, "invalid extended swizzle selector");
+         YYERROR;
+         break;
+      }
+   }
+#line 2760 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 56: /* srcReg: USED_IDENTIFIER  */
-#line 735 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s = (struct asm_symbol *)
+#line 744 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[0].string));
 
-	   free((yyvsp[0].string));
+      free((yyvsp[0].string));
 
-	   if (s == NULL) {
-	      yyerror(& (yylsp[0]), state, "invalid operand variable");
-	      YYERROR;
-	   } else if ((s->type != at_param) && (s->type != at_temp)
-		      && (s->type != at_attrib)) {
-	      yyerror(& (yylsp[0]), state, "invalid operand variable");
-	      YYERROR;
-	   } else if ((s->type == at_param) && s->param_is_array) {
-	      yyerror(& (yylsp[0]), state, "non-array access to array PARAM");
-	      YYERROR;
-	   }
+      if (s == NULL) {
+         yyerror(& (yylsp[0]), state, "invalid operand variable");
+         YYERROR;
+      } else if ((s->type != at_param) && (s->type != at_temp)
+            && (s->type != at_attrib)) {
+         yyerror(& (yylsp[0]), state, "invalid operand variable");
+         YYERROR;
+      } else if ((s->type == at_param) && s->param_is_array) {
+         yyerror(& (yylsp[0]), state, "non-array access to array PARAM");
+         YYERROR;
+      }
 
-	   init_src_reg(& (yyval.src_reg));
-	   switch (s->type) {
-	   case at_temp:
-	      set_src_reg(& (yyval.src_reg), PROGRAM_TEMPORARY, s->temp_binding);
-	      break;
-	   case at_param:
-              set_src_reg_swz(& (yyval.src_reg), s->param_binding_type,
-                              s->param_binding_begin,
-                              s->param_binding_swizzle);
-	      break;
-	   case at_attrib:
-	      set_src_reg(& (yyval.src_reg), PROGRAM_INPUT, s->attrib_binding);
+      init_src_reg(& (yyval.src_reg));
+      switch (s->type) {
+      case at_temp:
+         set_src_reg(& (yyval.src_reg), PROGRAM_TEMPORARY, s->temp_binding);
+         break;
+      case at_param:
+         set_src_reg_swz(& (yyval.src_reg), s->param_binding_type,
+                         s->param_binding_begin,
+                         s->param_binding_swizzle);
+         break;
+      case at_attrib:
+         set_src_reg(& (yyval.src_reg), PROGRAM_INPUT, s->attrib_binding);
               state->prog->info.inputs_read |= BITFIELD64_BIT((yyval.src_reg).Base.Index);
 
-	      if (!validate_inputs(& (yylsp[0]), state)) {
-		 YYERROR;
-	      }
-	      break;
+         if (!validate_inputs(& (yylsp[0]), state)) {
+            YYERROR;
+         }
+         break;
 
-	   default:
-	      YYERROR;
-	      break;
-	   }
-	}
-#line 2780 "generated/src/mesa/program/program_parse.tab.c"
+      default:
+         YYERROR;
+         break;
+      }
+   }
+#line 2807 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 57: /* srcReg: attribBinding  */
-#line 778 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   set_src_reg(& (yyval.src_reg), PROGRAM_INPUT, (yyvsp[0].attrib));
+#line 787 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      set_src_reg(& (yyval.src_reg), PROGRAM_INPUT, (yyvsp[0].attrib));
            state->prog->info.inputs_read |= BITFIELD64_BIT((yyval.src_reg).Base.Index);
 
-	   if (!validate_inputs(& (yylsp[0]), state)) {
-	      YYERROR;
-	   }
-	}
-#line 2793 "generated/src/mesa/program/program_parse.tab.c"
+      if (!validate_inputs(& (yylsp[0]), state)) {
+         YYERROR;
+      }
+   }
+#line 2820 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 58: /* srcReg: progParamArray '[' progParamArrayMem ']'  */
-#line 787 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (! (yyvsp[-1].src_reg).Base.RelAddr
-	       && ((unsigned) (yyvsp[-1].src_reg).Base.Index >= (yyvsp[-3].sym)->param_binding_length)) {
-	      yyerror(& (yylsp[-1]), state, "out of bounds array access");
-	      YYERROR;
-	   }
+#line 796 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (! (yyvsp[-1].src_reg).Base.RelAddr
+          && ((unsigned) (yyvsp[-1].src_reg).Base.Index >= (yyvsp[-3].sym)->param_binding_length)) {
+         yyerror(& (yylsp[-1]), state, "out of bounds array access");
+         YYERROR;
+      }
 
-	   init_src_reg(& (yyval.src_reg));
-	   (yyval.src_reg).Base.File = (yyvsp[-3].sym)->param_binding_type;
+      init_src_reg(& (yyval.src_reg));
+      (yyval.src_reg).Base.File = (yyvsp[-3].sym)->param_binding_type;
 
-	   if ((yyvsp[-1].src_reg).Base.RelAddr) {
+      if ((yyvsp[-1].src_reg).Base.RelAddr) {
               state->prog->arb.IndirectRegisterFiles |= (1 << (yyval.src_reg).Base.File);
-	      (yyvsp[-3].sym)->param_accessed_indirectly = 1;
+         (yyvsp[-3].sym)->param_accessed_indirectly = 1;
 
-	      (yyval.src_reg).Base.RelAddr = 1;
-	      (yyval.src_reg).Base.Index = (yyvsp[-1].src_reg).Base.Index;
-	      (yyval.src_reg).Symbol = (yyvsp[-3].sym);
-	   } else {
-	      (yyval.src_reg).Base.Index = (yyvsp[-3].sym)->param_binding_begin + (yyvsp[-1].src_reg).Base.Index;
-	   }
-	}
-#line 2819 "generated/src/mesa/program/program_parse.tab.c"
+         (yyval.src_reg).Base.RelAddr = 1;
+         (yyval.src_reg).Base.Index = (yyvsp[-1].src_reg).Base.Index;
+         (yyval.src_reg).Symbol = (yyvsp[-3].sym);
+      } else {
+         (yyval.src_reg).Base.Index = (yyvsp[-3].sym)->param_binding_begin + (yyvsp[-1].src_reg).Base.Index;
+      }
+   }
+#line 2846 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 59: /* srcReg: paramSingleItemUse  */
-#line 809 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-           gl_register_file file = ((yyvsp[0].temp_sym).name != NULL)
-	      ? (yyvsp[0].temp_sym).param_binding_type
-	      : PROGRAM_CONSTANT;
+#line 818 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      gl_register_file file = ((yyvsp[0].temp_sym).name != NULL)
+         ? (yyvsp[0].temp_sym).param_binding_type
+         : PROGRAM_CONSTANT;
            set_src_reg_swz(& (yyval.src_reg), file, (yyvsp[0].temp_sym).param_binding_begin,
                            (yyvsp[0].temp_sym).param_binding_swizzle);
-	}
-#line 2831 "generated/src/mesa/program/program_parse.tab.c"
+   }
+#line 2858 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 60: /* dstReg: resultBinding  */
-#line 819 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   set_dst_reg(& (yyval.dst_reg), PROGRAM_OUTPUT, (yyvsp[0].result));
-	}
-#line 2839 "generated/src/mesa/program/program_parse.tab.c"
+#line 828 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      set_dst_reg(& (yyval.dst_reg), PROGRAM_OUTPUT, (yyvsp[0].result));
+   }
+#line 2866 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 61: /* dstReg: USED_IDENTIFIER  */
-#line 823 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s = (struct asm_symbol *)
+#line 832 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[0].string));
 
-	   free((yyvsp[0].string));
+      free((yyvsp[0].string));
 
-	   if (s == NULL) {
-	      yyerror(& (yylsp[0]), state, "invalid operand variable");
-	      YYERROR;
-	   } else if ((s->type != at_output) && (s->type != at_temp)) {
-	      yyerror(& (yylsp[0]), state, "invalid operand variable");
-	      YYERROR;
-	   }
+      if (s == NULL) {
+         yyerror(& (yylsp[0]), state, "invalid operand variable");
+         YYERROR;
+      } else if ((s->type != at_output) && (s->type != at_temp)) {
+         yyerror(& (yylsp[0]), state, "invalid operand variable");
+         YYERROR;
+      }
 
-	   switch (s->type) {
-	   case at_temp:
-	      set_dst_reg(& (yyval.dst_reg), PROGRAM_TEMPORARY, s->temp_binding);
-	      break;
-	   case at_output:
-	      set_dst_reg(& (yyval.dst_reg), PROGRAM_OUTPUT, s->output_binding);
-	      break;
-	   default:
-	      set_dst_reg(& (yyval.dst_reg), s->param_binding_type, s->param_binding_begin);
-	      break;
-	   }
-	}
-#line 2870 "generated/src/mesa/program/program_parse.tab.c"
+      switch (s->type) {
+      case at_temp:
+         set_dst_reg(& (yyval.dst_reg), PROGRAM_TEMPORARY, s->temp_binding);
+         break;
+      case at_output:
+         set_dst_reg(& (yyval.dst_reg), PROGRAM_OUTPUT, s->output_binding);
+         break;
+      default:
+         set_dst_reg(& (yyval.dst_reg), s->param_binding_type, s->param_binding_begin);
+         break;
+      }
+   }
+#line 2897 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 62: /* progParamArray: USED_IDENTIFIER  */
-#line 852 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s = (struct asm_symbol *)
+#line 861 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[0].string));
 
-	   free((yyvsp[0].string));
+      free((yyvsp[0].string));
 
-	   if (s == NULL) {
-	      yyerror(& (yylsp[0]), state, "invalid operand variable");
-	      YYERROR;
-	   } else if ((s->type != at_param) || !s->param_is_array) {
-	      yyerror(& (yylsp[0]), state, "array access to non-PARAM variable");
-	      YYERROR;
-	   } else {
-	      (yyval.sym) = s;
-	   }
-	}
-#line 2891 "generated/src/mesa/program/program_parse.tab.c"
+      if (s == NULL) {
+         yyerror(& (yylsp[0]), state, "invalid operand variable");
+         YYERROR;
+      } else if ((s->type != at_param) || !s->param_is_array) {
+         yyerror(& (yylsp[0]), state, "array access to non-PARAM variable");
+         YYERROR;
+      } else {
+         (yyval.sym) = s;
+      }
+   }
+#line 2918 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 65: /* progParamArrayAbs: INTEGER  */
-#line 873 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   init_src_reg(& (yyval.src_reg));
-	   (yyval.src_reg).Base.Index = (yyvsp[0].integer);
-	}
-#line 2900 "generated/src/mesa/program/program_parse.tab.c"
+#line 882 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      init_src_reg(& (yyval.src_reg));
+      (yyval.src_reg).Base.Index = (yyvsp[0].integer);
+   }
+#line 2927 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 66: /* progParamArrayRel: addrReg addrComponent addrRegRelOffset  */
-#line 880 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   /* FINISHME: Add support for multiple address registers.
-	    */
-	   /* FINISHME: Add support for 4-component address registers.
-	    */
-	   init_src_reg(& (yyval.src_reg));
-	   (yyval.src_reg).Base.RelAddr = 1;
-	   (yyval.src_reg).Base.Index = (yyvsp[0].integer);
-	}
-#line 2914 "generated/src/mesa/program/program_parse.tab.c"
+#line 889 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      /* FINISHME: Add support for multiple address registers.
+       */
+      /* FINISHME: Add support for 4-component address registers.
+       */
+      init_src_reg(& (yyval.src_reg));
+      (yyval.src_reg).Base.RelAddr = 1;
+      (yyval.src_reg).Base.Index = (yyvsp[0].integer);
+   }
+#line 2941 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 67: /* addrRegRelOffset: %empty  */
-#line 891 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 900 "src/lib/mesa/src/mesa/program/program_parse.y"
                                { (yyval.integer) = 0; }
-#line 2920 "generated/src/mesa/program/program_parse.tab.c"
+#line 2947 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 68: /* addrRegRelOffset: '+' addrRegPosOffset  */
-#line 892 "src/lib/mesa/src/mesa/program/program_parse.y"
-                               { (yyval.integer) = (yyvsp[0].integer); }
-#line 2926 "generated/src/mesa/program/program_parse.tab.c"
+#line 901 "src/lib/mesa/src/mesa/program/program_parse.y"
+                          { (yyval.integer) = (yyvsp[0].integer); }
+#line 2953 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 69: /* addrRegRelOffset: '-' addrRegNegOffset  */
-#line 893 "src/lib/mesa/src/mesa/program/program_parse.y"
-                               { (yyval.integer) = -(yyvsp[0].integer); }
-#line 2932 "generated/src/mesa/program/program_parse.tab.c"
+#line 902 "src/lib/mesa/src/mesa/program/program_parse.y"
+                          { (yyval.integer) = -(yyvsp[0].integer); }
+#line 2959 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 70: /* addrRegPosOffset: INTEGER  */
-#line 897 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (((yyvsp[0].integer) < 0) || ((yyvsp[0].integer) > (state->limits->MaxAddressOffset - 1))) {
-              char s[100];
-              snprintf(s, sizeof(s),
-                             "relative address offset too large (%d)", (yyvsp[0].integer));
-	      yyerror(& (yylsp[0]), state, s);
-	      YYERROR;
-	   } else {
-	      (yyval.integer) = (yyvsp[0].integer);
-	   }
-	}
-#line 2948 "generated/src/mesa/program/program_parse.tab.c"
+#line 906 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (((yyvsp[0].integer) < 0) || ((yyvsp[0].integer) > (state->limits->MaxAddressOffset - 1))) {
+         char s[100];
+         snprintf(s, sizeof(s),
+                  "relative address offset too large (%d)", (yyvsp[0].integer));
+         yyerror(& (yylsp[0]), state, s);
+         YYERROR;
+      } else {
+         (yyval.integer) = (yyvsp[0].integer);
+      }
+   }
+#line 2975 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 71: /* addrRegNegOffset: INTEGER  */
-#line 911 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (((yyvsp[0].integer) < 0) || ((yyvsp[0].integer) > state->limits->MaxAddressOffset)) {
-              char s[100];
-              snprintf(s, sizeof(s),
+#line 920 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (((yyvsp[0].integer) < 0) || ((yyvsp[0].integer) > state->limits->MaxAddressOffset)) {
+         char s[100];
+         snprintf(s, sizeof(s),
                              "relative address offset too large (%d)", (yyvsp[0].integer));
-	      yyerror(& (yylsp[0]), state, s);
-	      YYERROR;
-	   } else {
-	      (yyval.integer) = (yyvsp[0].integer);
-	   }
-	}
-#line 2964 "generated/src/mesa/program/program_parse.tab.c"
+         yyerror(& (yylsp[0]), state, s);
+         YYERROR;
+      } else {
+         (yyval.integer) = (yyvsp[0].integer);
+      }
+   }
+#line 2991 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 72: /* addrReg: USED_IDENTIFIER  */
-#line 925 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s = (struct asm_symbol *)
+#line 934 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[0].string));
 
-	   free((yyvsp[0].string));
+      free((yyvsp[0].string));
 
-	   if (s == NULL) {
-	      yyerror(& (yylsp[0]), state, "invalid array member");
-	      YYERROR;
-	   } else if (s->type != at_address) {
-	      yyerror(& (yylsp[0]), state,
-		      "invalid variable for indexed array access");
-	      YYERROR;
-	   } else {
-	      (yyval.sym) = s;
-	   }
-	}
-#line 2986 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 73: /* addrComponent: MASK1  */
-#line 945 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((yyvsp[0].swiz_mask).mask != WRITEMASK_X) {
-	      yyerror(& (yylsp[0]), state, "invalid address component selector");
-	      YYERROR;
-	   } else {
-	      (yyval.swiz_mask) = (yyvsp[0].swiz_mask);
-	   }
-	}
-#line 2999 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 74: /* addrWriteMask: MASK1  */
-#line 956 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((yyvsp[0].swiz_mask).mask != WRITEMASK_X) {
-	      yyerror(& (yylsp[0]), state,
-		      "address register write mask must be \".x\"");
-	      YYERROR;
-	   } else {
-	      (yyval.swiz_mask) = (yyvsp[0].swiz_mask);
-	   }
-	}
+      if (s == NULL) {
+         yyerror(& (yylsp[0]), state, "invalid array member");
+         YYERROR;
+      } else if (s->type != at_address) {
+         yyerror(& (yylsp[0]), state,
+                 "invalid variable for indexed array access");
+         YYERROR;
+      } else {
+         (yyval.sym) = s;
+      }
+   }
 #line 3013 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 73: /* addrComponent: MASK1  */
+#line 954 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((yyvsp[0].swiz_mask).mask != WRITEMASK_X) {
+         yyerror(& (yylsp[0]), state, "invalid address component selector");
+         YYERROR;
+      } else {
+         (yyval.swiz_mask) = (yyvsp[0].swiz_mask);
+      }
+   }
+#line 3026 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 74: /* addrWriteMask: MASK1  */
+#line 965 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((yyvsp[0].swiz_mask).mask != WRITEMASK_X) {
+         yyerror(& (yylsp[0]), state,
+            "address register write mask must be \".x\"");
+         YYERROR;
+      } else {
+         (yyval.swiz_mask) = (yyvsp[0].swiz_mask);
+      }
+   }
+#line 3040 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 79: /* swizzleSuffix: %empty  */
-#line 972 "src/lib/mesa/src/mesa/program/program_parse.y"
-                       { (yyval.swiz_mask).swizzle = SWIZZLE_NOOP; (yyval.swiz_mask).mask = WRITEMASK_XYZW; }
-#line 3019 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 84: /* optionalMask: %empty  */
-#line 976 "src/lib/mesa/src/mesa/program/program_parse.y"
-                       { (yyval.swiz_mask).swizzle = SWIZZLE_NOOP; (yyval.swiz_mask).mask = WRITEMASK_XYZW; }
-#line 3025 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 91: /* ATTRIB_statement: ATTRIB IDENTIFIER '=' attribBinding  */
-#line 988 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s =
-	      declare_variable(state, (yyvsp[-2].string), at_attrib, & (yylsp[-2]));
-
-	   if (s == NULL) {
-	      free((yyvsp[-2].string));
-	      YYERROR;
-	   } else {
-	      s->attrib_binding = (yyvsp[0].attrib);
-	      state->InputsBound |= BITFIELD64_BIT(s->attrib_binding);
-
-	      if (!validate_inputs(& (yylsp[0]), state)) {
-		 YYERROR;
-	      }
-	   }
-	}
+#line 981 "src/lib/mesa/src/mesa/program/program_parse.y"
+                  { (yyval.swiz_mask).swizzle = SWIZZLE_NOOP; (yyval.swiz_mask).mask = WRITEMASK_XYZW; }
 #line 3046 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 84: /* optionalMask: %empty  */
+#line 985 "src/lib/mesa/src/mesa/program/program_parse.y"
+                  { (yyval.swiz_mask).swizzle = SWIZZLE_NOOP; (yyval.swiz_mask).mask = WRITEMASK_XYZW; }
+#line 3052 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 91: /* ATTRIB_statement: ATTRIB IDENTIFIER '=' attribBinding  */
+#line 997 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s =
+         declare_variable(state, (yyvsp[-2].string), at_attrib, & (yylsp[-2]));
+
+      if (s == NULL) {
+         free((yyvsp[-2].string));
+         YYERROR;
+      } else {
+         s->attrib_binding = (yyvsp[0].attrib);
+         state->InputsBound |= BITFIELD64_BIT(s->attrib_binding);
+
+         if (!validate_inputs(& (yylsp[0]), state)) {
+       YYERROR;
+         }
+      }
+   }
+#line 3073 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 92: /* attribBinding: VERTEX vtxAttribItem  */
-#line 1007 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = (yyvsp[0].attrib);
-	}
-#line 3054 "generated/src/mesa/program/program_parse.tab.c"
+#line 1016 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = (yyvsp[0].attrib);
+   }
+#line 3081 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 93: /* attribBinding: FRAGMENT fragAttribItem  */
-#line 1011 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = (yyvsp[0].attrib);
-	}
-#line 3062 "generated/src/mesa/program/program_parse.tab.c"
+#line 1020 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = (yyvsp[0].attrib);
+   }
+#line 3089 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 94: /* vtxAttribItem: POSITION  */
-#line 1017 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_POS;
-	}
-#line 3070 "generated/src/mesa/program/program_parse.tab.c"
+#line 1026 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_POS;
+   }
+#line 3097 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 95: /* vtxAttribItem: NORMAL  */
-#line 1021 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_NORMAL;
-	}
-#line 3078 "generated/src/mesa/program/program_parse.tab.c"
+#line 1030 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_NORMAL;
+   }
+#line 3105 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 96: /* vtxAttribItem: COLOR optColorType  */
-#line 1025 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_COLOR0 + (yyvsp[0].integer);
-	}
-#line 3086 "generated/src/mesa/program/program_parse.tab.c"
+#line 1034 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_COLOR0 + (yyvsp[0].integer);
+   }
+#line 3113 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 97: /* vtxAttribItem: FOGCOORD  */
-#line 1029 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_FOG;
-	}
-#line 3094 "generated/src/mesa/program/program_parse.tab.c"
+#line 1038 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_FOG;
+   }
+#line 3121 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 98: /* vtxAttribItem: TEXCOORD optTexCoordUnitNum  */
-#line 1033 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_TEX0 + (yyvsp[0].integer);
-	}
-#line 3102 "generated/src/mesa/program/program_parse.tab.c"
+#line 1042 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_TEX0 + (yyvsp[0].integer);
+   }
+#line 3129 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 99: /* vtxAttribItem: MATRIXINDEX '[' vtxWeightNum ']'  */
-#line 1037 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   yyerror(& (yylsp[-3]), state, "GL_ARB_matrix_palette not supported");
-	   YYERROR;
-	}
-#line 3111 "generated/src/mesa/program/program_parse.tab.c"
+#line 1046 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      yyerror(& (yylsp[-3]), state, "GL_ARB_matrix_palette not supported");
+      YYERROR;
+   }
+#line 3138 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 100: /* vtxAttribItem: VTXATTRIB '[' vtxAttribNum ']'  */
-#line 1042 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VERT_ATTRIB_GENERIC0 + (yyvsp[-1].integer);
-	}
-#line 3119 "generated/src/mesa/program/program_parse.tab.c"
+#line 1051 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VERT_ATTRIB_GENERIC0 + (yyvsp[-1].integer);
+   }
+#line 3146 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 101: /* vtxAttribNum: INTEGER  */
-#line 1048 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxAttribs) {
-	      yyerror(& (yylsp[0]), state, "invalid vertex attribute reference");
-	      YYERROR;
-	   }
+#line 1057 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxAttribs) {
+         yyerror(& (yylsp[0]), state, "invalid vertex attribute reference");
+         YYERROR;
+      }
 
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3132 "generated/src/mesa/program/program_parse.tab.c"
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3159 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 103: /* fragAttribItem: POSITION  */
-#line 1061 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VARYING_SLOT_POS;
-	}
-#line 3140 "generated/src/mesa/program/program_parse.tab.c"
+#line 1070 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VARYING_SLOT_POS;
+   }
+#line 3167 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 104: /* fragAttribItem: COLOR optColorType  */
-#line 1065 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VARYING_SLOT_COL0 + (yyvsp[0].integer);
-	}
-#line 3148 "generated/src/mesa/program/program_parse.tab.c"
+#line 1074 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VARYING_SLOT_COL0 + (yyvsp[0].integer);
+   }
+#line 3175 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 105: /* fragAttribItem: FOGCOORD  */
-#line 1069 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VARYING_SLOT_FOGC;
-	}
-#line 3156 "generated/src/mesa/program/program_parse.tab.c"
+#line 1078 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VARYING_SLOT_FOGC;
+   }
+#line 3183 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 106: /* fragAttribItem: TEXCOORD optTexCoordUnitNum  */
-#line 1073 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.attrib) = VARYING_SLOT_TEX0 + (yyvsp[0].integer);
-	}
-#line 3164 "generated/src/mesa/program/program_parse.tab.c"
+#line 1082 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.attrib) = VARYING_SLOT_TEX0 + (yyvsp[0].integer);
+   }
+#line 3191 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 109: /* PARAM_singleStmt: PARAM IDENTIFIER paramSingleInit  */
-#line 1081 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s =
-	      declare_variable(state, (yyvsp[-1].string), at_param, & (yylsp[-1]));
+#line 1090 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s =
+         declare_variable(state, (yyvsp[-1].string), at_param, & (yylsp[-1]));
 
-	   if (s == NULL) {
-	      free((yyvsp[-1].string));
-	      YYERROR;
-	   } else {
-	      s->param_binding_type = (yyvsp[0].temp_sym).param_binding_type;
-	      s->param_binding_begin = (yyvsp[0].temp_sym).param_binding_begin;
-	      s->param_binding_length = (yyvsp[0].temp_sym).param_binding_length;
-              s->param_binding_swizzle = (yyvsp[0].temp_sym).param_binding_swizzle;
-	      s->param_is_array = 0;
-	   }
-	}
-#line 3184 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 110: /* PARAM_multipleStmt: PARAM IDENTIFIER '[' optArraySize ']' paramMultipleInit  */
-#line 1099 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (((yyvsp[-2].integer) != 0) && ((unsigned) (yyvsp[-2].integer) != (yyvsp[0].temp_sym).param_binding_length)) {
-	      free((yyvsp[-4].string));
-	      yyerror(& (yylsp[-2]), state,
-		      "parameter array size and number of bindings must match");
-	      YYERROR;
-	   } else {
-	      struct asm_symbol *const s =
-		 declare_variable(state, (yyvsp[-4].string), (yyvsp[0].temp_sym).type, & (yylsp[-4]));
-
-	      if (s == NULL) {
-		 free((yyvsp[-4].string));
-		 YYERROR;
-	      } else {
-		 s->param_binding_type = (yyvsp[0].temp_sym).param_binding_type;
-		 s->param_binding_begin = (yyvsp[0].temp_sym).param_binding_begin;
-		 s->param_binding_length = (yyvsp[0].temp_sym).param_binding_length;
-                 s->param_binding_swizzle = SWIZZLE_XYZW;
-		 s->param_is_array = 1;
-	      }
-	   }
-	}
+      if (s == NULL) {
+         free((yyvsp[-1].string));
+         YYERROR;
+      } else {
+         s->param_binding_type = (yyvsp[0].temp_sym).param_binding_type;
+         s->param_binding_begin = (yyvsp[0].temp_sym).param_binding_begin;
+         s->param_binding_length = (yyvsp[0].temp_sym).param_binding_length;
+         s->param_binding_swizzle = (yyvsp[0].temp_sym).param_binding_swizzle;
+         s->param_is_array = 0;
+      }
+   }
 #line 3211 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 110: /* PARAM_multipleStmt: PARAM IDENTIFIER '[' optArraySize ']' paramMultipleInit  */
+#line 1108 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (((yyvsp[-2].integer) != 0) && ((unsigned) (yyvsp[-2].integer) != (yyvsp[0].temp_sym).param_binding_length)) {
+         free((yyvsp[-4].string));
+         yyerror(& (yylsp[-2]), state,
+                 "parameter array size and number of bindings must match");
+         YYERROR;
+      } else {
+         struct asm_symbol *const s =
+            declare_variable(state, (yyvsp[-4].string), (yyvsp[0].temp_sym).type, & (yylsp[-4]));
+
+         if (s == NULL) {
+            free((yyvsp[-4].string));
+            YYERROR;
+         } else {
+            s->param_binding_type = (yyvsp[0].temp_sym).param_binding_type;
+            s->param_binding_begin = (yyvsp[0].temp_sym).param_binding_begin;
+            s->param_binding_length = (yyvsp[0].temp_sym).param_binding_length;
+            s->param_binding_swizzle = SWIZZLE_XYZW;
+            s->param_is_array = 1;
+         }
+      }
+   }
+#line 3238 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 111: /* optArraySize: %empty  */
-#line 1124 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = 0;
-	}
-#line 3219 "generated/src/mesa/program/program_parse.tab.c"
+#line 1133 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = 0;
+   }
+#line 3246 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 112: /* optArraySize: INTEGER  */
-#line 1128 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 1137 "src/lib/mesa/src/mesa/program/program_parse.y"
         {
-	   if (((yyvsp[0].integer) < 1) || ((unsigned) (yyvsp[0].integer) > state->limits->MaxParameters)) {
-              char msg[100];
-              snprintf(msg, sizeof(msg),
-                             "invalid parameter array size (size=%d max=%u)",
-                             (yyvsp[0].integer), state->limits->MaxParameters);
-	      yyerror(& (yylsp[0]), state, msg);
-	      YYERROR;
-	   } else {
-	      (yyval.integer) = (yyvsp[0].integer);
-	   }
-	}
-#line 3236 "generated/src/mesa/program/program_parse.tab.c"
+      if (((yyvsp[0].integer) < 1) || ((unsigned) (yyvsp[0].integer) > state->limits->MaxParameters)) {
+         char msg[100];
+         snprintf(msg, sizeof(msg),
+                  "invalid parameter array size (size=%d max=%u)",
+                  (yyvsp[0].integer), state->limits->MaxParameters);
+         yyerror(& (yylsp[0]), state, msg);
+         YYERROR;
+      } else {
+         (yyval.integer) = (yyvsp[0].integer);
+      }
+   }
+#line 3263 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 113: /* paramSingleInit: '=' paramSingleItemDecl  */
-#line 1143 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.temp_sym) = (yyvsp[0].temp_sym);
-	}
-#line 3244 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 114: /* paramMultipleInit: '=' '{' paramMultInitList '}'  */
-#line 1149 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.temp_sym) = (yyvsp[-1].temp_sym);
-	}
-#line 3252 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 116: /* paramMultInitList: paramMultInitList ',' paramMultipleItem  */
-#line 1156 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyvsp[-2].temp_sym).param_binding_length += (yyvsp[0].temp_sym).param_binding_length;
-	   (yyval.temp_sym) = (yyvsp[-2].temp_sym);
-	}
-#line 3261 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 117: /* paramSingleItemDecl: stateSingleItem  */
-#line 1163 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
+#line 1152 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.temp_sym) = (yyvsp[0].temp_sym);
+   }
 #line 3271 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 114: /* paramMultipleInit: '=' '{' paramMultInitList '}'  */
+#line 1158 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.temp_sym) = (yyvsp[-1].temp_sym);
+   }
+#line 3279 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 116: /* paramMultInitList: paramMultInitList ',' paramMultipleItem  */
+#line 1165 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyvsp[-2].temp_sym).param_binding_length += (yyvsp[0].temp_sym).param_binding_length;
+      (yyval.temp_sym) = (yyvsp[-2].temp_sym);
+   }
+#line 3288 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 117: /* paramSingleItemDecl: stateSingleItem  */
+#line 1172 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3298 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 118: /* paramSingleItemDecl: programSingleItem  */
-#line 1169 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
-#line 3281 "generated/src/mesa/program/program_parse.tab.c"
+#line 1178 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3308 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 119: /* paramSingleItemDecl: paramConstDecl  */
-#line 1175 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_TRUE);
-	}
-#line 3291 "generated/src/mesa/program/program_parse.tab.c"
+#line 1184 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_TRUE);
+   }
+#line 3318 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 120: /* paramSingleItemUse: stateSingleItem  */
-#line 1183 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
-#line 3301 "generated/src/mesa/program/program_parse.tab.c"
+#line 1192 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3328 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 121: /* paramSingleItemUse: programSingleItem  */
-#line 1189 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
-#line 3311 "generated/src/mesa/program/program_parse.tab.c"
+#line 1198 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3338 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 122: /* paramSingleItemUse: paramConstUse  */
-#line 1195 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_TRUE);
-	}
-#line 3321 "generated/src/mesa/program/program_parse.tab.c"
+#line 1204 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_TRUE);
+   }
+#line 3348 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 123: /* paramMultipleItem: stateMultipleItem  */
-#line 1203 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
-#line 3331 "generated/src/mesa/program/program_parse.tab.c"
+#line 1212 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_state(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3358 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 124: /* paramMultipleItem: programMultipleItem  */
-#line 1209 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
-	}
-#line 3341 "generated/src/mesa/program/program_parse.tab.c"
+#line 1218 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_param(state->prog, & (yyval.temp_sym), (yyvsp[0].state));
+   }
+#line 3368 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 125: /* paramMultipleItem: paramConstDecl  */
-#line 1215 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
-	   (yyval.temp_sym).param_binding_begin = ~0;
-	   initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_FALSE);
-	}
-#line 3351 "generated/src/mesa/program/program_parse.tab.c"
+#line 1224 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset(& (yyval.temp_sym), 0, sizeof((yyval.temp_sym)));
+      (yyval.temp_sym).param_binding_begin = ~0;
+      initialize_symbol_from_const(state->prog, & (yyval.temp_sym), & (yyvsp[0].vector), GL_FALSE);
+   }
+#line 3378 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 126: /* stateMultipleItem: stateSingleItem  */
-#line 1222 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 1231 "src/lib/mesa/src/mesa/program/program_parse.y"
                                           { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3357 "generated/src/mesa/program/program_parse.tab.c"
+#line 3384 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 127: /* stateMultipleItem: STATE stateMatrixRows  */
-#line 1223 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3363 "generated/src/mesa/program/program_parse.tab.c"
+#line 1232 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3390 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 128: /* stateSingleItem: STATE stateMaterialItem  */
-#line 1226 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 1235 "src/lib/mesa/src/mesa/program/program_parse.y"
                                           { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3369 "generated/src/mesa/program/program_parse.tab.c"
+#line 3396 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 129: /* stateSingleItem: STATE stateLightItem  */
-#line 1227 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3375 "generated/src/mesa/program/program_parse.tab.c"
+#line 1236 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3402 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 130: /* stateSingleItem: STATE stateLightModelItem  */
-#line 1228 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3381 "generated/src/mesa/program/program_parse.tab.c"
+#line 1237 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3408 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 131: /* stateSingleItem: STATE stateLightProdItem  */
-#line 1229 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3387 "generated/src/mesa/program/program_parse.tab.c"
+#line 1238 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3414 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 132: /* stateSingleItem: STATE stateTexGenItem  */
-#line 1230 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3393 "generated/src/mesa/program/program_parse.tab.c"
+#line 1239 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3420 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 133: /* stateSingleItem: STATE stateTexEnvItem  */
-#line 1231 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3399 "generated/src/mesa/program/program_parse.tab.c"
+#line 1240 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3426 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 134: /* stateSingleItem: STATE stateFogItem  */
-#line 1232 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3405 "generated/src/mesa/program/program_parse.tab.c"
+#line 1241 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3432 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 135: /* stateSingleItem: STATE stateClipPlaneItem  */
-#line 1233 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3411 "generated/src/mesa/program/program_parse.tab.c"
+#line 1242 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3438 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 136: /* stateSingleItem: STATE statePointItem  */
-#line 1234 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3417 "generated/src/mesa/program/program_parse.tab.c"
+#line 1243 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3444 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 137: /* stateSingleItem: STATE stateMatrixRow  */
-#line 1235 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3423 "generated/src/mesa/program/program_parse.tab.c"
+#line 1244 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
+#line 3450 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 138: /* stateSingleItem: STATE stateDepthItem  */
-#line 1236 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                          { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
-#line 3429 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 139: /* stateMaterialItem: MATERIAL optFaceType stateMatProperty  */
-#line 1240 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_MATERIAL;
-	   (yyval.state)[1] = (yyvsp[-1].integer);
-	   (yyval.state)[2] = (yyvsp[0].integer);
-	}
-#line 3440 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 140: /* stateMatProperty: ambDiffSpecProperty  */
-#line 1249 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3448 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 141: /* stateMatProperty: EMISSION  */
-#line 1253 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_EMISSION;
-	}
+#line 1245 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                     { memcpy((yyval.state), (yyvsp[0].state), sizeof((yyval.state))); }
 #line 3456 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 142: /* stateMatProperty: SHININESS  */
-#line 1257 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_SHININESS;
-	}
-#line 3464 "generated/src/mesa/program/program_parse.tab.c"
+  case 139: /* stateMaterialItem: MATERIAL optFaceType stateMatProperty  */
+#line 1249 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_MATERIAL;
+      (yyval.state)[1] = (yyvsp[0].integer) + (yyvsp[-1].integer);
+      (yyval.state)[2] = 0;
+   }
+#line 3467 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 143: /* stateLightItem: LIGHT '[' stateLightNumber ']' stateLightProperty  */
-#line 1263 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_LIGHT;
-	   (yyval.state)[1] = (yyvsp[-2].integer);
-	   (yyval.state)[2] = (yyvsp[0].integer);
-	}
+  case 140: /* stateMatProperty: ambDiffSpecPropertyMaterial  */
+#line 1258 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = (yyvsp[0].integer);
+   }
 #line 3475 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 144: /* stateLightProperty: ambDiffSpecProperty  */
-#line 1272 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
+  case 141: /* stateMatProperty: EMISSION  */
+#line 1262 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = MAT_ATTRIB_FRONT_EMISSION;
+   }
 #line 3483 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 145: /* stateLightProperty: POSITION  */
-#line 1276 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_POSITION;
-	}
+  case 142: /* stateMatProperty: SHININESS  */
+#line 1266 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = MAT_ATTRIB_FRONT_SHININESS;
+   }
 #line 3491 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 146: /* stateLightProperty: ATTENUATION  */
-#line 1280 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (!state->ctx->Extensions.EXT_point_parameters) {
-	      yyerror(& (yylsp[0]), state, "GL_ARB_point_parameters not supported");
-	      YYERROR;
-	   }
+  case 143: /* stateLightItem: LIGHT '[' stateLightNumber ']' stateLightProperty  */
+#line 1272 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_LIGHT;
+      (yyval.state)[1] = (yyvsp[-2].integer);
+      (yyval.state)[2] = (yyvsp[0].integer);
+   }
+#line 3502 "generated/src/mesa/program/program_parse.tab.c"
+    break;
 
-	   (yyval.integer) = STATE_ATTENUATION;
-	}
-#line 3504 "generated/src/mesa/program/program_parse.tab.c"
+  case 144: /* stateLightProperty: ambDiffSpecPropertyLight  */
+#line 1281 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3510 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 145: /* stateLightProperty: POSITION  */
+#line 1285 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_POSITION;
+   }
+#line 3518 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 146: /* stateLightProperty: ATTENUATION  */
+#line 1289 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_ATTENUATION;
+   }
+#line 3526 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 147: /* stateLightProperty: SPOT stateSpotProperty  */
-#line 1289 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3512 "generated/src/mesa/program/program_parse.tab.c"
+#line 1293 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3534 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 148: /* stateLightProperty: HALF  */
-#line 1293 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_HALF_VECTOR;
-	}
-#line 3520 "generated/src/mesa/program/program_parse.tab.c"
+#line 1297 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_HALF_VECTOR;
+   }
+#line 3542 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 149: /* stateSpotProperty: DIRECTION  */
-#line 1299 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_SPOT_DIRECTION;
-	}
-#line 3528 "generated/src/mesa/program/program_parse.tab.c"
+#line 1303 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_SPOT_DIRECTION;
+   }
+#line 3550 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 150: /* stateLightModelItem: LIGHTMODEL stateLModProperty  */
-#line 1305 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[0].state)[0];
-	   (yyval.state)[1] = (yyvsp[0].state)[1];
-	}
-#line 3537 "generated/src/mesa/program/program_parse.tab.c"
+#line 1309 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[0].state)[0];
+      (yyval.state)[1] = (yyvsp[0].state)[1];
+   }
+#line 3559 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
   case 151: /* stateLModProperty: AMBIENT  */
-#line 1312 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_LIGHTMODEL_AMBIENT;
-	}
-#line 3546 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 152: /* stateLModProperty: optFaceType SCENECOLOR  */
-#line 1317 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_LIGHTMODEL_SCENECOLOR;
-	   (yyval.state)[1] = (yyvsp[-1].integer);
-	}
-#line 3556 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 153: /* stateLightProdItem: LIGHTPROD '[' stateLightNumber ']' optFaceType stateLProdProperty  */
-#line 1325 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_LIGHTPROD;
-	   (yyval.state)[1] = (yyvsp[-3].integer);
-	   (yyval.state)[2] = (yyvsp[-1].integer);
-	   (yyval.state)[3] = (yyvsp[0].integer);
-	}
+#line 1316 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_LIGHTMODEL_AMBIENT;
+   }
 #line 3568 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 155: /* stateTexEnvItem: TEXENV optLegacyTexUnitNum stateTexEnvProperty  */
-#line 1337 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = (yyvsp[0].integer);
-	   (yyval.state)[1] = (yyvsp[-1].integer);
-	}
+  case 152: /* stateLModProperty: optFaceType SCENECOLOR  */
+#line 1321 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_LIGHTMODEL_SCENECOLOR;
+      (yyval.state)[1] = (yyvsp[-1].integer);
+   }
 #line 3578 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
+  case 153: /* stateLightProdItem: LIGHTPROD '[' stateLightNumber ']' optFaceType stateLProdProperty  */
+#line 1329 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_LIGHTPROD;
+      (yyval.state)[1] = (yyvsp[-3].integer);
+      (yyval.state)[2] = (yyvsp[0].integer) + (yyvsp[-1].integer);
+      (yyval.state)[3] = 0;
+   }
+#line 3590 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 155: /* stateTexEnvItem: TEXENV optLegacyTexUnitNum stateTexEnvProperty  */
+#line 1341 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = (yyvsp[0].integer);
+      (yyval.state)[1] = (yyvsp[-1].integer);
+   }
+#line 3600 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
   case 156: /* stateTexEnvProperty: COLOR  */
-#line 1345 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_TEXENV_COLOR;
-	}
-#line 3586 "generated/src/mesa/program/program_parse.tab.c"
+#line 1349 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXENV_COLOR;
+   }
+#line 3608 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 157: /* ambDiffSpecProperty: AMBIENT  */
-#line 1351 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_AMBIENT;
-	}
-#line 3594 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 158: /* ambDiffSpecProperty: DIFFUSE  */
+  case 157: /* ambDiffSpecPropertyMaterial: AMBIENT  */
 #line 1355 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_DIFFUSE;
-	}
-#line 3602 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = MAT_ATTRIB_FRONT_AMBIENT;
+   }
+#line 3616 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 159: /* ambDiffSpecProperty: SPECULAR  */
+  case 158: /* ambDiffSpecPropertyMaterial: DIFFUSE  */
 #line 1359 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_SPECULAR;
-	}
-#line 3610 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = MAT_ATTRIB_FRONT_DIFFUSE;
+   }
+#line 3624 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 160: /* stateLightNumber: INTEGER  */
-#line 1365 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxLights) {
-	      yyerror(& (yylsp[0]), state, "invalid light selector");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3623 "generated/src/mesa/program/program_parse.tab.c"
+  case 159: /* ambDiffSpecPropertyMaterial: SPECULAR  */
+#line 1363 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = MAT_ATTRIB_FRONT_SPECULAR;
+   }
+#line 3632 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 161: /* stateTexGenItem: TEXGEN optTexCoordUnitNum stateTexGenType stateTexGenCoord  */
-#line 1376 "src/lib/mesa/src/mesa/program/program_parse.y"
+  case 160: /* ambDiffSpecPropertyLight: AMBIENT  */
+#line 1369 "src/lib/mesa/src/mesa/program/program_parse.y"
         {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_TEXGEN;
-	   (yyval.state)[1] = (yyvsp[-2].integer);
-	   (yyval.state)[2] = (yyvsp[-1].integer) + (yyvsp[0].integer);
-	}
-#line 3634 "generated/src/mesa/program/program_parse.tab.c"
+           (yyval.integer) = STATE_AMBIENT;
+        }
+#line 3640 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 162: /* stateTexGenType: EYE  */
-#line 1385 "src/lib/mesa/src/mesa/program/program_parse.y"
+  case 161: /* ambDiffSpecPropertyLight: DIFFUSE  */
+#line 1373 "src/lib/mesa/src/mesa/program/program_parse.y"
         {
-	   (yyval.integer) = STATE_TEXGEN_EYE_S;
-	}
-#line 3642 "generated/src/mesa/program/program_parse.tab.c"
+           (yyval.integer) = STATE_DIFFUSE;
+        }
+#line 3648 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 163: /* stateTexGenType: OBJECT  */
-#line 1389 "src/lib/mesa/src/mesa/program/program_parse.y"
+  case 162: /* ambDiffSpecPropertyLight: SPECULAR  */
+#line 1377 "src/lib/mesa/src/mesa/program/program_parse.y"
         {
-	   (yyval.integer) = STATE_TEXGEN_OBJECT_S;
-	}
-#line 3650 "generated/src/mesa/program/program_parse.tab.c"
+           (yyval.integer) = STATE_SPECULAR;
+        }
+#line 3656 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 164: /* stateTexGenCoord: TEXGEN_S  */
+  case 163: /* stateLightNumber: INTEGER  */
+#line 1383 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxLights) {
+         yyerror(& (yylsp[0]), state, "invalid light selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3669 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 164: /* stateTexGenItem: TEXGEN optTexCoordUnitNum stateTexGenType stateTexGenCoord  */
 #line 1394 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_TEXGEN_EYE_S - STATE_TEXGEN_EYE_S;
-	}
-#line 3658 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_TEXGEN;
+      (yyval.state)[1] = (yyvsp[-2].integer);
+      (yyval.state)[2] = (yyvsp[-1].integer) + (yyvsp[0].integer);
+   }
+#line 3680 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 165: /* stateTexGenCoord: TEXGEN_T  */
-#line 1398 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_TEXGEN_EYE_T - STATE_TEXGEN_EYE_S;
-	}
-#line 3666 "generated/src/mesa/program/program_parse.tab.c"
+  case 165: /* stateTexGenType: EYE  */
+#line 1403 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXGEN_EYE_S;
+   }
+#line 3688 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 166: /* stateTexGenCoord: TEXGEN_R  */
-#line 1402 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_TEXGEN_EYE_R - STATE_TEXGEN_EYE_S;
-	}
-#line 3674 "generated/src/mesa/program/program_parse.tab.c"
+  case 166: /* stateTexGenType: OBJECT  */
+#line 1407 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXGEN_OBJECT_S;
+   }
+#line 3696 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 167: /* stateTexGenCoord: TEXGEN_Q  */
-#line 1406 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_TEXGEN_EYE_Q - STATE_TEXGEN_EYE_S;
-	}
-#line 3682 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 168: /* stateFogItem: FOG stateFogProperty  */
+  case 167: /* stateTexGenCoord: TEXGEN_S  */
 #line 1412 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = (yyvsp[0].integer);
-	}
-#line 3691 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = STATE_TEXGEN_EYE_S - STATE_TEXGEN_EYE_S;
+   }
+#line 3704 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 169: /* stateFogProperty: COLOR  */
-#line 1419 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_FOG_COLOR;
-	}
-#line 3699 "generated/src/mesa/program/program_parse.tab.c"
+  case 168: /* stateTexGenCoord: TEXGEN_T  */
+#line 1416 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXGEN_EYE_T - STATE_TEXGEN_EYE_S;
+   }
+#line 3712 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 170: /* stateFogProperty: PARAMS  */
-#line 1423 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_FOG_PARAMS;
-	}
-#line 3707 "generated/src/mesa/program/program_parse.tab.c"
+  case 169: /* stateTexGenCoord: TEXGEN_R  */
+#line 1420 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXGEN_EYE_R - STATE_TEXGEN_EYE_S;
+   }
+#line 3720 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 171: /* stateClipPlaneItem: CLIP '[' stateClipPlaneNum ']' PLANE  */
-#line 1429 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_CLIPPLANE;
-	   (yyval.state)[1] = (yyvsp[-2].integer);
-	}
-#line 3717 "generated/src/mesa/program/program_parse.tab.c"
+  case 170: /* stateTexGenCoord: TEXGEN_Q  */
+#line 1424 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_TEXGEN_EYE_Q - STATE_TEXGEN_EYE_S;
+   }
+#line 3728 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 172: /* stateClipPlaneNum: INTEGER  */
+  case 171: /* stateFogItem: FOG stateFogProperty  */
+#line 1430 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = (yyvsp[0].integer);
+   }
+#line 3737 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 172: /* stateFogProperty: COLOR  */
 #line 1437 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxClipPlanes) {
-	      yyerror(& (yylsp[0]), state, "invalid clip plane selector");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3730 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = STATE_FOG_COLOR;
+   }
+#line 3745 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 173: /* statePointItem: POINT_TOK statePointProperty  */
-#line 1448 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = (yyvsp[0].integer);
-	}
-#line 3739 "generated/src/mesa/program/program_parse.tab.c"
+  case 173: /* stateFogProperty: PARAMS  */
+#line 1441 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_FOG_PARAMS;
+   }
+#line 3753 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 174: /* statePointProperty: SIZE_TOK  */
+  case 174: /* stateClipPlaneItem: CLIP '[' stateClipPlaneNum ']' PLANE  */
+#line 1447 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_CLIPPLANE;
+      (yyval.state)[1] = (yyvsp[-2].integer);
+   }
+#line 3763 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 175: /* stateClipPlaneNum: INTEGER  */
 #line 1455 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_POINT_SIZE;
-	}
-#line 3747 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxClipPlanes) {
+         yyerror(& (yylsp[0]), state, "invalid clip plane selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3776 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 175: /* statePointProperty: ATTENUATION  */
-#line 1459 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_POINT_ATTENUATION;
-	}
-#line 3755 "generated/src/mesa/program/program_parse.tab.c"
+  case 176: /* statePointItem: POINT_TOK statePointProperty  */
+#line 1466 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = (yyvsp[0].integer);
+   }
+#line 3785 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 176: /* stateMatrixRow: stateMatrixItem ROW '[' stateMatrixRowNum ']'  */
-#line 1465 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[-4].state)[0] + (yyvsp[-4].state)[2];
-	   (yyval.state)[1] = (yyvsp[-4].state)[1];
-	   (yyval.state)[2] = (yyvsp[-1].integer);
-	   (yyval.state)[3] = (yyvsp[-1].integer);
-	}
-#line 3766 "generated/src/mesa/program/program_parse.tab.c"
+  case 177: /* statePointProperty: SIZE_TOK  */
+#line 1473 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_POINT_SIZE;
+   }
+#line 3793 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 177: /* stateMatrixRows: stateMatrixItem optMatrixRows  */
-#line 1474 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[-1].state)[0] + (yyvsp[-1].state)[2];
-	   (yyval.state)[1] = (yyvsp[-1].state)[1];
-	   (yyval.state)[2] = (yyvsp[0].state)[2];
-	   (yyval.state)[3] = (yyvsp[0].state)[3];
-	}
-#line 3777 "generated/src/mesa/program/program_parse.tab.c"
+  case 178: /* statePointProperty: ATTENUATION  */
+#line 1477 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_POINT_ATTENUATION;
+   }
+#line 3801 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 178: /* optMatrixRows: %empty  */
+  case 179: /* stateMatrixRow: stateMatrixItem ROW '[' stateMatrixRowNum ']'  */
 #line 1483 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[2] = 0;
-	   (yyval.state)[3] = 3;
-	}
-#line 3786 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.state)[0] = (yyvsp[-4].state)[0] + (yyvsp[-4].state)[2];
+      (yyval.state)[1] = (yyvsp[-4].state)[1];
+      (yyval.state)[2] = (yyvsp[-1].integer);
+      (yyval.state)[3] = (yyvsp[-1].integer);
+   }
+#line 3812 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 179: /* optMatrixRows: ROW '[' stateMatrixRowNum DOT_DOT stateMatrixRowNum ']'  */
-#line 1488 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   /* It seems logical that the matrix row range specifier would have
-	    * to specify a range or more than one row (i.e., $5 > $3).
-	    * However, the ARB_vertex_program spec says "a program will fail
-	    * to load if <a> is greater than <b>."  This means that $3 == $5
-	    * is valid.
-	    */
-	   if ((yyvsp[-3].integer) > (yyvsp[-1].integer)) {
-	      yyerror(& (yylsp[-3]), state, "invalid matrix row range");
-	      YYERROR;
-	   }
-
-	   (yyval.state)[2] = (yyvsp[-3].integer);
-	   (yyval.state)[3] = (yyvsp[-1].integer);
-	}
-#line 3806 "generated/src/mesa/program/program_parse.tab.c"
+  case 180: /* stateMatrixRows: stateMatrixItem optMatrixRows  */
+#line 1492 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[-1].state)[0] + (yyvsp[-1].state)[2];
+      (yyval.state)[1] = (yyvsp[-1].state)[1];
+      (yyval.state)[2] = (yyvsp[0].state)[2];
+      (yyval.state)[3] = (yyvsp[0].state)[3];
+   }
+#line 3823 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 180: /* stateMatrixItem: MATRIX stateMatrixName stateOptMatModifier  */
-#line 1506 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[-1].state)[0];
-	   (yyval.state)[1] = (yyvsp[-1].state)[1];
-	   (yyval.state)[2] = (yyvsp[0].integer);
-	}
-#line 3816 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 181: /* stateOptMatModifier: %empty  */
-#line 1514 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_MATRIX_NO_MODIFIER;
-	}
-#line 3824 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 182: /* stateOptMatModifier: stateMatModifier  */
-#line 1518 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
+  case 181: /* optMatrixRows: %empty  */
+#line 1501 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[2] = 0;
+      (yyval.state)[3] = 3;
+   }
 #line 3832 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 183: /* stateMatModifier: INVERSE  */
+  case 182: /* optMatrixRows: ROW '[' stateMatrixRowNum DOT_DOT stateMatrixRowNum ']'  */
+#line 1506 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      /* It seems logical that the matrix row range specifier would have
+       * to specify a range or more than one row (i.e., $5 > $3).
+       * However, the ARB_vertex_program spec says "a program will fail
+       * to load if <a> is greater than <b>."  This means that $3 == $5
+       * is valid.
+       */
+      if ((yyvsp[-3].integer) > (yyvsp[-1].integer)) {
+         yyerror(& (yylsp[-3]), state, "invalid matrix row range");
+         YYERROR;
+      }
+
+      (yyval.state)[2] = (yyvsp[-3].integer);
+      (yyval.state)[3] = (yyvsp[-1].integer);
+   }
+#line 3852 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 183: /* stateMatrixItem: MATRIX stateMatrixName stateOptMatModifier  */
 #line 1524 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_MATRIX_INVERSE;
-	}
-#line 3840 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.state)[0] = (yyvsp[-1].state)[0];
+      (yyval.state)[1] = (yyvsp[-1].state)[1];
+      (yyval.state)[2] = (yyvsp[0].integer);
+   }
+#line 3862 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 184: /* stateMatModifier: TRANSPOSE  */
-#line 1528 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_MATRIX_TRANSPOSE;
-	}
-#line 3848 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 185: /* stateMatModifier: INVTRANS  */
+  case 184: /* stateOptMatModifier: %empty  */
 #line 1532 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = STATE_MATRIX_INVTRANS;
-	}
-#line 3856 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = STATE_MATRIX_NO_MODIFIER;
+   }
+#line 3870 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 186: /* stateMatrixRowNum: INTEGER  */
-#line 1538 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((yyvsp[0].integer) > 3) {
-	      yyerror(& (yylsp[0]), state, "invalid matrix row reference");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3869 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 187: /* stateMatrixName: MODELVIEW stateOptModMatNum  */
-#line 1549 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = STATE_MODELVIEW_MATRIX;
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
+  case 185: /* stateOptMatModifier: stateMatModifier  */
+#line 1536 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = (yyvsp[0].integer);
+   }
 #line 3878 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 188: /* stateMatrixName: PROJECTION  */
-#line 1554 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = STATE_PROJECTION_MATRIX;
-	   (yyval.state)[1] = 0;
-	}
-#line 3887 "generated/src/mesa/program/program_parse.tab.c"
+  case 186: /* stateMatModifier: INVERSE  */
+#line 1542 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_MATRIX_INVERSE;
+   }
+#line 3886 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 189: /* stateMatrixName: MVP  */
-#line 1559 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = STATE_MVP_MATRIX;
-	   (yyval.state)[1] = 0;
-	}
-#line 3896 "generated/src/mesa/program/program_parse.tab.c"
+  case 187: /* stateMatModifier: TRANSPOSE  */
+#line 1546 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_MATRIX_TRANSPOSE;
+   }
+#line 3894 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 190: /* stateMatrixName: TEXTURE optTexCoordUnitNum  */
-#line 1564 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = STATE_TEXTURE_MATRIX;
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
-#line 3905 "generated/src/mesa/program/program_parse.tab.c"
+  case 188: /* stateMatModifier: INVTRANS  */
+#line 1550 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = STATE_MATRIX_INVTRANS;
+   }
+#line 3902 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 191: /* stateMatrixName: PALETTE '[' statePaletteMatNum ']'  */
-#line 1569 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   yyerror(& (yylsp[-3]), state, "GL_ARB_matrix_palette not supported");
-	   YYERROR;
-	}
-#line 3914 "generated/src/mesa/program/program_parse.tab.c"
+  case 189: /* stateMatrixRowNum: INTEGER  */
+#line 1556 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((yyvsp[0].integer) > 3) {
+         yyerror(& (yylsp[0]), state, "invalid matrix row reference");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 3915 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 192: /* stateMatrixName: MAT_PROGRAM '[' stateProgramMatNum ']'  */
-#line 1574 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = STATE_PROGRAM_MATRIX;
-	   (yyval.state)[1] = (yyvsp[-1].integer);
-	}
-#line 3923 "generated/src/mesa/program/program_parse.tab.c"
+  case 190: /* stateMatrixName: MODELVIEW stateOptModMatNum  */
+#line 1567 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = STATE_MODELVIEW_MATRIX;
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 3924 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 193: /* stateOptModMatNum: %empty  */
-#line 1581 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = 0;
-	}
-#line 3931 "generated/src/mesa/program/program_parse.tab.c"
+  case 191: /* stateMatrixName: PROJECTION  */
+#line 1572 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = STATE_PROJECTION_MATRIX;
+      (yyval.state)[1] = 0;
+   }
+#line 3933 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 194: /* stateOptModMatNum: '[' stateModMatNum ']'  */
-#line 1585 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = (yyvsp[-1].integer);
-	}
-#line 3939 "generated/src/mesa/program/program_parse.tab.c"
+  case 192: /* stateMatrixName: MVP  */
+#line 1577 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = STATE_MVP_MATRIX;
+      (yyval.state)[1] = 0;
+   }
+#line 3942 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 195: /* stateModMatNum: INTEGER  */
-#line 1590 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   /* Since GL_ARB_vertex_blend isn't supported, only modelview matrix
-	    * zero is valid.
-	    */
-	   if ((yyvsp[0].integer) != 0) {
-	      yyerror(& (yylsp[0]), state, "invalid modelview matrix index");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3955 "generated/src/mesa/program/program_parse.tab.c"
+  case 193: /* stateMatrixName: TEXTURE optTexCoordUnitNum  */
+#line 1582 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = STATE_TEXTURE_MATRIX;
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 3951 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 196: /* statePaletteMatNum: INTEGER  */
+  case 194: /* stateMatrixName: PALETTE '[' statePaletteMatNum ']'  */
+#line 1587 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      yyerror(& (yylsp[-3]), state, "GL_ARB_matrix_palette not supported");
+      YYERROR;
+   }
+#line 3960 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 195: /* stateMatrixName: MAT_PROGRAM '[' stateProgramMatNum ']'  */
+#line 1592 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = STATE_PROGRAM_MATRIX;
+      (yyval.state)[1] = (yyvsp[-1].integer);
+   }
+#line 3969 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 196: /* stateOptModMatNum: %empty  */
+#line 1599 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = 0;
+   }
+#line 3977 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 197: /* stateOptModMatNum: '[' stateModMatNum ']'  */
 #line 1603 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   /* Since GL_ARB_matrix_palette isn't supported, just let any value
-	    * through here.  The error will be generated later.
-	    */
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3966 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.integer) = (yyvsp[-1].integer);
+   }
+#line 3985 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 197: /* stateProgramMatNum: INTEGER  */
-#line 1611 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxProgramMatrices) {
-	      yyerror(& (yylsp[0]), state, "invalid program matrix selector");
-	      YYERROR;
-	   }
+  case 198: /* stateModMatNum: INTEGER  */
+#line 1608 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      /* Since GL_ARB_vertex_blend isn't supported, only modelview matrix
+       * zero is valid.
+       */
+      if ((yyvsp[0].integer) != 0) {
+         yyerror(& (yylsp[0]), state, "invalid modelview matrix index");
+         YYERROR;
+      }
 
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 3979 "generated/src/mesa/program/program_parse.tab.c"
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4001 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 198: /* stateDepthItem: DEPTH RANGE  */
-#line 1622 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = STATE_DEPTH_RANGE;
-	}
-#line 3988 "generated/src/mesa/program/program_parse.tab.c"
+  case 199: /* statePaletteMatNum: INTEGER  */
+#line 1621 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      /* Since GL_ARB_matrix_palette isn't supported, just let any value
+       * through here.  The error will be generated later.
+       */
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4012 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 203: /* progEnvParams: PROGRAM ENV '[' progEnvParamNums ']'  */
-#line 1634 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = state->state_param_enum;
-	   (yyval.state)[1] = STATE_ENV;
-	   (yyval.state)[2] = (yyvsp[-1].state)[0];
-	   (yyval.state)[3] = (yyvsp[-1].state)[1];
-	}
-#line 4000 "generated/src/mesa/program/program_parse.tab.c"
+  case 200: /* stateProgramMatNum: INTEGER  */
+#line 1629 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxProgramMatrices) {
+         yyerror(& (yylsp[0]), state, "invalid program matrix selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4025 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 204: /* progEnvParamNums: progEnvParamNum  */
-#line 1644 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[0].integer);
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
-#line 4009 "generated/src/mesa/program/program_parse.tab.c"
+  case 201: /* stateDepthItem: DEPTH RANGE  */
+#line 1640 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = STATE_DEPTH_RANGE;
+   }
+#line 4034 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 205: /* progEnvParamNums: progEnvParamNum DOT_DOT progEnvParamNum  */
-#line 1649 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[-2].integer);
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
-#line 4018 "generated/src/mesa/program/program_parse.tab.c"
+  case 206: /* progEnvParams: PROGRAM ENV '[' progEnvParamNums ']'  */
+#line 1652 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = state->state_param_enum_env;
+      (yyval.state)[1] = (yyvsp[-1].state)[0];
+      (yyval.state)[2] = (yyvsp[-1].state)[1];
+      (yyval.state)[3] = 0;
+   }
+#line 4046 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 206: /* progEnvParam: PROGRAM ENV '[' progEnvParamNum ']'  */
-#line 1656 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = state->state_param_enum;
-	   (yyval.state)[1] = STATE_ENV;
-	   (yyval.state)[2] = (yyvsp[-1].integer);
-	   (yyval.state)[3] = (yyvsp[-1].integer);
-	}
-#line 4030 "generated/src/mesa/program/program_parse.tab.c"
+  case 207: /* progEnvParamNums: progEnvParamNum  */
+#line 1662 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[0].integer);
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 4055 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 207: /* progLocalParams: PROGRAM LOCAL '[' progLocalParamNums ']'  */
-#line 1666 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = state->state_param_enum;
-	   (yyval.state)[1] = STATE_LOCAL;
-	   (yyval.state)[2] = (yyvsp[-1].state)[0];
-	   (yyval.state)[3] = (yyvsp[-1].state)[1];
-	}
-#line 4042 "generated/src/mesa/program/program_parse.tab.c"
+  case 208: /* progEnvParamNums: progEnvParamNum DOT_DOT progEnvParamNum  */
+#line 1667 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[-2].integer);
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 4064 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 208: /* progLocalParamNums: progLocalParamNum  */
-#line 1675 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[0].integer);
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
-#line 4051 "generated/src/mesa/program/program_parse.tab.c"
+  case 209: /* progEnvParam: PROGRAM ENV '[' progEnvParamNum ']'  */
+#line 1674 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = state->state_param_enum_env;
+      (yyval.state)[1] = (yyvsp[-1].integer);
+      (yyval.state)[2] = (yyvsp[-1].integer);
+      (yyval.state)[3] = 0;
+   }
+#line 4076 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 209: /* progLocalParamNums: progLocalParamNum DOT_DOT progLocalParamNum  */
-#line 1680 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.state)[0] = (yyvsp[-2].integer);
-	   (yyval.state)[1] = (yyvsp[0].integer);
-	}
-#line 4060 "generated/src/mesa/program/program_parse.tab.c"
+  case 210: /* progLocalParams: PROGRAM LOCAL '[' progLocalParamNums ']'  */
+#line 1684 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = state->state_param_enum_local;
+      (yyval.state)[1] = (yyvsp[-1].state)[0];
+      (yyval.state)[2] = (yyvsp[-1].state)[1];
+      (yyval.state)[3] = 0;
+   }
+#line 4088 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 210: /* progLocalParam: PROGRAM LOCAL '[' progLocalParamNum ']'  */
-#line 1687 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   memset((yyval.state), 0, sizeof((yyval.state)));
-	   (yyval.state)[0] = state->state_param_enum;
-	   (yyval.state)[1] = STATE_LOCAL;
-	   (yyval.state)[2] = (yyvsp[-1].integer);
-	   (yyval.state)[3] = (yyvsp[-1].integer);
-	}
-#line 4072 "generated/src/mesa/program/program_parse.tab.c"
+  case 211: /* progLocalParamNums: progLocalParamNum  */
+#line 1693 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[0].integer);
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 4097 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 211: /* progEnvParamNum: INTEGER  */
-#line 1697 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxEnvParams) {
-	      yyerror(& (yylsp[0]), state, "invalid environment parameter reference");
-	      YYERROR;
-	   }
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 4084 "generated/src/mesa/program/program_parse.tab.c"
+  case 212: /* progLocalParamNums: progLocalParamNum DOT_DOT progLocalParamNum  */
+#line 1698 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.state)[0] = (yyvsp[-2].integer);
+      (yyval.state)[1] = (yyvsp[0].integer);
+   }
+#line 4106 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 212: /* progLocalParamNum: INTEGER  */
-#line 1707 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxLocalParams) {
-	      yyerror(& (yylsp[0]), state, "invalid local parameter reference");
-	      YYERROR;
-	   }
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 4096 "generated/src/mesa/program/program_parse.tab.c"
+  case 213: /* progLocalParam: PROGRAM LOCAL '[' progLocalParamNum ']'  */
+#line 1705 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      memset((yyval.state), 0, sizeof((yyval.state)));
+      (yyval.state)[0] = state->state_param_enum_local;
+      (yyval.state)[1] = (yyvsp[-1].integer);
+      (yyval.state)[2] = (yyvsp[-1].integer);
+      (yyval.state)[3] = 0;
+   }
+#line 4118 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 217: /* paramConstScalarDecl: signedFloatConstant  */
-#line 1722 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 4;
-	   (yyval.vector).data[0].f = (yyvsp[0].real);
-	   (yyval.vector).data[1].f = (yyvsp[0].real);
-	   (yyval.vector).data[2].f = (yyvsp[0].real);
-	   (yyval.vector).data[3].f = (yyvsp[0].real);
-	}
-#line 4108 "generated/src/mesa/program/program_parse.tab.c"
+  case 214: /* progEnvParamNum: INTEGER  */
+#line 1715 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxEnvParams) {
+         yyerror(& (yylsp[0]), state, "invalid environment parameter reference");
+         YYERROR;
+      }
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4130 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 218: /* paramConstScalarUse: REAL  */
-#line 1732 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 1;
-	   (yyval.vector).data[0].f = (yyvsp[0].real);
-	   (yyval.vector).data[1].f = (yyvsp[0].real);
-	   (yyval.vector).data[2].f = (yyvsp[0].real);
-	   (yyval.vector).data[3].f = (yyvsp[0].real);
-	}
-#line 4120 "generated/src/mesa/program/program_parse.tab.c"
+  case 215: /* progLocalParamNum: INTEGER  */
+#line 1725 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->limits->MaxLocalParams) {
+         yyerror(& (yylsp[0]), state, "invalid local parameter reference");
+         YYERROR;
+      }
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4142 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 219: /* paramConstScalarUse: INTEGER  */
+  case 220: /* paramConstScalarDecl: signedFloatConstant  */
 #line 1740 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 1;
-	   (yyval.vector).data[0].f = (float) (yyvsp[0].integer);
-	   (yyval.vector).data[1].f = (float) (yyvsp[0].integer);
-	   (yyval.vector).data[2].f = (float) (yyvsp[0].integer);
-	   (yyval.vector).data[3].f = (float) (yyvsp[0].integer);
-	}
-#line 4132 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.vector).count = 4;
+      (yyval.vector).data[0].f = (yyvsp[0].real);
+      (yyval.vector).data[1].f = (yyvsp[0].real);
+      (yyval.vector).data[2].f = (yyvsp[0].real);
+      (yyval.vector).data[3].f = (yyvsp[0].real);
+   }
+#line 4154 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 220: /* paramConstVector: '{' signedFloatConstant '}'  */
+  case 221: /* paramConstScalarUse: REAL  */
 #line 1750 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 4;
-	   (yyval.vector).data[0].f = (yyvsp[-1].real);
-	   (yyval.vector).data[1].f = 0.0f;
-	   (yyval.vector).data[2].f = 0.0f;
-	   (yyval.vector).data[3].f = 1.0f;
-	}
-#line 4144 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.vector).count = 1;
+      (yyval.vector).data[0].f = (yyvsp[0].real);
+      (yyval.vector).data[1].f = (yyvsp[0].real);
+      (yyval.vector).data[2].f = (yyvsp[0].real);
+      (yyval.vector).data[3].f = (yyvsp[0].real);
+   }
+#line 4166 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 221: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant '}'  */
+  case 222: /* paramConstScalarUse: INTEGER  */
 #line 1758 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 4;
-	   (yyval.vector).data[0].f = (yyvsp[-3].real);
-	   (yyval.vector).data[1].f = (yyvsp[-1].real);
-	   (yyval.vector).data[2].f = 0.0f;
-	   (yyval.vector).data[3].f = 1.0f;
-	}
-#line 4156 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      (yyval.vector).count = 1;
+      (yyval.vector).data[0].f = (float) (yyvsp[0].integer);
+      (yyval.vector).data[1].f = (float) (yyvsp[0].integer);
+      (yyval.vector).data[2].f = (float) (yyvsp[0].integer);
+      (yyval.vector).data[3].f = (float) (yyvsp[0].integer);
+   }
+#line 4178 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 222: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant '}'  */
-#line 1767 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 4;
-	   (yyval.vector).data[0].f = (yyvsp[-5].real);
-	   (yyval.vector).data[1].f = (yyvsp[-3].real);
-	   (yyval.vector).data[2].f = (yyvsp[-1].real);
-	   (yyval.vector).data[3].f = 1.0f;
-	}
-#line 4168 "generated/src/mesa/program/program_parse.tab.c"
+  case 223: /* paramConstVector: '{' signedFloatConstant '}'  */
+#line 1768 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.vector).count = 4;
+      (yyval.vector).data[0].f = (yyvsp[-1].real);
+      (yyval.vector).data[1].f = 0.0f;
+      (yyval.vector).data[2].f = 0.0f;
+      (yyval.vector).data[3].f = 1.0f;
+   }
+#line 4190 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 223: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant '}'  */
+  case 224: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant '}'  */
 #line 1776 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.vector).count = 4;
-	   (yyval.vector).data[0].f = (yyvsp[-7].real);
-	   (yyval.vector).data[1].f = (yyvsp[-5].real);
-	   (yyval.vector).data[2].f = (yyvsp[-3].real);
-	   (yyval.vector).data[3].f = (yyvsp[-1].real);
-	}
-#line 4180 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 224: /* signedFloatConstant: optionalSign REAL  */
-#line 1786 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.real) = ((yyvsp[-1].negate)) ? -(yyvsp[0].real) : (yyvsp[0].real);
-	}
-#line 4188 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 225: /* signedFloatConstant: optionalSign INTEGER  */
-#line 1790 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.real) = (float)(((yyvsp[-1].negate)) ? -(yyvsp[0].integer) : (yyvsp[0].integer));
-	}
-#line 4196 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 226: /* optionalSign: '+'  */
-#line 1795 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.negate) = FALSE; }
+   {
+      (yyval.vector).count = 4;
+      (yyval.vector).data[0].f = (yyvsp[-3].real);
+      (yyval.vector).data[1].f = (yyvsp[-1].real);
+      (yyval.vector).data[2].f = 0.0f;
+      (yyval.vector).data[3].f = 1.0f;
+   }
 #line 4202 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 227: /* optionalSign: '-'  */
-#line 1796 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.negate) = TRUE;  }
-#line 4208 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 228: /* optionalSign: %empty  */
-#line 1797 "src/lib/mesa/src/mesa/program/program_parse.y"
-                         { (yyval.negate) = FALSE; }
+  case 225: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant '}'  */
+#line 1785 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.vector).count = 4;
+      (yyval.vector).data[0].f = (yyvsp[-5].real);
+      (yyval.vector).data[1].f = (yyvsp[-3].real);
+      (yyval.vector).data[2].f = (yyvsp[-1].real);
+      (yyval.vector).data[3].f = 1.0f;
+   }
 #line 4214 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 229: /* @1: %empty  */
-#line 1800 "src/lib/mesa/src/mesa/program/program_parse.y"
-                     { (yyval.integer) = (yyvsp[0].integer); }
-#line 4220 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 231: /* @2: %empty  */
-#line 1803 "src/lib/mesa/src/mesa/program/program_parse.y"
-                           { (yyval.integer) = (yyvsp[0].integer); }
+  case 226: /* paramConstVector: '{' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant ',' signedFloatConstant '}'  */
+#line 1794 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.vector).count = 4;
+      (yyval.vector).data[0].f = (yyvsp[-7].real);
+      (yyval.vector).data[1].f = (yyvsp[-5].real);
+      (yyval.vector).data[2].f = (yyvsp[-3].real);
+      (yyval.vector).data[3].f = (yyvsp[-1].real);
+   }
 #line 4226 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 233: /* varNameList: varNameList ',' IDENTIFIER  */
-#line 1807 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (!declare_variable(state, (yyvsp[0].string), (yyvsp[-3].integer), & (yylsp[0]))) {
-	      free((yyvsp[0].string));
-	      YYERROR;
-	   }
-	}
-#line 4237 "generated/src/mesa/program/program_parse.tab.c"
+  case 227: /* signedFloatConstant: optionalSign REAL  */
+#line 1804 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.real) = ((yyvsp[-1].negate)) ? -(yyvsp[0].real) : (yyvsp[0].real);
+   }
+#line 4234 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 234: /* varNameList: IDENTIFIER  */
-#line 1814 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (!declare_variable(state, (yyvsp[0].string), (yyvsp[-1].integer), & (yylsp[0]))) {
-	      free((yyvsp[0].string));
-	      YYERROR;
-	   }
-	}
+  case 228: /* signedFloatConstant: optionalSign INTEGER  */
+#line 1808 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.real) = (float)(((yyvsp[-1].negate)) ? -(yyvsp[0].integer) : (yyvsp[0].integer));
+   }
+#line 4242 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 229: /* optionalSign: '+'  */
+#line 1813 "src/lib/mesa/src/mesa/program/program_parse.y"
+                         { (yyval.negate) = FALSE; }
 #line 4248 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 235: /* OUTPUT_statement: OUTPUT IDENTIFIER '=' resultBinding  */
-#line 1823 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *const s =
-	      declare_variable(state, (yyvsp[-2].string), at_output, & (yylsp[-2]));
-
-	   if (s == NULL) {
-	      free((yyvsp[-2].string));
-	      YYERROR;
-	   } else {
-	      s->output_binding = (yyvsp[0].result);
-	   }
-	}
-#line 4264 "generated/src/mesa/program/program_parse.tab.c"
+  case 230: /* optionalSign: '-'  */
+#line 1814 "src/lib/mesa/src/mesa/program/program_parse.y"
+                    { (yyval.negate) = TRUE;  }
+#line 4254 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 236: /* resultBinding: RESULT POSITION  */
-#line 1837 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.result) = VARYING_SLOT_POS;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4277 "generated/src/mesa/program/program_parse.tab.c"
+  case 231: /* optionalSign: %empty  */
+#line 1815 "src/lib/mesa/src/mesa/program/program_parse.y"
+                    { (yyval.negate) = FALSE; }
+#line 4260 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 237: /* resultBinding: RESULT FOGCOORD  */
-#line 1846 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.result) = VARYING_SLOT_FOGC;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4290 "generated/src/mesa/program/program_parse.tab.c"
+  case 232: /* @1: %empty  */
+#line 1818 "src/lib/mesa/src/mesa/program/program_parse.y"
+                     { (yyval.integer) = (yyvsp[0].integer); }
+#line 4266 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 238: /* resultBinding: RESULT resultColBinding  */
+  case 234: /* @2: %empty  */
+#line 1821 "src/lib/mesa/src/mesa/program/program_parse.y"
+                           { (yyval.integer) = (yyvsp[0].integer); }
+#line 4272 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 236: /* varNameList: varNameList ',' IDENTIFIER  */
+#line 1825 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (!declare_variable(state, (yyvsp[0].string), (yyvsp[-3].integer), & (yylsp[0]))) {
+         free((yyvsp[0].string));
+         YYERROR;
+      }
+   }
+#line 4283 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 237: /* varNameList: IDENTIFIER  */
+#line 1832 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (!declare_variable(state, (yyvsp[0].string), (yyvsp[-1].integer), & (yylsp[0]))) {
+         free((yyvsp[0].string));
+         YYERROR;
+      }
+   }
+#line 4294 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 238: /* OUTPUT_statement: OUTPUT IDENTIFIER '=' resultBinding  */
+#line 1841 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *const s =
+         declare_variable(state, (yyvsp[-2].string), at_output, & (yylsp[-2]));
+
+      if (s == NULL) {
+         free((yyvsp[-2].string));
+         YYERROR;
+      } else {
+         s->output_binding = (yyvsp[0].result);
+      }
+   }
+#line 4310 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 239: /* resultBinding: RESULT POSITION  */
 #line 1855 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.result) = (yyvsp[0].result);
-	}
-#line 4298 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.result) = VARYING_SLOT_POS;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4323 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 239: /* resultBinding: RESULT POINTSIZE  */
-#line 1859 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.result) = VARYING_SLOT_PSIZ;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4311 "generated/src/mesa/program/program_parse.tab.c"
+  case 240: /* resultBinding: RESULT FOGCOORD  */
+#line 1864 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.result) = VARYING_SLOT_FOGC;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4336 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 240: /* resultBinding: RESULT TEXCOORD optTexCoordUnitNum  */
-#line 1868 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.result) = VARYING_SLOT_TEX0 + (yyvsp[0].integer);
-	   } else {
-	      yyerror(& (yylsp[-1]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4324 "generated/src/mesa/program/program_parse.tab.c"
+  case 241: /* resultBinding: RESULT resultColBinding  */
+#line 1873 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.result) = (yyvsp[0].result);
+   }
+#line 4344 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 241: /* resultBinding: RESULT DEPTH  */
+  case 242: /* resultBinding: RESULT POINTSIZE  */
 #line 1877 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_fragment) {
-	      (yyval.result) = FRAG_RESULT_DEPTH;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4337 "generated/src/mesa/program/program_parse.tab.c"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.result) = VARYING_SLOT_PSIZ;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4357 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 242: /* resultColBinding: COLOR optResultFaceType optResultColorType  */
-#line 1888 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.result) = (yyvsp[-1].integer) + (yyvsp[0].integer);
-	}
-#line 4345 "generated/src/mesa/program/program_parse.tab.c"
+  case 243: /* resultBinding: RESULT TEXCOORD optTexCoordUnitNum  */
+#line 1886 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.result) = VARYING_SLOT_TEX0 + (yyvsp[0].integer);
+      } else {
+         yyerror(& (yylsp[-1]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4370 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 243: /* optResultFaceType: %empty  */
-#line 1894 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.integer) = VARYING_SLOT_COL0;
-	   } else {
-	      if (state->option.DrawBuffers)
-		 (yyval.integer) = FRAG_RESULT_DATA0;
-	      else
-		 (yyval.integer) = FRAG_RESULT_COLOR;
-	   }
-	}
-#line 4360 "generated/src/mesa/program/program_parse.tab.c"
+  case 244: /* resultBinding: RESULT DEPTH  */
+#line 1895 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_fragment) {
+         (yyval.result) = FRAG_RESULT_DEPTH;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4383 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 244: /* optResultFaceType: '[' INTEGER ']'  */
-#line 1905 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      yyerror(& (yylsp[-2]), state, "invalid program result name");
-	      YYERROR;
-	   } else {
-	      if (!state->option.DrawBuffers) {
-		 /* From the ARB_draw_buffers spec (same text exists
-		  * for ATI_draw_buffers):
-		  *
-		  *     If this option is not specified, a fragment
-		  *     program that attempts to bind
-		  *     "result.color[n]" will fail to load, and only
-		  *     "result.color" will be allowed.
-		  */
-		 yyerror(& (yylsp[-2]), state,
-			 "result.color[] used without "
-			 "`OPTION ARB_draw_buffers' or "
-			 "`OPTION ATI_draw_buffers'");
-		 YYERROR;
-	      } else if ((yyvsp[-1].integer) >= state->MaxDrawBuffers) {
-		 yyerror(& (yylsp[-2]), state,
-			 "result.color[] exceeds MAX_DRAW_BUFFERS_ARB");
-		 YYERROR;
-	      }
-	      (yyval.integer) = FRAG_RESULT_DATA0 + (yyvsp[-1].integer);
-	   }
-	}
-#line 4392 "generated/src/mesa/program/program_parse.tab.c"
+  case 245: /* resultColBinding: COLOR optResultFaceType optResultColorType  */
+#line 1906 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.result) = (yyvsp[-1].integer) + (yyvsp[0].integer);
+   }
+#line 4391 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 245: /* optResultFaceType: FRONT  */
-#line 1933 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.integer) = VARYING_SLOT_COL0;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4405 "generated/src/mesa/program/program_parse.tab.c"
+  case 246: /* optResultFaceType: %empty  */
+#line 1912 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.integer) = VARYING_SLOT_COL0;
+      } else {
+         if (state->option.DrawBuffers)
+            (yyval.integer) = FRAG_RESULT_DATA0;
+         else
+            (yyval.integer) = FRAG_RESULT_COLOR;
+      }
+   }
+#line 4406 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 246: /* optResultFaceType: BACK  */
-#line 1942 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.integer) = VARYING_SLOT_BFC0;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4418 "generated/src/mesa/program/program_parse.tab.c"
+  case 247: /* optResultFaceType: '[' INTEGER ']'  */
+#line 1923 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         yyerror(& (yylsp[-2]), state, "invalid program result name");
+         YYERROR;
+      } else {
+         if (!state->option.DrawBuffers) {
+            /* From the ARB_draw_buffers spec (same text exists
+             * for ATI_draw_buffers):
+             *
+             *     If this option is not specified, a fragment
+             *     program that attempts to bind
+             *     "result.color[n]" will fail to load, and only
+             *     "result.color" will be allowed.
+             */
+            yyerror(& (yylsp[-2]), state,
+                    "result.color[] used without "
+                    "`OPTION ARB_draw_buffers' or "
+                    "`OPTION ATI_draw_buffers'");
+            YYERROR;
+         } else if ((yyvsp[-1].integer) >= state->MaxDrawBuffers) {
+            yyerror(& (yylsp[-2]), state,
+                    "result.color[] exceeds MAX_DRAW_BUFFERS_ARB");
+            YYERROR;
+         }
+         (yyval.integer) = FRAG_RESULT_DATA0 + (yyvsp[-1].integer);
+      }
+   }
+#line 4438 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 247: /* optResultColorType: %empty  */
-#line 1953 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   (yyval.integer) = 0;
-	}
-#line 4426 "generated/src/mesa/program/program_parse.tab.c"
+  case 248: /* optResultFaceType: FRONT  */
+#line 1951 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.integer) = VARYING_SLOT_COL0;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4451 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 248: /* optResultColorType: PRIMARY  */
-#line 1957 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.integer) = 0;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4439 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 249: /* optResultColorType: SECONDARY  */
-#line 1966 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if (state->mode == ARB_vertex) {
-	      (yyval.integer) = 1;
-	   } else {
-	      yyerror(& (yylsp[0]), state, "invalid program result name");
-	      YYERROR;
-	   }
-	}
-#line 4452 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 250: /* optFaceType: %empty  */
-#line 1976 "src/lib/mesa/src/mesa/program/program_parse.y"
-                { (yyval.integer) = 0; }
-#line 4458 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 251: /* optFaceType: FRONT  */
-#line 1977 "src/lib/mesa/src/mesa/program/program_parse.y"
-                { (yyval.integer) = 0; }
+  case 249: /* optResultFaceType: BACK  */
+#line 1960 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.integer) = VARYING_SLOT_BFC0;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
 #line 4464 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 252: /* optFaceType: BACK  */
-#line 1978 "src/lib/mesa/src/mesa/program/program_parse.y"
-                { (yyval.integer) = 1; }
-#line 4470 "generated/src/mesa/program/program_parse.tab.c"
+  case 250: /* optResultColorType: %empty  */
+#line 1971 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      (yyval.integer) = 0;
+   }
+#line 4472 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 253: /* optColorType: %empty  */
-#line 1981 "src/lib/mesa/src/mesa/program/program_parse.y"
-                    { (yyval.integer) = 0; }
-#line 4476 "generated/src/mesa/program/program_parse.tab.c"
+  case 251: /* optResultColorType: PRIMARY  */
+#line 1975 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.integer) = 0;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4485 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 254: /* optColorType: PRIMARY  */
-#line 1982 "src/lib/mesa/src/mesa/program/program_parse.y"
-                    { (yyval.integer) = 0; }
-#line 4482 "generated/src/mesa/program/program_parse.tab.c"
+  case 252: /* optResultColorType: SECONDARY  */
+#line 1984 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if (state->mode == ARB_vertex) {
+         (yyval.integer) = 1;
+      } else {
+         yyerror(& (yylsp[0]), state, "invalid program result name");
+         YYERROR;
+      }
+   }
+#line 4498 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 255: /* optColorType: SECONDARY  */
-#line 1983 "src/lib/mesa/src/mesa/program/program_parse.y"
-                    { (yyval.integer) = 1; }
-#line 4488 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 256: /* optTexCoordUnitNum: %empty  */
-#line 1986 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = 0; }
-#line 4494 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 257: /* optTexCoordUnitNum: '[' texCoordUnitNum ']'  */
-#line 1987 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = (yyvsp[-1].integer); }
-#line 4500 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 258: /* optTexImageUnitNum: %empty  */
-#line 1990 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = 0; }
-#line 4506 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 259: /* optTexImageUnitNum: '[' texImageUnitNum ']'  */
-#line 1991 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = (yyvsp[-1].integer); }
-#line 4512 "generated/src/mesa/program/program_parse.tab.c"
-    break;
-
-  case 260: /* optLegacyTexUnitNum: %empty  */
+  case 253: /* optFaceType: %empty  */
 #line 1994 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = 0; }
-#line 4518 "generated/src/mesa/program/program_parse.tab.c"
+                { (yyval.integer) = 0; }
+#line 4504 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 261: /* optLegacyTexUnitNum: '[' legacyTexUnitNum ']'  */
+  case 254: /* optFaceType: FRONT  */
 #line 1995 "src/lib/mesa/src/mesa/program/program_parse.y"
-                                   { (yyval.integer) = (yyvsp[-1].integer); }
-#line 4524 "generated/src/mesa/program/program_parse.tab.c"
+           { (yyval.integer) = 0; }
+#line 4510 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 262: /* texCoordUnitNum: INTEGER  */
+  case 255: /* optFaceType: BACK  */
+#line 1996 "src/lib/mesa/src/mesa/program/program_parse.y"
+           { (yyval.integer) = 1; }
+#line 4516 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 256: /* optColorType: %empty  */
 #line 1999 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureCoordUnits) {
-	      yyerror(& (yylsp[0]), state, "invalid texture coordinate unit selector");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 4537 "generated/src/mesa/program/program_parse.tab.c"
+                    { (yyval.integer) = 0; }
+#line 4522 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 263: /* texImageUnitNum: INTEGER  */
-#line 2010 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureImageUnits) {
-	      yyerror(& (yylsp[0]), state, "invalid texture image unit selector");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 4550 "generated/src/mesa/program/program_parse.tab.c"
+  case 257: /* optColorType: PRIMARY  */
+#line 2000 "src/lib/mesa/src/mesa/program/program_parse.y"
+               { (yyval.integer) = 0; }
+#line 4528 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 264: /* legacyTexUnitNum: INTEGER  */
-#line 2021 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureUnits) {
-	      yyerror(& (yylsp[0]), state, "invalid texture unit selector");
-	      YYERROR;
-	   }
-
-	   (yyval.integer) = (yyvsp[0].integer);
-	}
-#line 4563 "generated/src/mesa/program/program_parse.tab.c"
+  case 258: /* optColorType: SECONDARY  */
+#line 2001 "src/lib/mesa/src/mesa/program/program_parse.y"
+               { (yyval.integer) = 1; }
+#line 4534 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
-  case 265: /* ALIAS_statement: ALIAS IDENTIFIER '=' USED_IDENTIFIER  */
-#line 2032 "src/lib/mesa/src/mesa/program/program_parse.y"
-        {
-	   struct asm_symbol *exist = (struct asm_symbol *)
+  case 259: /* optTexCoordUnitNum: %empty  */
+#line 2004 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                   { (yyval.integer) = 0; }
+#line 4540 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 260: /* optTexCoordUnitNum: '[' texCoordUnitNum ']'  */
+#line 2005 "src/lib/mesa/src/mesa/program/program_parse.y"
+                              { (yyval.integer) = (yyvsp[-1].integer); }
+#line 4546 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 261: /* optTexImageUnitNum: %empty  */
+#line 2008 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                   { (yyval.integer) = 0; }
+#line 4552 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 262: /* optTexImageUnitNum: '[' texImageUnitNum ']'  */
+#line 2009 "src/lib/mesa/src/mesa/program/program_parse.y"
+                              { (yyval.integer) = (yyvsp[-1].integer); }
+#line 4558 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 263: /* optLegacyTexUnitNum: %empty  */
+#line 2012 "src/lib/mesa/src/mesa/program/program_parse.y"
+                                   { (yyval.integer) = 0; }
+#line 4564 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 264: /* optLegacyTexUnitNum: '[' legacyTexUnitNum ']'  */
+#line 2013 "src/lib/mesa/src/mesa/program/program_parse.y"
+                              { (yyval.integer) = (yyvsp[-1].integer); }
+#line 4570 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 265: /* texCoordUnitNum: INTEGER  */
+#line 2017 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureCoordUnits) {
+         yyerror(& (yylsp[0]), state, "invalid texture coordinate unit selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4583 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 266: /* texImageUnitNum: INTEGER  */
+#line 2028 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureImageUnits) {
+         yyerror(& (yylsp[0]), state, "invalid texture image unit selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4596 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 267: /* legacyTexUnitNum: INTEGER  */
+#line 2039 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      if ((unsigned) (yyvsp[0].integer) >= state->MaxTextureUnits) {
+         yyerror(& (yylsp[0]), state, "invalid texture unit selector");
+         YYERROR;
+      }
+
+      (yyval.integer) = (yyvsp[0].integer);
+   }
+#line 4609 "generated/src/mesa/program/program_parse.tab.c"
+    break;
+
+  case 268: /* ALIAS_statement: ALIAS IDENTIFIER '=' USED_IDENTIFIER  */
+#line 2050 "src/lib/mesa/src/mesa/program/program_parse.y"
+   {
+      struct asm_symbol *exist = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[-2].string));
-	   struct asm_symbol *target = (struct asm_symbol *)
+      struct asm_symbol *target = (struct asm_symbol *)
               _mesa_symbol_table_find_symbol(state->st, (yyvsp[0].string));
 
-	   free((yyvsp[0].string));
+      free((yyvsp[0].string));
 
-	   if (exist != NULL) {
-	      char m[1000];
-	      snprintf(m, sizeof(m), "redeclared identifier: %s", (yyvsp[-2].string));
-	      free((yyvsp[-2].string));
-	      yyerror(& (yylsp[-2]), state, m);
-	      YYERROR;
-	   } else if (target == NULL) {
-	      free((yyvsp[-2].string));
-	      yyerror(& (yylsp[0]), state,
-		      "undefined variable binding in ALIAS statement");
-	      YYERROR;
-	   } else {
-              _mesa_symbol_table_add_symbol(state->st, (yyvsp[-2].string), target);
-	   }
-	}
-#line 4591 "generated/src/mesa/program/program_parse.tab.c"
+      if (exist != NULL) {
+         char m[1000];
+         snprintf(m, sizeof(m), "redeclared identifier: %s", (yyvsp[-2].string));
+         free((yyvsp[-2].string));
+         yyerror(& (yylsp[-2]), state, m);
+         YYERROR;
+      } else if (target == NULL) {
+         free((yyvsp[-2].string));
+         yyerror(& (yylsp[0]), state,
+                 "undefined variable binding in ALIAS statement");
+         YYERROR;
+      } else {
+         _mesa_symbol_table_add_symbol(state->st, (yyvsp[-2].string), target);
+         free((yyvsp[-2].string));
+      }
+      (void)yynerrs;
+   }
+#line 4639 "generated/src/mesa/program/program_parse.tab.c"
     break;
 
 
-#line 4595 "generated/src/mesa/program/program_parse.tab.c"
+#line 4643 "generated/src/mesa/program/program_parse.tab.c"
 
       default: break;
     }
@@ -4668,7 +4716,7 @@ yyerrlab:
           }
         yyerror (&yylloc, state, yymsgp);
         if (yysyntax_error_status == YYENOMEM)
-          goto yyexhaustedlab;
+          YYNOMEM;
       }
     }
 
@@ -4705,6 +4753,7 @@ yyerrorlab:
      label yyerrorlab therefore never appears in user code.  */
   if (0)
     YYERROR;
+  ++yynerrs;
 
   /* Do not reclaim the symbols of the rule whose action triggered
      this YYERROR.  */
@@ -4768,7 +4817,7 @@ yyerrlab1:
 `-------------------------------------*/
 yyacceptlab:
   yyresult = 0;
-  goto yyreturn;
+  goto yyreturnlab;
 
 
 /*-----------------------------------.
@@ -4776,24 +4825,22 @@ yyacceptlab:
 `-----------------------------------*/
 yyabortlab:
   yyresult = 1;
-  goto yyreturn;
+  goto yyreturnlab;
 
 
-#if 1
-/*-------------------------------------------------.
-| yyexhaustedlab -- memory exhaustion comes here.  |
-`-------------------------------------------------*/
+/*-----------------------------------------------------------.
+| yyexhaustedlab -- YYNOMEM (memory exhaustion) comes here.  |
+`-----------------------------------------------------------*/
 yyexhaustedlab:
   yyerror (&yylloc, state, YY_("memory exhausted"));
   yyresult = 2;
-  goto yyreturn;
-#endif
+  goto yyreturnlab;
 
 
-/*-------------------------------------------------------.
-| yyreturn -- parsing is finished, clean up and return.  |
-`-------------------------------------------------------*/
-yyreturn:
+/*----------------------------------------------------------.
+| yyreturnlab -- parsing is finished, clean up and return.  |
+`----------------------------------------------------------*/
+yyreturnlab:
   if (yychar != YYEMPTY)
     {
       /* Make sure we have latest lookahead translation.  See comments at
@@ -4821,15 +4868,15 @@ yyreturn:
   return yyresult;
 }
 
-#line 2061 "src/lib/mesa/src/mesa/program/program_parse.y"
+#line 2081 "src/lib/mesa/src/mesa/program/program_parse.y"
 
 
 void
 asm_instruction_set_operands(struct asm_instruction *inst,
-			     const struct prog_dst_register *dst,
-			     const struct asm_src_register *src0,
-			     const struct asm_src_register *src1,
-			     const struct asm_src_register *src2)
+                             const struct prog_dst_register *dst,
+                             const struct asm_src_register *src0,
+                             const struct asm_src_register *src1,
+                             const struct asm_src_register *src2)
 {
    /* In the core ARB extensions only the KIL instruction doesn't have a
     * destination register.
@@ -4865,12 +4912,12 @@ asm_instruction_set_operands(struct asm_instruction *inst,
 
 struct asm_instruction *
 asm_instruction_ctor(enum prog_opcode op,
-		     const struct prog_dst_register *dst,
-		     const struct asm_src_register *src0,
-		     const struct asm_src_register *src1,
-		     const struct asm_src_register *src2)
+                     const struct prog_dst_register *dst,
+                     const struct asm_src_register *src0,
+                     const struct asm_src_register *src1,
+                     const struct asm_src_register *src2)
 {
-   struct asm_instruction *inst = CALLOC_STRUCT(asm_instruction);
+   struct asm_instruction *inst = calloc(1, sizeof(struct asm_instruction));
 
    if (inst) {
       _mesa_init_instructions(& inst->Base, 1);
@@ -4885,10 +4932,10 @@ asm_instruction_ctor(enum prog_opcode op,
 
 struct asm_instruction *
 asm_instruction_copy_ctor(const struct prog_instruction *base,
-			  const struct prog_dst_register *dst,
-			  const struct asm_src_register *src0,
-			  const struct asm_src_register *src1,
-			  const struct asm_src_register *src2)
+                          const struct prog_dst_register *dst,
+                          const struct asm_src_register *src0,
+                          const struct asm_src_register *src1,
+                          const struct asm_src_register *src2)
 {
    struct asm_instruction *inst = CALLOC_STRUCT(asm_instruction);
 
@@ -4924,8 +4971,8 @@ set_dst_reg(struct prog_dst_register *r, gl_register_file file, GLint index)
    assert(index <= maxIndex);
    (void) maxIndex;
    assert(file == PROGRAM_TEMPORARY ||
-	  file == PROGRAM_ADDRESS ||
-	  file == PROGRAM_OUTPUT);
+          file == PROGRAM_ADDRESS ||
+          file == PROGRAM_OUTPUT);
    memset(r, 0, sizeof(*r));
    r->File = file;
    r->Index = index;
@@ -5019,7 +5066,7 @@ validate_inputs(struct YYLTYPE *locp, struct asm_parser_state *state)
 
 struct asm_symbol *
 declare_variable(struct asm_parser_state *state, char *name, enum asm_type t,
-		 struct YYLTYPE *locp)
+                 struct YYLTYPE *locp)
 {
    struct asm_symbol *s = NULL;
    struct asm_symbol *exist = (struct asm_symbol *)
@@ -5036,30 +5083,30 @@ declare_variable(struct asm_parser_state *state, char *name, enum asm_type t,
       switch (t) {
       case at_temp:
          if (state->prog->arb.NumTemporaries >= state->limits->MaxTemps) {
-	    yyerror(locp, state, "too many temporaries declared");
-	    free(s);
-	    return NULL;
-	 }
+            yyerror(locp, state, "too many temporaries declared");
+            free(s);
+            return NULL;
+         }
 
          s->temp_binding = state->prog->arb.NumTemporaries;
          state->prog->arb.NumTemporaries++;
-	 break;
+         break;
 
       case at_address:
          if (state->prog->arb.NumAddressRegs >=
              state->limits->MaxAddressRegs) {
-	    yyerror(locp, state, "too many address registers declared");
-	    free(s);
-	    return NULL;
-	 }
+            yyerror(locp, state, "too many address registers declared");
+            free(s);
+            return NULL;
+         }
 
-	 /* FINISHME: Add support for multiple address registers.
-	  */
+         /* FINISHME: Add support for multiple address registers.
+          */
          state->prog->arb.NumAddressRegs++;
-	 break;
+         break;
 
       default:
-	 break;
+         break;
       }
 
       _mesa_symbol_table_add_symbol(state->st, s->name, s);
@@ -5072,7 +5119,7 @@ declare_variable(struct asm_parser_state *state, char *name, enum asm_type t,
 
 
 int add_state_reference(struct gl_program_parameter_list *param_list,
-			const gl_state_index16 tokens[STATE_LENGTH])
+                        const gl_state_index16 tokens[STATE_LENGTH])
 {
    const GLuint size = 4; /* XXX fix */
    char *name;
@@ -5092,8 +5139,8 @@ int add_state_reference(struct gl_program_parameter_list *param_list,
 
 int
 initialize_symbol_from_state(struct gl_program *prog,
-			     struct asm_symbol *param_var,
-			     const gl_state_index16 tokens[STATE_LENGTH])
+                             struct asm_symbol *param_var,
+                             const gl_state_index16 tokens[STATE_LENGTH])
 {
    int idx = -1;
    gl_state_index16 state_tokens[STATE_LENGTH];
@@ -5115,21 +5162,21 @@ initialize_symbol_from_state(struct gl_program *prog,
       const int last_row = state_tokens[3];
 
       for (row = first_row; row <= last_row; row++) {
-	 state_tokens[2] = state_tokens[3] = row;
+         state_tokens[2] = state_tokens[3] = row;
 
-	 idx = add_state_reference(prog->Parameters, state_tokens);
-	 if (param_var->param_binding_begin == ~0U) {
-	    param_var->param_binding_begin = idx;
+         idx = add_state_reference(prog->Parameters, state_tokens);
+         if (param_var->param_binding_begin == ~0U) {
+            param_var->param_binding_begin = idx;
             param_var->param_binding_swizzle = SWIZZLE_XYZW;
          }
 
-	 param_var->param_binding_length++;
+         param_var->param_binding_length++;
       }
    }
    else {
       idx = add_state_reference(prog->Parameters, state_tokens);
       if (param_var->param_binding_begin == ~0U) {
-	 param_var->param_binding_begin = idx;
+         param_var->param_binding_begin = idx;
          param_var->param_binding_swizzle = SWIZZLE_XYZW;
       }
       param_var->param_binding_length++;
@@ -5141,8 +5188,8 @@ initialize_symbol_from_state(struct gl_program *prog,
 
 int
 initialize_symbol_from_param(struct gl_program *prog,
-			     struct asm_symbol *param_var,
-			     const gl_state_index16 tokens[STATE_LENGTH])
+                             struct asm_symbol *param_var,
+                             const gl_state_index16 tokens[STATE_LENGTH])
 {
    int idx = -1;
    gl_state_index16 state_tokens[STATE_LENGTH];
@@ -5150,10 +5197,10 @@ initialize_symbol_from_param(struct gl_program *prog,
 
    memcpy(state_tokens, tokens, sizeof(state_tokens));
 
-   assert((state_tokens[0] == STATE_VERTEX_PROGRAM)
-	  || (state_tokens[0] == STATE_FRAGMENT_PROGRAM));
-   assert((state_tokens[1] == STATE_ENV)
-	  || (state_tokens[1] == STATE_LOCAL));
+   assert(state_tokens[0] == STATE_VERTEX_PROGRAM_ENV ||
+          state_tokens[0] == STATE_VERTEX_PROGRAM_LOCAL ||
+          state_tokens[0] == STATE_FRAGMENT_PROGRAM_ENV ||
+          state_tokens[0] == STATE_FRAGMENT_PROGRAM_LOCAL);
 
    /*
     * The param type is STATE_VAR.  The program parameter entry will
@@ -5165,26 +5212,26 @@ initialize_symbol_from_param(struct gl_program *prog,
    /* If we are adding a STATE_ENV or STATE_LOCAL that has multiple elements,
     * we need to unroll it and call add_state_reference() for each row
     */
-   if (state_tokens[2] != state_tokens[3]) {
+   if (state_tokens[1] != state_tokens[2]) {
       int row;
-      const int first_row = state_tokens[2];
-      const int last_row = state_tokens[3];
+      const int first_row = state_tokens[1];
+      const int last_row = state_tokens[2];
 
       for (row = first_row; row <= last_row; row++) {
-	 state_tokens[2] = state_tokens[3] = row;
+         state_tokens[1] = state_tokens[2] = row;
 
-	 idx = add_state_reference(prog->Parameters, state_tokens);
-	 if (param_var->param_binding_begin == ~0U) {
-	    param_var->param_binding_begin = idx;
+         idx = add_state_reference(prog->Parameters, state_tokens);
+         if (param_var->param_binding_begin == ~0U) {
+            param_var->param_binding_begin = idx;
             param_var->param_binding_swizzle = SWIZZLE_XYZW;
          }
-	 param_var->param_binding_length++;
+         param_var->param_binding_length++;
       }
    }
    else {
       idx = add_state_reference(prog->Parameters, state_tokens);
       if (param_var->param_binding_begin == ~0U) {
-	 param_var->param_binding_begin = idx;
+         param_var->param_binding_begin = idx;
          param_var->param_binding_swizzle = SWIZZLE_XYZW;
       }
       param_var->param_binding_length++;
@@ -5206,8 +5253,8 @@ initialize_symbol_from_param(struct gl_program *prog,
  */
 int
 initialize_symbol_from_const(struct gl_program *prog,
-			     struct asm_symbol *param_var,
-			     const struct asm_vector *vec,
+                             struct asm_symbol *param_var,
+                             const struct asm_vector *vec,
                              GLboolean allowSwizzle)
 {
    unsigned swizzle;
@@ -5271,7 +5318,7 @@ yyerror(YYLTYPE *locp, struct asm_parser_state *state, const char *s)
    }
 
    err_str = make_error_string("line %u, char %u: error: %s\n",
-			       locp->first_line, locp->first_column, s);
+                               locp->first_line, locp->first_column, s);
    _mesa_set_program_error(state->ctx, locp->position, err_str);
 
    if (err_str) {
@@ -5282,7 +5329,7 @@ yyerror(YYLTYPE *locp, struct asm_parser_state *state, const char *s)
 
 GLboolean
 _mesa_parse_arb_program(struct gl_context *ctx, GLenum target, const GLubyte *str,
-			GLsizei len, struct asm_parser_state *state)
+                        GLsizei len, struct asm_parser_state *state)
 {
    struct asm_instruction *inst;
    unsigned i;
@@ -5295,9 +5342,9 @@ _mesa_parse_arb_program(struct gl_context *ctx, GLenum target, const GLubyte *st
    state->prog->Target = target;
    state->prog->Parameters = _mesa_new_parameter_list();
 
-   /* Make a copy of the program string and force it to be NUL-terminated.
+   /* Make a copy of the program string and force it to be newline and NUL-terminated.
     */
-   strz = (GLubyte *) ralloc_size(state->mem_ctx, len + 1);
+   strz = (GLubyte *) ralloc_size(state->mem_ctx, len + 2);
    if (strz == NULL) {
       if (state->prog->Parameters) {
          _mesa_free_parameter_list(state->prog->Parameters);
@@ -5307,7 +5354,8 @@ _mesa_parse_arb_program(struct gl_context *ctx, GLenum target, const GLubyte *st
       return GL_FALSE;
    }
    memcpy (strz, str, len);
-   strz[len] = '\0';
+   strz[len]     = '\n';
+   strz[len + 1] = '\0';
 
    state->prog->String = strz;
 
@@ -5325,15 +5373,19 @@ _mesa_parse_arb_program(struct gl_context *ctx, GLenum target, const GLubyte *st
    state->MaxProgramMatrices = ctx->Const.MaxProgramMatrices;
    state->MaxDrawBuffers = ctx->Const.MaxDrawBuffers;
 
-   state->state_param_enum = (target == GL_VERTEX_PROGRAM_ARB)
-      ? STATE_VERTEX_PROGRAM : STATE_FRAGMENT_PROGRAM;
+   state->state_param_enum_env = (target == GL_VERTEX_PROGRAM_ARB)
+      ? STATE_VERTEX_PROGRAM_ENV : STATE_FRAGMENT_PROGRAM_ENV;
+   state->state_param_enum_local = (target == GL_VERTEX_PROGRAM_ARB)
+      ? STATE_VERTEX_PROGRAM_LOCAL : STATE_FRAGMENT_PROGRAM_LOCAL;
 
    _mesa_set_program_error(ctx, -1, NULL);
 
-   _mesa_program_lexer_ctor(& state->scanner, state, (const char *) str, len);
+   _mesa_program_lexer_ctor(& state->scanner, state, (const char *) strz, len + 1);
    yyparse(state);
    _mesa_program_lexer_dtor(state->scanner);
 
+   /* Remove the newline we added so reflection returns the original string */
+   strz[len] = '\0';
 
    if (ctx->Program.ErrorPos != -1) {
       goto error;

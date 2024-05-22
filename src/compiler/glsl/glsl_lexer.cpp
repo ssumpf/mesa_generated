@@ -251,6 +251,7 @@
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
 /* begin standard C headers. */
+
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
@@ -267,8 +268,8 @@
 
 #if defined (__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
 
-/* C99 says to define __STDC_LIMIT_MACROS before including stdint.h,
- * if you want the limit (max/min) macros for int types. 
+/* C++ systems might need __STDC_LIMIT_MACROS defined before including
+ * <stdint.h>, if you want the limit (max/min) macros for int types.
  */
 #ifndef __STDC_LIMIT_MACROS
 #define __STDC_LIMIT_MACROS 1
@@ -1424,7 +1425,7 @@ static const flex_int16_t yy_chk[1684] =
 #include "ast.h"
 #include "glsl_parser_extras.h"
 #include "glsl_parser.h"
-#include "main/mtypes.h"
+#include "main/consts_exts.h"
 
 static int classify_identifier(struct _mesa_glsl_parse_state *, const char *,
 			       unsigned name_len, YYSTYPE *output);
@@ -1515,11 +1516,13 @@ static int classify_identifier(struct _mesa_glsl_parse_state *, const char *,
 
 /**
  * A macro for handling keywords that have been present in GLSL since
- * its origin, but were changed into reserved words in GLSL 3.00 ES.
+ * its origin, but were changed into reserved words in later versions.
  */
-#define DEPRECATED_ES_KEYWORD(token)					\
+#define DEPRECATED_KEYWORD(token, state, reserved_glsl,			\
+                           reserved_glsl_es)				\
    do {									\
-      if (yyextra->is_version(0, 300)) {				\
+      if (yyextra->is_version(reserved_glsl, reserved_glsl_es) &&	\
+          !state->compat_shader) {					\
 	 _mesa_glsl_error(yylloc, yyextra,				\
 			  "illegal use of reserved word `%s'", yytext);	\
 	 return ERROR_TOK;						\
@@ -1529,7 +1532,7 @@ static int classify_identifier(struct _mesa_glsl_parse_state *, const char *,
    } while (0)
 
 /**
- * Like DEPRECATED_ES_KEYWORD, but for types
+ * Like DEPRECATED_KEYWORD, but for types
  */
 #define DEPRECATED_ES_TYPE_WITH_ALT(alt_expr, gtype)			\
    do {									\
@@ -1603,13 +1606,13 @@ literal_integer(char *text, int len, struct _mesa_glsl_parse_state *state,
 #define LITERAL_INTEGER(base) \
    literal_integer(yytext, yyleng, yyextra, yylval, yylloc, base)
 
-#line 1606 "generated/src/compiler/glsl/glsl_lexer.cpp"
-#line 219 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 1609 "generated/src/compiler/glsl/glsl_lexer.cpp"
+#line 221 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 	/* Note: When adding any start conditions to this list, you must also
 	 * update the "Internal compiler error" catch-all rule near the end of
 	 * this file. */
 
-#line 1612 "generated/src/compiler/glsl/glsl_lexer.cpp"
+#line 1615 "generated/src/compiler/glsl/glsl_lexer.cpp"
 
 #define INITIAL 0
 #define PP 1
@@ -1894,10 +1897,10 @@ YY_DECL
 		}
 
 	{
-#line 232 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 234 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 
 
-#line 1900 "generated/src/compiler/glsl/glsl_lexer.cpp"
+#line 1903 "generated/src/compiler/glsl/glsl_lexer.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1953,31 +1956,31 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 234 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 236 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 ;
 	YY_BREAK
-/* Preprocessor tokens. */ 
+/* Preprocessor tokens. */
 case 2:
 *yy_cp = yyg->yy_hold_char; /* undo effects of setting up yytext */
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 237 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 239 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 ;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 238 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 240 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { BEGIN PP; return VERSION_TOK; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 239 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 241 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { BEGIN PP; return EXTENSION; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 240 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 242 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
                                   if (!yyextra->ARB_shading_language_include_enable) {
                                      struct _mesa_glsl_parse_state *state = yyextra;
@@ -1992,7 +1995,7 @@ case 6:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 248 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 250 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				   /* Eat characters until the first digit is
 				    * encountered
@@ -2024,7 +2027,7 @@ case 7:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 273 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 275 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
                                    if (!yyextra->ARB_shading_language_include_enable) {
                                       struct _mesa_glsl_parse_state *state = yyextra;
@@ -2062,7 +2065,7 @@ YY_RULE_SETUP
 
                                    char *end = strrchr(ptr, '"');
                                    int path_len = (end - ptr) + 1;
-                                   void *mem_ctx = yyextra->linalloc;
+                                   linear_ctx *mem_ctx = yyextra->linalloc;
                                    yylloc->path = (char *) linear_alloc_child(mem_ctx, path_len);
                                    memcpy(yylloc->path, ptr, path_len);
                                    yylloc->path[path_len - 1] = '\0';
@@ -2073,7 +2076,7 @@ case 8:
 yyg->yy_c_buf_p = yy_cp -= 1;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-#line 315 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 317 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				   /* Eat characters until the first digit is
 				    * encountered
@@ -2099,7 +2102,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 337 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 339 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_DEBUG_ON;
@@ -2107,7 +2110,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 341 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 343 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_DEBUG_OFF;
@@ -2115,7 +2118,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 345 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 347 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_OPTIMIZE_ON;
@@ -2123,7 +2126,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 349 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 351 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_OPTIMIZE_OFF;
@@ -2131,7 +2134,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 353 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 355 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_WARNING_ON;
@@ -2139,7 +2142,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 357 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 359 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_WARNING_OFF;
@@ -2147,7 +2150,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 361 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 363 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				  BEGIN PP;
 				  return PRAGMA_INVARIANT_ALL;
@@ -2155,44 +2158,44 @@ YY_RULE_SETUP
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 365 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 367 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { BEGIN PRAGMA; }
 	YY_BREAK
 case 17:
 /* rule 17 can match eol */
 YY_RULE_SETUP
-#line 367 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 369 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { BEGIN 0; yylineno++; yycolumn = 0; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 368 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 370 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 370 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 372 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 371 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 373 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 372 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 374 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return COLON;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 373 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 375 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				   /* We're not doing linear_strdup here, to avoid an implicit call
 				    * on strlen() for the length of the string, as this is already
 				    * found by flex and stored in yyleng
 				    */
-                                    void *mem_ctx = yyextra->linalloc;
+                                    linear_ctx *mem_ctx = yyextra->linalloc;
                                     char *id = (char *) linear_alloc_child(mem_ctx, yyleng + 1);
                                     memcpy(id, yytext, yyleng + 1);
                                     yylval->identifier = id;
@@ -2201,7 +2204,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 384 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 386 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				    yylval->n = strtol(yytext, NULL, 10);
 				    return INTCONSTANT;
@@ -2209,7 +2212,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 388 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 390 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 				    yylval->n = 0;
 				    return INTCONSTANT;
@@ -2218,455 +2221,455 @@ YY_RULE_SETUP
 case 25:
 /* rule 25 can match eol */
 YY_RULE_SETUP
-#line 392 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 394 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { BEGIN 0; yylineno++; yycolumn = 0; return EOL; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 393 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 395 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { return yytext[0]; }
 	YY_BREAK
 case 27:
 /* rule 27 can match eol */
 YY_RULE_SETUP
-#line 395 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 397 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { yylineno++; yycolumn = 0; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 397 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-DEPRECATED_ES_KEYWORD(ATTRIBUTE);
+#line 399 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+DEPRECATED_KEYWORD(ATTRIBUTE, yyextra, 420, 300);
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 398 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 400 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return CONST_TOK;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 399 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::bool_type; return BASIC_TYPE_TOK; }
+#line 401 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_bool; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 400 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::float_type; return BASIC_TYPE_TOK; }
+#line 402 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_float; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 401 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::int_type; return BASIC_TYPE_TOK; }
+#line 403 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_int; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 402 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(130, 300, 130, 300, glsl_type::uint_type);
+#line 404 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(130, 300, 130, 300, &glsl_type_builtin_uint);
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 404 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 406 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return BREAK;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 405 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 407 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return CONTINUE;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 406 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 408 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return DO;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 407 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 409 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return WHILE;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 408 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 410 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return ELSE;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 409 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 411 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return FOR;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 410 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 412 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return IF;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 411 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 413 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return DISCARD;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 412 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 414 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return RETURN;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 413 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 415 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(0, 0, 0, 0, yyextra->EXT_demote_to_helper_invocation_enable, DEMOTE);
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 415 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::bvec2_type; return BASIC_TYPE_TOK; }
+#line 417 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_bvec2; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 416 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::bvec3_type; return BASIC_TYPE_TOK; }
+#line 418 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_bvec3; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 417 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::bvec4_type; return BASIC_TYPE_TOK; }
+#line 419 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_bvec4; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 418 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::ivec2_type; return BASIC_TYPE_TOK; }
+#line 420 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_ivec2; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 419 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::ivec3_type; return BASIC_TYPE_TOK; }
+#line 421 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_ivec3; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 420 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::ivec4_type; return BASIC_TYPE_TOK; }
+#line 422 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_ivec4; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 421 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, glsl_type::uvec2_type);
+#line 423 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, &glsl_type_builtin_uvec2);
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 422 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, glsl_type::uvec3_type);
+#line 424 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, &glsl_type_builtin_uvec3);
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 423 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, glsl_type::uvec4_type);
+#line 425 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, &glsl_type_builtin_uvec4);
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 424 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::vec2_type; return BASIC_TYPE_TOK; }
+#line 426 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_vec2; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 425 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::vec3_type; return BASIC_TYPE_TOK; }
+#line 427 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_vec3; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 426 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::vec4_type; return BASIC_TYPE_TOK; }
+#line 428 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_vec4; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 427 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::mat2_type; return BASIC_TYPE_TOK; }
+#line 429 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_mat2; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 428 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::mat3_type; return BASIC_TYPE_TOK; }
+#line 430 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_mat3; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 429 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::mat4_type; return BASIC_TYPE_TOK; }
+#line 431 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_mat4; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 430 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat2_type);
+#line 432 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat2);
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 431 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat2x3_type);
+#line 433 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat2x3);
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 432 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat2x4_type);
+#line 434 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat2x4);
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 433 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat3x2_type);
+#line 435 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat3x2);
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 434 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat3_type);
+#line 436 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat3);
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 435 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat3x4_type);
+#line 437 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat3x4);
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 436 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat4x2_type);
+#line 438 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat4x2);
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 437 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat4x3_type);
+#line 439 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat4x3);
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 438 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE(120, 300, 120, 300, glsl_type::mat4_type);
+#line 440 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE(120, 300, 120, 300, &glsl_type_builtin_mat4);
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 440 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 442 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return IN_TOK;
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 441 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 443 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return OUT_TOK;
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 442 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 444 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return INOUT_TOK;
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 443 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 445 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return UNIFORM;
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 444 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 446 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(0, 0, 430, 310, yyextra->ARB_shader_storage_buffer_object_enable, BUFFER);
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 445 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-DEPRECATED_ES_KEYWORD(VARYING);
+#line 447 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+DEPRECATED_KEYWORD(VARYING, yyextra, 420, 300);
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 446 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 448 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(120, 300, 120, 300, yyextra->EXT_gpu_shader4_enable, CENTROID);
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 447 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 449 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(120, 100, 120, 100, INVARIANT);
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 448 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 450 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(130, 100, 130, 300, yyextra->EXT_gpu_shader4_enable, FLAT);
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 449 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 451 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 130, 300, SMOOTH);
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 450 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-KEYWORD_WITH_ALT(130, 300, 130, 0, yyextra->EXT_gpu_shader4_enable, NOPERSPECTIVE);
+#line 452 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+KEYWORD_WITH_ALT(130, 300, 130, 0, yyextra->EXT_gpu_shader4_enable || yyextra->NV_shader_noperspective_interpolation_enable, NOPERSPECTIVE);
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 451 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 453 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(0, 300, 400, 320, yyextra->has_tessellation_shader(), PATCH);
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 453 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-DEPRECATED_ES_TYPE(glsl_type::sampler1D_type);
+#line 455 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+DEPRECATED_ES_TYPE(&glsl_type_builtin_sampler1D);
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 454 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::sampler2D_type; return BASIC_TYPE_TOK; }
+#line 456 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_sampler2D; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 455 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::sampler3D_type; return BASIC_TYPE_TOK; }
+#line 457 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_sampler3D; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 456 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::samplerCube_type; return BASIC_TYPE_TOK; }
+#line 458 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_samplerCube; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 457 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::sampler1DArray_type);
+#line 459 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_array, &glsl_type_builtin_sampler1DArray);
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 458 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::sampler2DArray_type);
+#line 460 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_array, &glsl_type_builtin_sampler2DArray);
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 459 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-DEPRECATED_ES_TYPE(glsl_type::sampler1DShadow_type);
+#line 461 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+DEPRECATED_ES_TYPE(&glsl_type_builtin_sampler1DShadow);
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 460 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-{ yylval->type = glsl_type::sampler2DShadow_type; return BASIC_TYPE_TOK; }
+#line 462 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+{ yylval->type = &glsl_type_builtin_sampler2DShadow; return BASIC_TYPE_TOK; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 461 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, glsl_type::samplerCubeShadow_type);
+#line 463 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable, &glsl_type_builtin_samplerCubeShadow);
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 462 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::sampler1DArrayShadow_type);
+#line 464 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_array, &glsl_type_builtin_sampler1DArrayShadow);
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 463 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::sampler2DArrayShadow_type);
+#line 465 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_array, &glsl_type_builtin_sampler2DArrayShadow);
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 464 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::isampler1D_type);
+#line 466 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_isampler1D);
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 465 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::isampler2D_type);
+#line 467 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_isampler2D);
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 466 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::isampler3D_type);
+#line 468 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_isampler3D);
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 467 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::isamplerCube_type);
+#line 469 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_isamplerCube);
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 468 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::isampler1DArray_type);
+#line 470 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer && yyextra->exts->EXT_texture_array, &glsl_type_builtin_isampler1DArray);
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 469 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::isampler2DArray_type);
+#line 471 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer && yyextra->exts->EXT_texture_array, &glsl_type_builtin_isampler2DArray);
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 470 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::usampler1D_type);
+#line 472 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_usampler1D);
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 471 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::usampler2D_type);
+#line 473 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_usampler2D);
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 472 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::usampler3D_type);
+#line 474 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_usampler3D);
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 473 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::usamplerCube_type);
+#line 475 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_usamplerCube);
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 474 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::usampler1DArray_type);
+#line 476 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 0,   yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer && yyextra->exts->EXT_texture_array, &glsl_type_builtin_usampler1DArray);
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 475 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_integer && yyextra->ctx->Extensions.EXT_texture_array, glsl_type::usampler2DArray_type);
+#line 477 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 130, 300, yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_integer && yyextra->exts->EXT_texture_array, &glsl_type_builtin_usampler2DArray);
 	YY_BREAK
 /* additional keywords in ARB_texture_multisample, included in GLSL 1.50 */
 /* these are reserved but not defined in GLSL 3.00 */
 /* [iu]sampler2DMS are defined in GLSL ES 3.10 */
 case 103:
 YY_RULE_SETUP
-#line 480 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, glsl_type::sampler2DMS_type);
+#line 482 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, &glsl_type_builtin_sampler2DMS);
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 481 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, glsl_type::isampler2DMS_type);
+#line 483 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, &glsl_type_builtin_isampler2DMS);
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 482 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, glsl_type::usampler2DMS_type);
+#line 484 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 310, yyextra->ARB_texture_multisample_enable, &glsl_type_builtin_usampler2DMS);
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 483 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, glsl_type::sampler2DMSArray_type);
+#line 485 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, &glsl_type_builtin_sampler2DMSArray);
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 484 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, glsl_type::isampler2DMSArray_type);
+#line 486 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, &glsl_type_builtin_isampler2DMSArray);
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 485 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, glsl_type::usampler2DMSArray_type);
+#line 487 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(150, 300, 150, 320, yyextra->ARB_texture_multisample_enable || yyextra->OES_texture_storage_multisample_2d_array_enable, &glsl_type_builtin_usampler2DMSArray);
 	YY_BREAK
 /* keywords available with ARB_texture_cube_map_array_enable extension on desktop GLSL */
 case 109:
 YY_RULE_SETUP
-#line 488 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::samplerCubeArray_type);
+#line 490 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_samplerCubeArray);
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 489 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::isamplerCubeArray_type);
+#line 491 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_isamplerCubeArray);
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 490 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::usamplerCubeArray_type);
+#line 492 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_usamplerCubeArray);
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 491 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::samplerCubeArrayShadow_type);
+#line 493 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(400, 310, 400, 320, yyextra->ARB_texture_cube_map_array_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_samplerCubeArrayShadow);
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 493 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 495 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			  if (yyextra->OES_EGL_image_external_enable || yyextra->OES_EGL_image_external_essl3_enable) {
-			     yylval->type = glsl_type::samplerExternalOES_type;
+			     yylval->type = &glsl_type_builtin_samplerExternalOES;
 			     return BASIC_TYPE_TOK;
 			  } else
 			     return IDENTIFIER;
@@ -2675,243 +2678,243 @@ YY_RULE_SETUP
 /* keywords available with ARB_gpu_shader5 */
 case 114:
 YY_RULE_SETUP
-#line 502 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 504 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(400, 310, 400, 320, yyextra->ARB_gpu_shader5_enable || yyextra->EXT_gpu_shader5_enable || yyextra->OES_gpu_shader5_enable, PRECISE);
 	YY_BREAK
 /* keywords available with ARB_shader_image_load_store */
 case 115:
 YY_RULE_SETUP
-#line 505 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image1D_type);
+#line 507 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image1D);
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 506 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image2D_type);
+#line 508 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image2D);
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 507 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image3D_type);
+#line 509 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image3D);
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 508 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image2DRect_type);
+#line 510 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image2DRect);
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 509 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::imageCube_type);
+#line 511 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_imageCube);
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 510 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, glsl_type::imageBuffer_type);
+#line 512 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, &glsl_type_builtin_imageBuffer);
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 511 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image1DArray_type);
+#line 513 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image1DArray);
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 512 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image2DArray_type);
+#line 514 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image2DArray);
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 513 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::imageCubeArray_type);
+#line 515 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_imageCubeArray);
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 514 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image2DMS_type);
+#line 516 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image2DMS);
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 515 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::image2DMSArray_type);
+#line 517 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_image2DMSArray);
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 516 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage1D_type);
+#line 518 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage1D);
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 517 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage2D_type);
+#line 519 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage2D);
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 518 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage3D_type);
+#line 520 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage3D);
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 519 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage2DRect_type);
+#line 521 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage2DRect);
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 520 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimageCube_type);
+#line 522 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimageCube);
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-#line 521 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, glsl_type::iimageBuffer_type);
+#line 523 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, &glsl_type_builtin_iimageBuffer);
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 522 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage1DArray_type);
+#line 524 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage1DArray);
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 523 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage2DArray_type);
+#line 525 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage2DArray);
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 524 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::iimageCubeArray_type);
+#line 526 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_iimageCubeArray);
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 525 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage2DMS_type);
+#line 527 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage2DMS);
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 526 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::iimage2DMSArray_type);
+#line 528 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_iimage2DMSArray);
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 527 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage1D_type);
+#line 529 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage1D);
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 528 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage2D_type);
+#line 530 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage2D);
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 529 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage3D_type);
+#line 531 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage3D);
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-#line 530 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage2DRect_type);
+#line 532 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage2DRect);
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-#line 531 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimageCube_type);
+#line 533 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimageCube);
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-#line 532 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, glsl_type::uimageBuffer_type);
+#line 534 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable, &glsl_type_builtin_uimageBuffer);
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-#line 533 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage1DArray_type);
+#line 535 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage1DArray);
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-#line 534 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage2DArray_type);
+#line 536 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage2DArray);
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-#line 535 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, glsl_type::uimageCubeArray_type);
+#line 537 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 320, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->OES_texture_cube_map_array_enable || yyextra->EXT_texture_cube_map_array_enable, &glsl_type_builtin_uimageCubeArray);
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
-#line 536 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage2DMS_type);
+#line 538 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage2DMS);
 	YY_BREAK
 case 147:
 YY_RULE_SETUP
-#line 537 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, glsl_type::uimage2DMSArray_type);
+#line 539 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 420, 0, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable, &glsl_type_builtin_uimage2DMSArray);
 	YY_BREAK
 case 148:
 YY_RULE_SETUP
-#line 538 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-KEYWORD(130, 300, 0, 0, IMAGE1DSHADOW);
+#line 540 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+KEYWORD(130, 0, 420, 0, IMAGE1DSHADOW);
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-#line 539 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-KEYWORD(130, 300, 0, 0, IMAGE2DSHADOW);
+#line 541 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+KEYWORD(130, 0, 420, 0, IMAGE2DSHADOW);
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-#line 540 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-KEYWORD(130, 300, 0, 0, IMAGE1DARRAYSHADOW);
+#line 542 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+KEYWORD(130, 0, 420, 0, IMAGE1DARRAYSHADOW);
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-#line 541 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-KEYWORD(130, 300, 0, 0, IMAGE2DARRAYSHADOW);
+#line 543 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+KEYWORD(130, 0, 420, 0, IMAGE2DARRAYSHADOW);
 	YY_BREAK
 case 152:
 YY_RULE_SETUP
-#line 543 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 545 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->ARB_shader_storage_buffer_object_enable, COHERENT);
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-#line 544 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 546 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(110, 100, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->ARB_shader_storage_buffer_object_enable, VOLATILE);
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-#line 545 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 547 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->EXT_shader_image_load_store_enable || yyextra->ARB_shader_storage_buffer_object_enable, RESTRICT);
 	YY_BREAK
 case 155:
 YY_RULE_SETUP
-#line 546 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 548 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->ARB_shader_storage_buffer_object_enable, READONLY);
 	YY_BREAK
 case 156:
 YY_RULE_SETUP
-#line 547 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 549 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_image_load_store_enable || yyextra->ARB_shader_storage_buffer_object_enable, WRITEONLY);
 	YY_BREAK
 case 157:
 YY_RULE_SETUP
-#line 549 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_atomic_counters_enable, glsl_type::atomic_uint_type);
+#line 551 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(420, 300, 420, 310, yyextra->ARB_shader_atomic_counters_enable, &glsl_type_builtin_atomic_uint);
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-#line 551 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 553 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(430, 310, 430, 310, yyextra->ARB_compute_shader_enable, SHARED);
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-#line 553 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 555 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return STRUCT;
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-#line 554 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 556 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return VOID_TOK;
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-#line 556 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 558 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 		  if ((yyextra->is_version(140, 300))
 		      || yyextra->ARB_bindless_texture_enable
@@ -2936,139 +2939,139 @@ YY_RULE_SETUP
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-#line 578 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 580 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return INC_OP;
 	YY_BREAK
 case 163:
 YY_RULE_SETUP
-#line 579 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 581 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return DEC_OP;
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-#line 580 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 582 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return LE_OP;
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-#line 581 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 583 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return GE_OP;
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-#line 582 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 584 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return EQ_OP;
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-#line 583 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 585 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return NE_OP;
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-#line 584 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 586 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return AND_OP;
 	YY_BREAK
 case 169:
 YY_RULE_SETUP
-#line 585 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 587 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return OR_OP;
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-#line 586 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 588 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return XOR_OP;
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-#line 587 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 589 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return LEFT_OP;
 	YY_BREAK
 case 172:
 YY_RULE_SETUP
-#line 588 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 590 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return RIGHT_OP;
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-#line 590 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 592 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return MUL_ASSIGN;
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-#line 591 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 593 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return DIV_ASSIGN;
 	YY_BREAK
 case 175:
 YY_RULE_SETUP
-#line 592 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 594 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return ADD_ASSIGN;
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-#line 593 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 595 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return MOD_ASSIGN;
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-#line 594 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 596 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return LEFT_ASSIGN;
 	YY_BREAK
 case 178:
 YY_RULE_SETUP
-#line 595 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 597 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return RIGHT_ASSIGN;
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-#line 596 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 598 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return AND_ASSIGN;
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-#line 597 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 599 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return XOR_ASSIGN;
 	YY_BREAK
 case 181:
 YY_RULE_SETUP
-#line 598 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 600 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return OR_ASSIGN;
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-#line 599 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 601 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 return SUB_ASSIGN;
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-#line 601 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 603 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    return LITERAL_INTEGER(10);
 			}
 	YY_BREAK
 case 184:
 YY_RULE_SETUP
-#line 604 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 606 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    return LITERAL_INTEGER(16);
 			}
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-#line 607 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 609 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    return LITERAL_INTEGER(8);
 			}
 	YY_BREAK
 case 186:
-#line 612 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-case 187:
-#line 613 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-case 188:
 #line 614 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+case 187:
+#line 615 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+case 188:
+#line 616 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 case 189:
 YY_RULE_SETUP
-#line 614 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 616 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    struct _mesa_glsl_parse_state *state = yyextra;
 			    char suffix = yytext[strlen(yytext) - 1];
@@ -3082,14 +3085,14 @@ YY_RULE_SETUP
 			}
 	YY_BREAK
 case 190:
-#line 627 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-case 191:
-#line 628 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-case 192:
 #line 629 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+case 191:
+#line 630 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+case 192:
+#line 631 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 case 193:
 YY_RULE_SETUP
-#line 629 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 631 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    if (!yyextra->is_version(400, 0) &&
 			        !yyextra->ARB_gpu_shader_fp64_enable)
@@ -3100,7 +3103,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 194:
 YY_RULE_SETUP
-#line 637 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 639 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    yylval->n = 1;
 			    return BOOLCONSTANT;
@@ -3108,7 +3111,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 195:
 YY_RULE_SETUP
-#line 641 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 643 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    yylval->n = 0;
 			    return BOOLCONSTANT;
@@ -3117,417 +3120,417 @@ YY_RULE_SETUP
 /* Reserved words in GLSL 1.10. */
 case 196:
 YY_RULE_SETUP
-#line 648 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 650 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, ASM);
 	YY_BREAK
 case 197:
 YY_RULE_SETUP
-#line 649 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 651 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, CLASS);
 	YY_BREAK
 case 198:
 YY_RULE_SETUP
-#line 650 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 652 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, UNION);
 	YY_BREAK
 case 199:
 YY_RULE_SETUP
-#line 651 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 653 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, ENUM);
 	YY_BREAK
 case 200:
 YY_RULE_SETUP
-#line 652 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 654 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, TYPEDEF);
 	YY_BREAK
 case 201:
 YY_RULE_SETUP
-#line 653 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 655 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, TEMPLATE);
 	YY_BREAK
 case 202:
 YY_RULE_SETUP
-#line 654 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 656 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, THIS);
 	YY_BREAK
 case 203:
 YY_RULE_SETUP
-#line 655 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 657 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(110, 100, 140, 300, yyextra->ARB_uniform_buffer_object_enable, PACKED_TOK);
 	YY_BREAK
 case 204:
 YY_RULE_SETUP
-#line 656 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 658 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, GOTO);
 	YY_BREAK
 case 205:
 YY_RULE_SETUP
-#line 657 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 659 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 130, 300, SWITCH);
 	YY_BREAK
 case 206:
 YY_RULE_SETUP
-#line 658 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 660 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 130, 300, DEFAULT);
 	YY_BREAK
 case 207:
 YY_RULE_SETUP
-#line 659 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 661 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, INLINE_TOK);
 	YY_BREAK
 case 208:
 YY_RULE_SETUP
-#line 660 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 662 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, NOINLINE);
 	YY_BREAK
 case 209:
 YY_RULE_SETUP
-#line 661 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 663 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, PUBLIC_TOK);
 	YY_BREAK
 case 210:
 YY_RULE_SETUP
-#line 662 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 664 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, STATIC);
 	YY_BREAK
 case 211:
 YY_RULE_SETUP
-#line 663 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 665 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, EXTERN);
 	YY_BREAK
 case 212:
 YY_RULE_SETUP
-#line 664 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 666 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, EXTERNAL);
 	YY_BREAK
 case 213:
 YY_RULE_SETUP
-#line 665 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 667 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, INTERFACE_TOK);
 	YY_BREAK
 case 214:
 YY_RULE_SETUP
-#line 666 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 668 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, LONG_TOK);
 	YY_BREAK
 case 215:
 YY_RULE_SETUP
-#line 667 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 669 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, SHORT_TOK);
 	YY_BREAK
 case 216:
 YY_RULE_SETUP
-#line 668 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 100, 130, 300, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::double_type);
+#line 670 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 100, 130, 300, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_double);
 	YY_BREAK
 case 217:
 YY_RULE_SETUP
-#line 669 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 671 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, HALF);
 	YY_BREAK
 case 218:
 YY_RULE_SETUP
-#line 670 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 672 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, FIXED_TOK);
 	YY_BREAK
 case 219:
 YY_RULE_SETUP
-#line 671 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 673 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(110, 100, 0, 0, yyextra->EXT_gpu_shader4_enable, UNSIGNED);
 	YY_BREAK
 case 220:
 YY_RULE_SETUP
-#line 672 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 674 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, INPUT_TOK);
 	YY_BREAK
 case 221:
 YY_RULE_SETUP
-#line 673 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 675 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, OUTPUT);
 	YY_BREAK
 case 222:
 YY_RULE_SETUP
-#line 674 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 676 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, HVEC2);
 	YY_BREAK
 case 223:
 YY_RULE_SETUP
-#line 675 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 677 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, HVEC3);
 	YY_BREAK
 case 224:
 YY_RULE_SETUP
-#line 676 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 678 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, HVEC4);
 	YY_BREAK
 case 225:
 YY_RULE_SETUP
-#line 677 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dvec2_type);
+#line 679 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dvec2);
 	YY_BREAK
 case 226:
 YY_RULE_SETUP
-#line 678 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dvec3_type);
+#line 680 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dvec3);
 	YY_BREAK
 case 227:
 YY_RULE_SETUP
-#line 679 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dvec4_type);
+#line 681 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dvec4);
 	YY_BREAK
 case 228:
 YY_RULE_SETUP
-#line 680 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat2_type);
+#line 682 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat2);
 	YY_BREAK
 case 229:
 YY_RULE_SETUP
-#line 681 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat3_type);
+#line 683 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat3);
 	YY_BREAK
 case 230:
 YY_RULE_SETUP
-#line 682 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat4_type);
+#line 684 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat4);
 	YY_BREAK
 case 231:
 YY_RULE_SETUP
-#line 683 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat2_type);
+#line 685 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat2);
 	YY_BREAK
 case 232:
 YY_RULE_SETUP
-#line 684 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat2x3_type);
+#line 686 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat2x3);
 	YY_BREAK
 case 233:
 YY_RULE_SETUP
-#line 685 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat2x4_type);
+#line 687 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat2x4);
 	YY_BREAK
 case 234:
 YY_RULE_SETUP
-#line 686 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat3x2_type);
+#line 688 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat3x2);
 	YY_BREAK
 case 235:
 YY_RULE_SETUP
-#line 687 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat3_type);
+#line 689 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat3);
 	YY_BREAK
 case 236:
 YY_RULE_SETUP
-#line 688 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat3x4_type);
+#line 690 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat3x4);
 	YY_BREAK
 case 237:
 YY_RULE_SETUP
-#line 689 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat4x2_type);
+#line 691 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat4x2);
 	YY_BREAK
 case 238:
 YY_RULE_SETUP
-#line 690 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat4x3_type);
+#line 692 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat4x3);
 	YY_BREAK
 case 239:
 YY_RULE_SETUP
-#line 691 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, glsl_type::dmat4_type);
+#line 693 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 400, 0, yyextra->ARB_gpu_shader_fp64_enable, &glsl_type_builtin_dmat4);
 	YY_BREAK
 case 240:
 YY_RULE_SETUP
-#line 692 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 694 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, FVEC2);
 	YY_BREAK
 case 241:
 YY_RULE_SETUP
-#line 693 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 695 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, FVEC3);
 	YY_BREAK
 case 242:
 YY_RULE_SETUP
-#line 694 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 696 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, FVEC4);
 	YY_BREAK
 case 243:
 YY_RULE_SETUP
-#line 695 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 0, 0, yyextra->ARB_texture_rectangle_enable, glsl_type::sampler2DRect_type);
+#line 697 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 0, 0, yyextra->ARB_texture_rectangle_enable, &glsl_type_builtin_sampler2DRect);
 	YY_BREAK
 case 244:
 YY_RULE_SETUP
-#line 696 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 698 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, SAMPLER3DRECT);
 	YY_BREAK
 case 245:
 YY_RULE_SETUP
-#line 697 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(110, 100, 0, 0, yyextra->ARB_texture_rectangle_enable, glsl_type::sampler2DRectShadow_type);
+#line 699 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(110, 100, 0, 0, yyextra->ARB_texture_rectangle_enable, &glsl_type_builtin_sampler2DRectShadow);
 	YY_BREAK
 case 246:
 YY_RULE_SETUP
-#line 698 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 700 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, SIZEOF);
 	YY_BREAK
 case 247:
 YY_RULE_SETUP
-#line 699 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 701 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, CAST);
 	YY_BREAK
 case 248:
 YY_RULE_SETUP
-#line 700 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 702 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, NAMESPACE);
 	YY_BREAK
 case 249:
 YY_RULE_SETUP
-#line 701 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 703 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(110, 100, 0, 0, USING);
 	YY_BREAK
 /* Additional reserved words in GLSL 1.20. */
 case 250:
 YY_RULE_SETUP
-#line 704 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 706 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(120, 100, 130, 100, LOWP);
 	YY_BREAK
 case 251:
 YY_RULE_SETUP
-#line 705 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 707 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(120, 100, 130, 100, MEDIUMP);
 	YY_BREAK
 case 252:
 YY_RULE_SETUP
-#line 706 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 708 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(120, 100, 130, 100, HIGHP);
 	YY_BREAK
 case 253:
 YY_RULE_SETUP
-#line 707 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 709 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(120, 100, 130, 100, PRECISION);
 	YY_BREAK
 /* Additional reserved words in GLSL 1.30. */
 case 254:
 YY_RULE_SETUP
-#line 710 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 712 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 130, 300, CASE);
 	YY_BREAK
 case 255:
 YY_RULE_SETUP
-#line 711 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 713 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 0, 0, COMMON);
 	YY_BREAK
 case 256:
 YY_RULE_SETUP
-#line 712 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 714 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 0, 0, PARTITION);
 	YY_BREAK
 case 257:
 YY_RULE_SETUP
-#line 713 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 715 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 0, 0, ACTIVE);
 	YY_BREAK
 case 258:
 YY_RULE_SETUP
-#line 714 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 716 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 100, 0, 0, SUPERP);
 	YY_BREAK
 case 259:
 YY_RULE_SETUP
-#line 715 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(130, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_buffer_object), glsl_type::samplerBuffer_type);
+#line 717 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(130, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_buffer_object), &glsl_type_builtin_samplerBuffer);
 	YY_BREAK
 case 260:
 YY_RULE_SETUP
-#line 716 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 718 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(130, 300, 0, 0, FILTER);
 	YY_BREAK
 case 261:
 YY_RULE_SETUP
-#line 717 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 719 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(130, 0, 140, 0, yyextra->ARB_uniform_buffer_object_enable && !yyextra->es_shader, ROW_MAJOR);
 	YY_BREAK
 /* Additional reserved words in GLSL 1.40 */
 case 262:
 YY_RULE_SETUP
-#line 720 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(140, 300, 140, 0, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.NV_texture_rectangle && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::isampler2DRect_type);
+#line 722 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(140, 300, 140, 0, yyextra->EXT_gpu_shader4_enable && yyextra->exts->NV_texture_rectangle && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_isampler2DRect);
 	YY_BREAK
 case 263:
 YY_RULE_SETUP
-#line 721 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(140, 300, 140, 0, yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.NV_texture_rectangle && yyextra->ctx->Extensions.EXT_texture_integer, glsl_type::usampler2DRect_type);
+#line 723 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(140, 300, 140, 0, yyextra->EXT_gpu_shader4_enable && yyextra->exts->NV_texture_rectangle && yyextra->exts->EXT_texture_integer, &glsl_type_builtin_usampler2DRect);
 	YY_BREAK
 case 264:
 YY_RULE_SETUP
-#line 722 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(140, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_buffer_object && yyextra->ctx->Extensions.EXT_texture_integer), glsl_type::isamplerBuffer_type);
+#line 724 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(140, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_buffer_object && yyextra->exts->EXT_texture_integer), &glsl_type_builtin_isamplerBuffer);
 	YY_BREAK
 case 265:
 YY_RULE_SETUP
-#line 723 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(140, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->ctx->Extensions.EXT_texture_buffer_object && yyextra->ctx->Extensions.EXT_texture_integer), glsl_type::usamplerBuffer_type);
+#line 725 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(140, 300, 140, 320, yyextra->EXT_texture_buffer_enable || yyextra->OES_texture_buffer_enable || (yyextra->EXT_gpu_shader4_enable && yyextra->exts->EXT_texture_buffer_object && yyextra->exts->EXT_texture_integer), &glsl_type_builtin_usamplerBuffer);
 	YY_BREAK
 /* Additional reserved words in GLSL ES 3.00 */
 case 266:
 YY_RULE_SETUP
-#line 726 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 728 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD(420, 300, 0, 0, RESOURCE);
 	YY_BREAK
 case 267:
 YY_RULE_SETUP
-#line 727 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 729 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(400, 300, 400, 320, yyextra->ARB_gpu_shader5_enable || yyextra->OES_shader_multisample_interpolation_enable, SAMPLE);
 	YY_BREAK
 case 268:
 YY_RULE_SETUP
-#line 728 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 730 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 KEYWORD_WITH_ALT(400, 300, 400, 0, yyextra->ARB_shader_subroutine_enable, SUBROUTINE);
 	YY_BREAK
 /* Additional words for ARB_gpu_shader_int64 */
 case 269:
 YY_RULE_SETUP
-#line 731 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::int64_t_type);
+#line 733 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_int64_t);
 	YY_BREAK
 case 270:
 YY_RULE_SETUP
-#line 732 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::i64vec2_type);
+#line 734 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_i64vec2);
 	YY_BREAK
 case 271:
 YY_RULE_SETUP
-#line 733 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::i64vec3_type);
+#line 735 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_i64vec3);
 	YY_BREAK
 case 272:
 YY_RULE_SETUP
-#line 734 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::i64vec4_type);
+#line 736 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_i64vec4);
 	YY_BREAK
 case 273:
 YY_RULE_SETUP
-#line 736 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::uint64_t_type);
+#line 738 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_uint64_t);
 	YY_BREAK
 case 274:
 YY_RULE_SETUP
-#line 737 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::u64vec2_type);
+#line 739 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_u64vec2);
 	YY_BREAK
 case 275:
 YY_RULE_SETUP
-#line 738 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::u64vec3_type);
+#line 740 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_u64vec3);
 	YY_BREAK
 case 276:
 YY_RULE_SETUP
-#line 739 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
-TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, glsl_type::u64vec4_type);
+#line 741 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+TYPE_WITH_ALT(0, 0, 0, 0, yyextra->ARB_gpu_shader_int64_enable || yyextra->AMD_gpu_shader_int64_enable, &glsl_type_builtin_u64vec4);
 	YY_BREAK
 case 277:
 YY_RULE_SETUP
-#line 741 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 743 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 {
 			    struct _mesa_glsl_parse_state *state = yyextra;
 			    if (state->es_shader && yyleng > 1024) {
@@ -3540,22 +3543,22 @@ YY_RULE_SETUP
 	YY_BREAK
 case 278:
 YY_RULE_SETUP
-#line 751 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 753 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { struct _mesa_glsl_parse_state *state = yyextra;
 			  state->is_field = true;
 			  return DOT_TOK; }
 	YY_BREAK
 case 279:
 YY_RULE_SETUP
-#line 755 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 757 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 { return yytext[0]; }
 	YY_BREAK
 case 280:
 YY_RULE_SETUP
-#line 757 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 759 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 3558 "generated/src/compiler/glsl/glsl_lexer.cpp"
+#line 3561 "generated/src/compiler/glsl/glsl_lexer.cpp"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(PP):
 case YY_STATE_EOF(PRAGMA):
@@ -4716,7 +4719,7 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 757 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
+#line 759 "src/lib/mesa/src/compiler/glsl/glsl_lexer.ll"
 
 
 int
