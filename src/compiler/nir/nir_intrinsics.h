@@ -270,6 +270,7 @@ typedef enum {
    nir_intrinsic_load_draw_id,
    nir_intrinsic_load_esgs_vertex_stride_amd,
    nir_intrinsic_load_fb_layers_v3d,
+   nir_intrinsic_load_fep_w_v3d,
    nir_intrinsic_load_first_vertex,
    nir_intrinsic_load_fixed_point_size_agx,
    nir_intrinsic_load_flat_mask,

@@ -7147,6 +7147,17 @@ _nir_build_load_fb_layers_v3d(nir_builder *build, unsigned bit_size)
    return &intrin->def;
 }
 static inline nir_def *
+_nir_build_load_fep_w_v3d(nir_builder *build, unsigned bit_size)
+{
+   nir_intrinsic_instr *intrin = nir_intrinsic_instr_create(
+      build->shader, nir_intrinsic_load_fep_w_v3d);
+
+      nir_def_init(&intrin->instr, &intrin->def, 1, bit_size);
+
+   nir_builder_instr_insert(build, &intrin->instr);
+   return &intrin->def;
+}
+static inline nir_def *
 _nir_build_load_first_vertex(nir_builder *build)
 {
    nir_intrinsic_instr *intrin = nir_intrinsic_instr_create(
@@ -12944,6 +12955,7 @@ _nir_build_load_deref_block_intel(build, num_components, bit_size, src0, (struct
 #define nir_load_draw_id _nir_build_load_draw_id
 #define nir_load_esgs_vertex_stride_amd _nir_build_load_esgs_vertex_stride_amd
 #define nir_load_fb_layers_v3d _nir_build_load_fb_layers_v3d
+#define nir_load_fep_w_v3d _nir_build_load_fep_w_v3d
 #define nir_load_first_vertex _nir_build_load_first_vertex
 #define nir_load_fixed_point_size_agx _nir_build_load_fixed_point_size_agx
 #define nir_load_flat_mask _nir_build_load_flat_mask

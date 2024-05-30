@@ -498,6 +498,7 @@ tr_util_pipe_video_cap_name(enum pipe_video_cap value)
       case PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE: return "PIPE_VIDEO_CAP_ENC_H264_SUPPORTS_CABAC_ENCODE";
       case PIPE_VIDEO_CAP_ROI_CROP_DEC: return "PIPE_VIDEO_CAP_ROI_CROP_DEC";
       case PIPE_VIDEO_CAP_ENC_ROI: return "PIPE_VIDEO_CAP_ENC_ROI";
+      case PIPE_VIDEO_CAP_ENC_SURFACE_ALIGNMENT: return "PIPE_VIDEO_CAP_ENC_SURFACE_ALIGNMENT";
 
       default: return "PIPE_VIDEO_CAP_UNKNOWN";
    }
